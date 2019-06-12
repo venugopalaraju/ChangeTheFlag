@@ -3,8 +3,10 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-<title>jQuery AJAX Introduction</title>
+<title>Hacking Test</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="Keywords" content="HTML,CSS,JavaScript,SQL,PHP,jQuery,XML,DOM,Bootstrap,Python,Java,Web development,W3C,tutorials,programming,training,learning,quiz,primer,lessons,references,examples,exercises,source code,colors,demos,tips">
@@ -528,15 +530,29 @@ $(document).ready(function(){
 <script src="/lib/w3schools_footer.js"></script>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <div id="challenge1" class="challenge" style="display:none;">
+<b><u>Challenge 1</u></b>
+<br><br><br><br>
 <div><img alt="" src="\images\sourcecode.jpg"></div>
 <div>Enter Password :<input type="password" width="20" id="password"/></div>
 <div><button onclick="next()">Login</button></div>
 </div>
 <div id="challenge2" class="challenge" style="display:none;">
-<div>Enter Password :<input type="password" width="20" id="password"/></div>
+<b><u>Challenge 2</u></b>
+<br><br><br><br>
+<div>Enter Password :<input type="password" width="20" id="next2password"/></div>
+<div><button onclick="next2()">Login</button></div>
 </div>
 <div id="challenge3" class="challenge" style="display:none;">
-Challenge 3
+<b><u>Challenge 3</u></b>
+<br><br><br><br>
+<div>Enter Password :<input type="password" width="20" id="next3password"/></div>
+<div><button onclick="next3()">Login</button></div>
+</div>
+<div id="challenge4" class="challenge" style="display:none;">
+<b><u>Challenge 4</u></b>
+<br><br><br><br>
+<div>Enter Password :<input type="password" width="20" id="next4password"/></div>
+<div><button onclick="next4()">Login</button></div>
 </div>
 <script type="text/javascript">
 var score=0;
@@ -549,6 +565,12 @@ function challenge(id){
 		score+=1;
 	}
 	if(score==id){
+		if(id==2){
+			challenge2();
+		}
+		if(id==3){
+			challenge3();
+		}
 		$("#main-content-div").children().remove();
 		$("#main-content-div").append($("#challenge"+id));
 		$("#challenge"+id).show();
@@ -564,6 +586,52 @@ function next(){
 		alert("enter correct password");
 	}
 }
+function challenge2(){
+	$.ajax(
+			{
+				url: "/challenge2",
+				success: function(result)
+				{
+					//ToDo
+				}});
+}
+function next2(){
+	var val1=$.cookie("alex");
+	var val2=$("#next2password").val();
+	if(val1==val2){
+		score+=1;
+		challenge(score);
+	}else{
+		alert("Enter valid password");
+	}
+}
+function challenge3(){
+	$.ajax(
+			{
+				url: "/generateEncodePassword",
+				success: function(result)
+				{
+					//ToDo
+				}});
+}
+function next3(){
+	var password=$("#next3password").val();
+	$.ajax(
+			{
+				url: "/challenge3Password",
+				method:'post',
+				data: {'password': password},
+				dataType:'json',
+				success: function(result)
+				{
+					if(result=="success"){
+						score+=1;
+						challenge(score);
+					}else{
+						alert("Enter valid password");
+					}
+				}});
+}
 </script>
-</body>
+ </body>
 </html>

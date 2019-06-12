@@ -5,6 +5,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Base64Utils;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -34,10 +37,25 @@ public class HackMeController {
 			return "challengelogin";
 		}
 	}
-	@RequestMapping("/challenge5")
-	public String hello(HttpServletResponse response) {
-		response.addCookie(new Cookie("foo", "bar"));
-		return null;
-
+	@RequestMapping("/challenge2")
+	public String challenge2(HttpServletResponse response) {
+		response.addCookie(new Cookie("alex", "alex1"));
+		return "success";
+	}
+	@RequestMapping("/generateEncodePassword")
+	public String generateEncodePassword(HttpServletResponse response) {
+		String password=Base64Utils.encodeToString("hello".getBytes());
+		response.addCookie(new Cookie("ensrcpwd", password));
+		return "success";
+		
+	}
+	@RequestMapping("/challenge3Password")
+	public String challenge3Password(@RequestBody String password) {
+		String result="wrong";
+		if("hello".equals(password)) {
+			result="success";
+		}
+		return result;
+		
 	}
 }
