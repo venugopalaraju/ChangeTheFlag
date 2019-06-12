@@ -533,7 +533,7 @@ $(document).ready(function(){
 <div><button onclick="next()">Login</button></div>
 </div>
 <div id="challenge2" class="challenge" style="display:none;">
-Challenge 2
+<div>Enter Password :<input type="password" width="20" id="password"/></div>
 </div>
 <div id="challenge3" class="challenge" style="display:none;">
 Challenge 3

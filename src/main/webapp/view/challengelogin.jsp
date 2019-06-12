@@ -7,22 +7,12 @@
 <title>Challenge Login</title>
 </head>
 <body>
-<form action="/hackall" id="challengeloginform"></form>
-<div>
-<div><img alt="" src="\images\sourcecode.jpg"></div>
-<div>Enter Password :<input type="password" width="20" id="password"/></div>
-<div><button onclick="next()">Login</button></div>
+<form action="/hackall" id="challengeloginform">
+<div align="center">
+<div>Enter User Name :<input type="text" width="20" name="username"/></div>
+<div>Enter Password :<input type="password" width="20" name="password"/></div>
+<div><button type="submit">Login</button></div>
 </div>
-<script language="javascript">
-function next(){
-	var password=document.getElementById("password").value;
-	if(password=='candy'){
-		document.getElementById("challengeloginform").submit();
-			}
-	else{
-		alert("enter correct password");
-	}
-}
-</script>
+</form>
 </body>
 </html>
