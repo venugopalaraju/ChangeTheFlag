@@ -7,8 +7,9 @@
 <title>Challenge Login</title>
 </head>
 <body>
-<form action="/hackall" id="challengeloginform">
+<form action="/validateChallenge0" id="challengeloginform">
 <div align="center">
+<br><br><br><br>
 <div>Enter User Name :<input type="text" width="20" name="username"/></div>
 <div>Enter Password :<input type="password" width="20" name="password"/></div>
 <div><button type="submit">Login</button></div>

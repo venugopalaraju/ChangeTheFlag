@@ -591,7 +591,7 @@ function next(){
 function challenge2(){
 	$.ajax(
 			{
-				url: "/challenge2",
+				url: "/validateChallenge2",
 				success: function(result)
 				{
 					//ToDo
