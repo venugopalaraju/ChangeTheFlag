@@ -6,9 +6,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Base64Utils;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HackMeController {
@@ -42,17 +42,36 @@ public class HackMeController {
 		response.addCookie(new Cookie("alex", "alex1"));
 		return "success";
 	}
-	@RequestMapping("/generateEncodePassword")
-	public String generateEncodePassword(HttpServletResponse response) {
+	@RequestMapping("/challenge4")
+	public String challenge4(HttpServletResponse response) {
 		String password=Base64Utils.encodeToString("hello".getBytes());
-		response.addCookie(new Cookie("ensrcpwd", password));
+		response.addCookie(new Cookie("enCkepwd", password));
 		return "success";
 		
 	}
-	@RequestMapping("/challenge3Password")
-	public String challenge3Password(@RequestBody String password) {
+	@RequestMapping("/validateChallenge4")
+	@ResponseBody
+	public String validateChallenge4(@RequestBody String password) {
 		String result="wrong";
 		if("hello".equals(password)) {
+			result="success";
+		}
+		return result;
+		
+	}
+	@RequestMapping("/challenge3")
+	@ResponseBody
+	public String challenge3(HttpServletResponse response) {
+		String password=Base64Utils.encodeToString("welcome".getBytes());
+		response.addCookie(new Cookie("ensrcpwd", password));
+		return password;
+		
+	}
+	@RequestMapping("/validateChallenge3")
+	@ResponseBody
+	public String validateChallenge3(@RequestBody String password) {
+		String result="wrong";
+		if("welcome".equals(password)) {
 			result="success";
 		}
 		return result;

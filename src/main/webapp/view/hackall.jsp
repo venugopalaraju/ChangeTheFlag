@@ -12,7 +12,6 @@
 <meta name="Keywords" content="HTML,CSS,JavaScript,SQL,PHP,jQuery,XML,DOM,Bootstrap,Python,Java,Web development,W3C,tutorials,programming,training,learning,quiz,primer,lessons,references,examples,exercises,source code,colors,demos,tips">
 <meta name="Description" content="Well organized and easy to understand Web building tutorials with lots of examples of how to use HTML, CSS, JavaScript, SQL, PHP, Python, Bootstrap, Java and XML.">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="/w3css/4/w3.css">
 <link href='https://fonts.googleapis.com/css?family=Source Code Pro' rel='stylesheet'>
 <style>
 a:hover,a:active{color:#4CAF50}
@@ -527,8 +526,6 @@ $(document).ready(function(){
 <br><br><br><br>
 <div id="main-content-div" align="center"><div></div></div>
 </div>
-<script src="/lib/w3schools_footer.js"></script>
-<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <div id="challenge1" class="challenge" style="display:none;">
 <b><u>Challenge 1</u></b>
 <br><br><br><br>
@@ -554,9 +551,14 @@ $(document).ready(function(){
 <div>Enter Password :<input type="password" width="20" id="next4password"/></div>
 <div><button onclick="next4()">Login</button></div>
 </div>
+<div id="challenge5" class="challenge" style="display:none;">
+<b><u>Challenge 5</u></b>
+<br><br><br><br>
+<div>Enter Password :<input type="password" width="20" id="next5password"/></div>
+<div><button onclick="next5()">Login</button></div>
+</div>
 <script type="text/javascript">
 var score=0;
-var result=[];
 $(function() {
 	challenge(1);
 });
@@ -605,26 +607,52 @@ function next2(){
 		alert("Enter valid password");
 	}
 }
-function challenge3(){
+function challenge4(){
 	$.ajax(
 			{
-				url: "/generateEncodePassword",
+				url: "/challenge4",
 				success: function(result)
 				{
 					//ToDo
+				}});
+}
+function next4(){
+	var password=$("#next4password").val();
+	$.ajax(
+			{
+				url: "/validateChallenge4",
+				data: password,
+				type: 'post',
+			    contentType: 'application/json',
+				success:function(data){
+					if(data=="success"){
+						score+=1;
+						challenge(score);
+					}else{
+						alert("Enter valid password");
+					}
+				}});
+}
+function challenge3(){
+	$.ajax(
+			{
+				url: "/challenge3",
+				contentType: 'application/json',
+				success:function(data){
+					var password=data;
+					console.log(password);
 				}});
 }
 function next3(){
 	var password=$("#next3password").val();
 	$.ajax(
 			{
-				url: "/challenge3Password",
-				method:'post',
-				data: {'password': password},
-				dataType:'json',
-				success: function(result)
-				{
-					if(result=="success"){
+				url: "/validateChallenge3",
+				data: password,
+				type: 'post',
+			    contentType: 'application/json',
+				success:function(data){
+					if(data=="success"){
 						score+=1;
 						challenge(score);
 					}else{
