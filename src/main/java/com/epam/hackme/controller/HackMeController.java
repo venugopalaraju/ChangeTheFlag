@@ -16,20 +16,12 @@ import com.epam.hackme.common.HackMeConstants;
 
 @Controller
 public class HackMeController {
-	@RequestMapping("login")
-	public String login() {
-		return "login";
-	}
+	
 	@RequestMapping(HackMeConstants.CHALLENGE_ZERO)
-	public String challangelogin(HttpServletRequest request) {
+	public String challangelogin(HttpServletRequest request,HttpServletResponse response) {
+		Arrays.asList(request.getCookies()).stream().forEach(e->{e.setMaxAge(0);response.addCookie(e);});
 		return HackMeConstants.CHALLENGE_ZERO_VIEW;
 	}
-	/*@RequestMapping("validateChallenge0")
-	public String validate(HttpServletRequest request) {
-		request.getSession().setAttribute("username", request.getParameter("username"));
-		return "success";
-	}*/
-	
 	@RequestMapping(HackMeConstants.VALIDATE_CHALLENGE_ZERO)
 	public String hackall(HttpServletRequest request) {
 		String username=request.getParameter(HackMeConstants.USERNAME);
