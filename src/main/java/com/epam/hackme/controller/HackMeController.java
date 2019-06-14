@@ -1,5 +1,7 @@
 package com.epam.hackme.controller;
 
+import java.util.Arrays;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.epam.hackme.common.HackMeConstants;
 
 @Controller
-@RequestMapping("/hack")
 public class HackMeController {
 	@RequestMapping("login")
 	public String login() {
@@ -40,7 +41,24 @@ public class HackMeController {
 			return HackMeConstants.CHALLENGE_ZERO_VIEW;
 		}
 	}
-	@RequestMapping(HackMeConstants.VALIDATE_CHALLENGE_TWO)
+	@RequestMapping(HackMeConstants.CHALLENGE_THREE)
+	@ResponseBody
+	public String challenge3(HttpServletResponse response) {
+		String password=Base64Utils.encodeToString(HackMeConstants.ENCRYPTED_SOURCE_CODE_PASSWORD_VALUE.getBytes());
+		response.addCookie(new Cookie(HackMeConstants.ENCRYPTED_SOURCE_CODE_PASSWORD_KEY, password));
+		return password;
+		
+	}
+	@RequestMapping(HackMeConstants.VALIDATE_CHALLENGE_THREE)
+	@ResponseBody
+	public String validateChallenge3(@RequestBody String password) {
+		if(HackMeConstants.ENCRYPTED_SOURCE_CODE_PASSWORD_VALUE.equals(password)) {
+			return HackMeConstants.SUCCESS;
+		}
+		return HackMeConstants.NOT_SUCCESS;
+		
+	}
+	@RequestMapping(HackMeConstants.CHALLENGE_TWO)
 	public String challenge2(HttpServletResponse response) {
 		response.addCookie(new Cookie(HackMeConstants.PLAIN_COOKIE, HackMeConstants.PLAIN_COOKIE_VALUE));
 		return HackMeConstants.SUCCESS;
@@ -61,21 +79,24 @@ public class HackMeController {
 		return HackMeConstants.NOT_SUCCESS;
 		
 	}
-	@RequestMapping(HackMeConstants.CHALLENGE_THREE)
+	@RequestMapping(HackMeConstants.VALIDATE_CHALLENGE_FIVE)
 	@ResponseBody
-	public String challenge3(HttpServletResponse response) {
-		String password=Base64Utils.encodeToString(HackMeConstants.ENCRYPTED_SOURCE_CODE_PASSWORD_VALUE.getBytes());
-		response.addCookie(new Cookie(HackMeConstants.ENCRYPTED_SOURCE_CODE_PASSWORD_KEY, password));
-		return password;
-		
-	}
-	@RequestMapping(HackMeConstants.VALIDATE_CHALLENGE_THREE)
-	@ResponseBody
-	public String validateChallenge3(@RequestBody String password) {
-		if(HackMeConstants.ENCRYPTED_SOURCE_CODE_PASSWORD_VALUE.equals(password)) {
+	public String validateChallenge5(@RequestBody String password) {
+		if(HackMeConstants.CHALLENG5_PASSWORD.equals(password)) {
 			return HackMeConstants.SUCCESS;
 		}
 		return HackMeConstants.NOT_SUCCESS;
 		
+	}
+	@RequestMapping(HackMeConstants.VALIDATE_CHALLENGE_EIGHT)
+	@ResponseBody
+	public String validateChallenge8(HttpServletRequest request,HttpServletResponse response) {
+		if(Arrays.asList(request.getCookies()).stream().anyMatch(e->e.getName().equals(HackMeConstants.ROLE_TYPE)&&e.getValue().equals(HackMeConstants.ADMIN_ROLE))) {
+			return HackMeConstants.ADMIN_ROLE;
+		}else if(Arrays.asList(request.getCookies()).stream().anyMatch(e->e.getName().equals(HackMeConstants.ROLE_TYPE)&&e.getValue().equals(HackMeConstants.USER_ROLE))) {
+			return HackMeConstants.USER_ROLE;
+		}
+		response.addCookie(new Cookie(HackMeConstants.ROLE_TYPE, HackMeConstants.USER_ROLE));
+		return HackMeConstants.USER_ROLE;
 	}
 }

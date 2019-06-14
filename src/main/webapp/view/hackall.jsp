@@ -557,6 +557,23 @@ $(document).ready(function(){
 <div>Enter Password :<input type="password" width="20" id="next5password"/></div>
 <div><button onclick="next5()">Login</button></div>
 </div>
+<!-- <div id="challenge6" class="challenge" style="display:none;">
+<b><u>Challenge 6</u></b>
+<br><br><br><br>
+<div>Enter Password :<input type="password" width="20" id="next6password"/></div>
+<div><button onclick="next6()">Login</button></div>
+</div> -->
+<div id="challenge6" class="challenge" style="display:none;">
+<b><u>Challenge 6</u></b>
+<br><br><br><br>
+<div><a target="_top" onclick='challenge6()'><font color="green"><b>Click here</b></font></a> to check your user rolee</div>
+</div>
+<div id="challenge7" class="challenge" style="display:none;">
+<b><u>Challenge 7</u></b>
+<br><br><br><br>
+<div>Enter Password :<input type="password" width="20" id="next6password"/></div>
+<div><button onclick="next6()">Login</button></div>
+</div>
 <script type="text/javascript">
 var score=0;
 $(function() {
@@ -591,7 +608,7 @@ function next(){
 function challenge2(){
 	$.ajax(
 			{
-				url: "/validateChallenge2",
+				url: "/challenge2",
 				success: function(result)
 				{
 					//ToDo
@@ -660,7 +677,38 @@ function next4(){
 					}
 				}});
 }
-
+function next5(){
+	var password=$("#next5password").val();
+	$.ajax(
+			{
+				url: "/validateChallenge5",
+				data: password,
+				type: 'post',
+			    contentType: 'application/json',
+				success:function(data){
+					if(data=="success"){
+						score+=1;
+						challenge(score);
+					}else{
+						alert("Enter valid password");
+					}
+				}});
+}
+function challenge6(){
+	$.ajax(
+			{
+				url: "/validateChallenge8",
+				contentType: 'application/json',
+				success:function(data){
+					if(data=='user'){
+						alert("your role is User..!!");
+					}if(data=='admin'){
+						alert("your role is Admin..!!");
+						score+=1;
+						challenge(score);
+					}
+				}});
+}
 </script>
  </body>
 </html>
