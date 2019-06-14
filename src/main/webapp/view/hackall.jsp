@@ -607,32 +607,6 @@ function next2(){
 		alert("Enter valid password");
 	}
 }
-function challenge4(){
-	$.ajax(
-			{
-				url: "/challenge4",
-				success: function(result)
-				{
-					//ToDo
-				}});
-}
-function next4(){
-	var password=$("#next4password").val();
-	$.ajax(
-			{
-				url: "/validateChallenge4",
-				data: password,
-				type: 'post',
-			    contentType: 'application/json',
-				success:function(data){
-					if(data=="success"){
-						score+=1;
-						challenge(score);
-					}else{
-						alert("Enter valid password");
-					}
-				}});
-}
 function challenge3(){
 	$.ajax(
 			{
@@ -660,6 +634,33 @@ function next3(){
 					}
 				}});
 }
+function challenge4(){
+	$.ajax(
+			{
+				url: "/challenge4",
+				success: function(result)
+				{
+					//ToDo
+				}});
+}
+function next4(){
+	var password=$("#next4password").val();
+	$.ajax(
+			{
+				url: "/validateChallenge4",
+				data: password,
+				type: 'post',
+			    contentType: 'application/json',
+				success:function(data){
+					if(data=="success"){
+						score+=1;
+						challenge(score);
+					}else{
+						alert("Enter valid password");
+					}
+				}});
+}
+
 </script>
  </body>
 </html>

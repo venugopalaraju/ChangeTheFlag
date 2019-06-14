@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.epam.hackme.common.HackMeConstants;
 
 @Controller
+@RequestMapping("/hack")
 public class HackMeController {
 	@RequestMapping("login")
 	public String login() {
