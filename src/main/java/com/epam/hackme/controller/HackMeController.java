@@ -1,5 +1,7 @@
 package com.epam.hackme.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Arrays;
 
 import javax.servlet.http.Cookie;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.epam.hackme.common.HackMeConstants;
+import com.epam.hackme.common.HackMeHelper;
 
 @Controller
 public class HackMeController {
@@ -36,6 +39,11 @@ public class HackMeController {
 	@RequestMapping(HackMeConstants.CHALLENGE_THREE)
 	@ResponseBody
 	public String challenge3(HttpServletResponse response) {
+		/*String key=HackMeHelper.generateRandomString(10);
+		String password=HackMeHelper.generateRandomString(10);
+		String encrytedPassword=HackMeHelper.convertPlainToCipher(password);
+		CacheService.savePassword(key, password);
+		response.addCookie(new Cookie(key, encrytedPassword));*/
 		String password=Base64Utils.encodeToString(HackMeConstants.ENCRYPTED_SOURCE_CODE_PASSWORD_VALUE.getBytes());
 		response.addCookie(new Cookie(HackMeConstants.ENCRYPTED_SOURCE_CODE_PASSWORD_KEY, password));
 		return password;
@@ -57,7 +65,7 @@ public class HackMeController {
 	}
 	@RequestMapping(HackMeConstants.CHALLENGE_FOUR)
 	public String challenge4(HttpServletResponse response) {
-		String password=Base64Utils.encodeToString(HackMeConstants.ENCRYPTED_COOKIE_PASSWORD_VALUE.getBytes());
+		String password=HackMeHelper.convertPlainToCipher(HackMeHelper.generateRandomString(10));
 		response.addCookie(new Cookie(HackMeConstants.ENCRYPTED_COOKIE_PASSWORD_KEY, password));
 		return HackMeConstants.SUCCESS;
 		
@@ -90,5 +98,18 @@ public class HackMeController {
 		}
 		response.addCookie(new Cookie(HackMeConstants.ROLE_TYPE, HackMeConstants.USER_ROLE));
 		return HackMeConstants.USER_ROLE;
+	}
+	@RequestMapping(HackMeConstants.VALIDATE_CHALLENGE_NINE)
+	@ResponseBody
+	public String validateChallenge9(@RequestBody String command) throws IOException, InterruptedException {
+		String output="";
+		Process proc = Runtime.getRuntime().exec(command);
+		int result = proc.waitFor();
+		InputStream in = (result == 0) ? proc.getInputStream() : proc.getErrorStream();
+		int c;
+		while ((c = in.read()) != -1) {
+			output=output+(char)c;
+		}
+		return output;
 	}
 }

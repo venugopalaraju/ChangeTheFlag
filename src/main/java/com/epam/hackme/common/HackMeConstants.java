@@ -28,6 +28,7 @@ String CHALLENGE_SEVEN="";
 String CHALLENGE_EIGHT="";
 String VALIDATE_CHALLENGE_EIGHT="/validateChallenge8";
 String CHALLENGE_NINE="";
+String VALIDATE_CHALLENGE_NINE="/validateChallenge9";
 String CHALLENGE_TEN="";
 String CHALLENGE_ZERO_VIEW="challengelogin";
 String CHALLENGE_ALL_VIEW="hackall";

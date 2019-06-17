@@ -536,12 +536,14 @@ $(document).ready(function(){
 <div id="challenge2" class="challenge" style="display:none;">
 <b><u>Challenge 2</u></b>
 <br><br><br><br>
+<div><img alt="" src="\images\password2.jpg"></div>
 <div>Enter Password :<input type="password" width="20" id="next2password"/></div>
 <div><button onclick="next2()">Login</button></div>
 </div>
 <div id="challenge3" class="challenge" style="display:none;">
 <b><u>Challenge 3</u></b>
 <br><br><br><br>
+<div><img alt="" src="\images\password3.jpg"></div>
 <div>Enter Password :<input type="password" width="20" id="next3password"/></div>
 <div><button onclick="next3()">Login</button></div>
 </div>
@@ -571,8 +573,24 @@ $(document).ready(function(){
 <div id="challenge7" class="challenge" style="display:none;">
 <b><u>Challenge 7</u></b>
 <br><br><br><br>
-<div>Enter Password :<input type="password" width="20" id="next6password"/></div>
-<div><button onclick="next6()">Login</button></div>
+<div>Please enter a string which contains more than 20 characters</div>
+<div>Enter String :<input type="password" width="20" id="challenge7name" maxlength="20"/></div>
+<div><button onclick="next7()">Login</button></div>
+</div>
+<div id="challenge8" class="challenge" style="display:none;">
+<b><u>Challenge 8</u></b>
+<br><br><br><br>
+<div>Enter Command :<input type="text" width="100" id="command"/></div>
+<div><button onclick="challenge8()">Submit</button></div>
+<div class="command-output" style="display:none;">
+<div id="cmd-output-body"></div>
+<div><button onclick="next9()">Ok</button></div>
+</div>
+</div>
+<div id="challenge9" class="challenge" style="display:none;">
+<b><u>Challenge 9</u></b>
+<br><br><br><br>
+<div><a target="_top" onclick='challenge9()'><font color="green"><b>Click here</b></font></a> to check your user rolee</div>
 </div>
 <script type="text/javascript">
 var score=0;
@@ -708,6 +726,29 @@ function challenge6(){
 						challenge(score);
 					}
 				}});
+}
+function next7(){
+	if($("#challenge7name").val().length>20){
+		score+=1;
+		challenge(score);
+	}
+}
+function challenge8(){
+	var command=$("#command").val();
+	$.ajax(
+			{
+				url: "/validateChallenge9",
+				data: command,
+				type: 'post',
+			    contentType: 'application/json',
+				success:function(data){
+					$("#cmd-output-body").text(data);
+					$(".command-output").show();
+				}});
+}
+function next9(){
+	score+=1;
+	challenge(score);
 }
 </script>
  </body>
