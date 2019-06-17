@@ -504,21 +504,21 @@ $(document).ready(function(){
     <div class='w3-light-grey' id='leftmenuinnerinner'>
 <!--  <a href='javascript:void(0)' onclick='close_menu()' class='w3-button w3-hide-large w3-large w3-display-topright' style='right:16px;padding:3px 12px;font-weight:bold;'>&times;</a>-->
 <h2 class="left"><span class="left_h2">Challenges</span></h2>
-<a target="_top" onclick='challenge("1")'>Challenge 1</a>
-<a target="_top" onclick='challenge("2")'>Challenge 2</a>
-<a target="_top" onclick='challenge("3")'>Challenge 3</a>
-<a target="_top" onclick='challenge("4")'>Challenge 4</a>
-<a target="_top" onclick='challenge("5")'>Challenge 5</a>
-<a target="_top" onclick='challenge("6")'>Challenge 6</a>
-<a target="_top" onclick='challenge("7")'>Challenge 7</a>
-<a target="_top" onclick='challenge("8")'>Challenge 8</a>
-<a target="_top" onclick='challenge("9")'>Challenge 9</a>
-<a target="_top" onclick='challenge("10")'>Challenge 10</a>
-<a target="_top" onclick='challenge("11")'>Challenge 11</a>
-<a target="_top" onclick='challenge("12")'>Challenge 12</a>
-<a target="_top" onclick='challenge("13")'>Challenge 13</a>
-<a target="_top" onclick='challenge("14")'>Challenge 14</a>
-<a target="_top" onclick='challenge("15")'>Challenge 15</a>
+<div onclick='challenge("1")' style="border-style: inset;" id="cha1div">Challenge 1</div>
+<div onclick='challenge("2")' style="border-style: inset;" id="cha2div">Challenge 2</div>
+<div onclick='challenge("3")' style="border-style: inset;" id="cha3div">Challenge 3</div>
+<div onclick='challenge("4")' style="border-style: inset;" id="cha4div">Challenge 4</div>
+<div onclick='challenge("5")' style="border-style: inset;" id="cha5div">Challenge 5</div>
+<div onclick='challenge("6")' style="border-style: inset;" id="cha6div">Challenge 6</div>
+<div onclick='challenge("7")' style="border-style: inset;" id="cha7div">Challenge 7</div>
+<div onclick='challenge("8")' style="border-style: inset;" id="cha8div">Challenge 8</div>
+<div onclick='challenge("9")' style="border-style: inset;" id="cha9div">Challenge 9</div>
+<div onclick='challenge("10")' style="border-style: inset;" id="cha10div">Challenge 10</div>
+<div onclick='challenge("11")' style="border-style: inset;" id="cha11div">Challenge 11</div>
+<div onclick='challenge("12")' style="border-style: inset;" id="cha12div">Challenge 12</div>
+<div onclick='challenge("13")' style="border-style: inset;" id="cha13div">Challenge 13</div>
+<div onclick='challenge("14")' style="border-style: inset;" id="cha14div">Challenge 14</div>
+<div onclick='challenge("15")' style="border-style: inset;" id="cha15div">Challenge 15</div>
     </div>
   </div>
 </div>
@@ -598,6 +598,10 @@ $(function() {
 	challenge(1);
 });
 function challenge(id){
+	if(score>1){
+		var divid=score-1;
+		$("#cha"+divid+"div").css("background-color","blue");
+	}
 	if(score==0){
 		score+=1;
 	}
