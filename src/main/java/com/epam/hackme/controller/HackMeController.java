@@ -36,6 +36,11 @@ public class HackMeController {
 			return HackMeConstants.CHALLENGE_ZERO_VIEW;
 		}
 	}
+	@RequestMapping(HackMeConstants.CHALLENGE_TWO)
+	public String challenge2(HttpServletResponse response) {
+		response.addCookie(new Cookie(HackMeConstants.PLAIN_COOKIE, HackMeConstants.PLAIN_COOKIE_VALUE));
+		return HackMeConstants.SUCCESS;
+	}
 	@RequestMapping(HackMeConstants.CHALLENGE_THREE)
 	@ResponseBody
 	public String challenge3(HttpServletResponse response) {
@@ -58,11 +63,7 @@ public class HackMeController {
 		return HackMeConstants.NOT_SUCCESS;
 		
 	}
-	@RequestMapping(HackMeConstants.CHALLENGE_TWO)
-	public String challenge2(HttpServletResponse response) {
-		response.addCookie(new Cookie(HackMeConstants.PLAIN_COOKIE, HackMeConstants.PLAIN_COOKIE_VALUE));
-		return HackMeConstants.SUCCESS;
-	}
+	
 	@RequestMapping(HackMeConstants.CHALLENGE_FOUR)
 	public String challenge4(HttpServletResponse response) {
 		String password=HackMeHelper.convertPlainToCipher(HackMeHelper.generateRandomString(10));
@@ -82,15 +83,15 @@ public class HackMeController {
 	@RequestMapping(HackMeConstants.VALIDATE_CHALLENGE_FIVE)
 	@ResponseBody
 	public String validateChallenge5(@RequestBody String password) {
-		if(HackMeConstants.CHALLENG5_PASSWORD.equals(password)) {
+		if(HackMeConstants.CHALLENG_5_PASSWORD.equals(password)) {
 			return HackMeConstants.SUCCESS;
 		}
 		return HackMeConstants.NOT_SUCCESS;
 		
 	}
-	@RequestMapping(HackMeConstants.VALIDATE_CHALLENGE_EIGHT)
+	@RequestMapping(HackMeConstants.VALIDATE_CHALLENGE_SIX)
 	@ResponseBody
-	public String validateChallenge8(HttpServletRequest request,HttpServletResponse response) {
+	public String validateChallenge6(HttpServletRequest request,HttpServletResponse response) {
 		if(Arrays.asList(request.getCookies()).stream().anyMatch(e->e.getName().equals(HackMeConstants.ROLE_TYPE)&&e.getValue().equals(HackMeConstants.ADMIN_ROLE))) {
 			return HackMeConstants.ADMIN_ROLE;
 		}else if(Arrays.asList(request.getCookies()).stream().anyMatch(e->e.getName().equals(HackMeConstants.ROLE_TYPE)&&e.getValue().equals(HackMeConstants.USER_ROLE))) {
@@ -98,6 +99,14 @@ public class HackMeController {
 		}
 		response.addCookie(new Cookie(HackMeConstants.ROLE_TYPE, HackMeConstants.USER_ROLE));
 		return HackMeConstants.USER_ROLE;
+	}
+	@RequestMapping(HackMeConstants.VALIDATE_CHALLENGE_EIGHT)
+	@ResponseBody
+	public String validateChallenge8(@RequestBody String password) throws IOException, InterruptedException {
+		if(HackMeConstants.CHALLENG_8_PASSWORD.equals(password)) {
+			return HackMeConstants.SUCCESS;
+		}
+		return HackMeConstants.NOT_SUCCESS;
 	}
 	@RequestMapping(HackMeConstants.VALIDATE_CHALLENGE_NINE)
 	@ResponseBody
@@ -111,5 +120,23 @@ public class HackMeController {
 			output=output+(char)c;
 		}
 		return output;
+	}
+	@RequestMapping(HackMeConstants.CHALLENGE_TEN)
+	@ResponseBody
+	public String challange10username(String getvalue)  {
+		if(getvalue.equals(HackMeConstants.USERNAME)) {
+			return HackMeConstants.ADMIN;
+		}else if(getvalue.equals(HackMeConstants.PASSWORD)){
+			return HackMeConstants.CHALLANGE_10_PASSWORD;
+		}
+		return HackMeConstants.INVALID_URL;
+	}
+	@RequestMapping(HackMeConstants.VALIDATE_CHALLENGE_TEN)
+	@ResponseBody
+	public String validateChallenge10(@RequestBody String password) {
+		if(HackMeConstants.CHALLANGE_10_PASSWORD.equals(password)) {
+			return HackMeConstants.SUCCESS;
+		}
+		return HackMeConstants.NOT_SUCCESS;
 	}
 }

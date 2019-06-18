@@ -485,16 +485,13 @@ $(document).ready(function(){
 <body>
 
 
-<div style='display:none;position:absolute;z-index:4;right:52px;height:44px;background-color:#5f5f5f;letter-spacing:normal;' id='googleSearch'>
-  <div class='gcse-search'></div>
-</div>
-<div style='display:none;position:absolute;z-index:3;right:111px;height:44px;background-color:#5f5f5f;text-align:right;padding-top:9px;' id='google_translate_element'></div>
+
 
 <div class='w3-card-2 topnav notranslate' id='topnav'>
   <div style="overflow:auto;">
     <div class="w3-bar w3-left" style="width:100%;overflow:hidden;height:44px">
             <a class="w3-bar-item w3-button" onclick='leaderBoard()' title='leader Board'>leader Board</a>
-      <a class="w3-bar-item w3-button" onclick='myScore()' title='My Score'>My Score</a>
+      <a class="w3-bar-item w3-button" data-toggle="modal" data-target="#myModal" title='My Score'>My Score</a>
  </div>
   </div>
 </div>
@@ -530,67 +527,85 @@ $(document).ready(function(){
 <b><u>Challenge 1</u></b>
 <br><br><br><br>
 <div><img alt="" src="\images\sourcecode.jpg"></div>
-<div>Enter Password :<input type="password" width="20" id="password"/></div>
-<div><button onclick="next()">Login</button></div>
+<div>Enter Password :<input type="password" width="20" id="challenge1password"/></div>
+<div><button onclick="validatechallenge1()">Submit</button></div>
 </div>
 <div id="challenge2" class="challenge" style="display:none;">
 <b><u>Challenge 2</u></b>
 <br><br><br><br>
-<div><img alt="" src="\images\password2.jpg"></div>
-<div>Enter Password :<input type="password" width="20" id="next2password"/></div>
-<div><button onclick="next2()">Login</button></div>
+<div><img alt="" src="\images\cookie1.jpg"></div>
+<div>Enter Password :<input type="password" width="20" id="challenge2password"/></div>
+<div><button onclick="validatechallenge2()">Submit</button></div>
 </div>
 <div id="challenge3" class="challenge" style="display:none;">
 <b><u>Challenge 3</u></b>
 <br><br><br><br>
 <div><img alt="" src="\images\password3.jpg"></div>
-<div>Enter Password :<input type="password" width="20" id="next3password"/></div>
-<div><button onclick="next3()">Login</button></div>
+<div>Enter Password :<input type="password" width="20" id="challenge3password"/></div>
+<div><button onclick="validatechallenge3()">Submit</button></div>
 </div>
 <div id="challenge4" class="challenge" style="display:none;">
 <b><u>Challenge 4</u></b>
 <br><br><br><br>
-<div>Enter Password :<input type="password" width="20" id="next4password"/></div>
-<div><button onclick="next4()">Login</button></div>
+<div><img alt="" src="\images\cookie2.jpg"></div>
+<div>Enter Password :<input type="password" width="20" id="challenge4password"/></div>
+<div><button onclick="validatechallenge4()">Submit</button></div>
 </div>
 <div id="challenge5" class="challenge" style="display:none;">
 <b><u>Challenge 5</u></b>
 <br><br><br><br>
-<div>Enter Password :<input type="password" width="20" id="next5password"/></div>
-<div><button onclick="next5()">Login</button></div>
+<div><img alt="" src="\images\image.jpg"></div>
+<div>Enter Password :<input type="password" width="20" id="challenge5password"/></div>
+<div><button onclick="validatechallenge5()">Submit</button></div>
 </div>
-<!-- <div id="challenge6" class="challenge" style="display:none;">
-<b><u>Challenge 6</u></b>
-<br><br><br><br>
-<div>Enter Password :<input type="password" width="20" id="next6password"/></div>
-<div><button onclick="next6()">Login</button></div>
-</div> -->
 <div id="challenge6" class="challenge" style="display:none;">
 <b><u>Challenge 6</u></b>
 <br><br><br><br>
-<div><a target="_top" onclick='challenge6()'><font color="green"><b>Click here</b></font></a> to check your user rolee</div>
+<div><a target="_top" onclick='challenge6()'><img alt="" src="\images\admin.jpg"></a></div>
 </div>
 <div id="challenge7" class="challenge" style="display:none;">
 <b><u>Challenge 7</u></b>
 <br><br><br><br>
+<div><img alt="" src="\images\html.png"></div>
 <div>Please enter a string which contains more than 20 characters</div>
-<div>Enter String :<input type="password" width="20" id="challenge7name" maxlength="20"/></div>
-<div><button onclick="next7()">Login</button></div>
+<div>Enter String :<input type="text" width="20" id="challenge7name" maxlength="20"/></div>
+<div><button onclick="validatechallenge7()">Submit</button></div>
 </div>
 <div id="challenge8" class="challenge" style="display:none;">
 <b><u>Challenge 8</u></b>
 <br><br><br><br>
-<div>Enter Command :<input type="text" width="100" id="command"/></div>
-<div><button onclick="challenge8()">Submit</button></div>
-<div class="command-output" style="display:none;">
-<div id="cmd-output-body"></div>
-<div><button onclick="next9()">Ok</button></div>
-</div>
+<div><img alt="" src="\images\file.jpg"></div>
+<div>Enter Password :<input type="password" width="20" id="challenge8password"/></div>
+<div><button onclick="validatechallenge8()">Submit</button></div>
+<br><br><br><br>
+<div><a target="_blank" href="\images\password2.jpg"><font color="green"><b>Click here</b></font></a> to check your password</div>
 </div>
 <div id="challenge9" class="challenge" style="display:none;">
 <b><u>Challenge 9</u></b>
 <br><br><br><br>
-<div><a target="_top" onclick='challenge9()'><font color="green"><b>Click here</b></font></a> to check your user rolee</div>
+<div><img alt="" src="\images\command.jpg"></div>
+<div>Enter Command :<input type="text" width="100" id="command"/></div>
+<div><button onclick="challenge9()">Submit</button></div>
+<div class="command-output" style="display:none;">
+<div id="cmd-output-body"></div>
+<div><button onclick="challenge10()">Ok</button></div>
+</div>
+</div>
+<div id="challenge10" class="challenge" style="display:none;">
+<b><u>Challenge 10</u></b>
+<br><br><br><br>
+<div><img alt="" src="\images\xssjs.jpg"></div>
+<div>Enter Password :<input type="password" width="20" id="challenge10password"/></div>
+<div><button onclick="validatechallenge10()">Submit</button></div>
+<br><br>
+<div><a href="/challenge10?getvalue=username" target="_blank"><font color="green"><b>Click here</b></font></a> to check your password</div>
+</div>
+<div id="challenge11" class="challenge" style="display:none;">
+<b><u>Challenge 11</u></b>
+<br><br><br><br>
+<div><img alt="" src="\images\sqlinjection.png"></div>
+<div>Enter Value :<input type="text" width="20" id="sqlcondition"/></div>
+<div><button onclick="validatechallenge11()">Submit</button></div>
 </div>
 <script type="text/javascript">
 var score=0;
@@ -617,8 +632,8 @@ function challenge(id){
 		$("#challenge"+id).show();
 	}
 }
-function next(){
-	var password=document.getElementById("password").value;
+function validatechallenge1(){
+	var password=$("#challenge1password").val();
 	if(password=='candy'){
 		score+=1;
 		challenge(score);
@@ -636,9 +651,9 @@ function challenge2(){
 					//ToDo
 				}});
 }
-function next2(){
+function validatechallenge2(){
 	var val1=$.cookie("alex");
-	var val2=$("#next2password").val();
+	var val2=$("#challenge2password").val();
 	if(val1==val2){
 		score+=1;
 		challenge(score);
@@ -656,11 +671,11 @@ function challenge3(){
 					console.log(password);
 				}});
 }
-function next3(){
-	var password=$("#next3password").val();
+function validatechallenge3(){
+	var password=$("#challenge3password").val();
 	$.ajax(
 			{
-				url: "/validateChallenge3",
+				url: "/validatechallenge3",
 				data: password,
 				type: 'post',
 			    contentType: 'application/json',
@@ -682,11 +697,11 @@ function challenge4(){
 					//ToDo
 				}});
 }
-function next4(){
-	var password=$("#next4password").val();
+function validatechallenge4(){
+	var password=$("#challenge4password").val();
 	$.ajax(
 			{
-				url: "/validateChallenge4",
+				url: "/validatechallenge4",
 				data: password,
 				type: 'post',
 			    contentType: 'application/json',
@@ -699,11 +714,11 @@ function next4(){
 					}
 				}});
 }
-function next5(){
-	var password=$("#next5password").val();
+function validatechallenge5(){
+	var password=$("#challenge5password").val();
 	$.ajax(
 			{
-				url: "/validateChallenge5",
+				url: "/validatechallenge5",
 				data: password,
 				type: 'post',
 			    contentType: 'application/json',
@@ -719,7 +734,7 @@ function next5(){
 function challenge6(){
 	$.ajax(
 			{
-				url: "/validateChallenge8",
+				url: "/validatechallenge6",
 				contentType: 'application/json',
 				success:function(data){
 					if(data=='user'){
@@ -731,17 +746,34 @@ function challenge6(){
 					}
 				}});
 }
-function next7(){
+function validatechallenge7(){
 	if($("#challenge7name").val().length>20){
 		score+=1;
 		challenge(score);
 	}
 }
-function challenge8(){
+function validatechallenge8(){
+	var password=$("#challenge8password").val();
+	$.ajax(
+			{
+				url: "/validatechallenge8",
+				data: password,
+				type: 'post',
+			    contentType: 'application/json',
+				success:function(data){
+					if(data=="success"){
+						score+=1;
+						challenge(score);
+					}else{
+						alert("Enter valid password");
+					}
+				}});
+}
+function challenge9(){
 	var command=$("#command").val();
 	$.ajax(
 			{
-				url: "/validateChallenge9",
+				url: "/validatechallenge9",
 				data: command,
 				type: 'post',
 			    contentType: 'application/json',
@@ -750,10 +782,44 @@ function challenge8(){
 					$(".command-output").show();
 				}});
 }
-function next9(){
+function challenge10(){
 	score+=1;
 	challenge(score);
 }
+function validatechallenge10(){
+	var password=$("#challenge10password").val();
+	$.ajax(
+			{
+				url: "/validatechallenge10",
+				data: password,
+				type: 'post',
+			    contentType: 'application/json',
+				success:function(data){
+					if(data=="success"){
+						score+=1;
+						challenge(score);
+					}else{
+						alert("Enter valid password");
+					}
+				}});
+}
+$("document").on( "domain", {
+}, function( event) {
+	alert("injected");
+	challenge(10);         
+});
+$(document).ready(function(){
+	$("document").on( "domain", {
+	}, function( event) {
+		alert("injected");
+		challenge(10);         
+	});
+	$( document ).trigger( "domain");
+	});
+	
+	function myScore(){
+		$("#scoreboard").show();
+	}
 </script>
- </body>
+ </body> 
 </html>
