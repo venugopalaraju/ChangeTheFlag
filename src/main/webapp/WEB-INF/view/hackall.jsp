@@ -603,9 +603,24 @@ $(document).ready(function(){
 <div id="challenge11" class="challenge" style="display:none;">
 <b><u>Challenge 11</u></b>
 <br><br><br><br>
-<div><img alt="" src="\images\sqlinjection.png"></div>
-<div>Enter Value :<input type="text" width="20" id="sqlcondition"/></div>
+<div><img alt="" src="\images\directory-traversals.jpg"></div>
+<div>Enter Password :<input type="password" width="20" id="challenge11password"/></div>
 <div><button onclick="validatechallenge11()">Submit</button></div>
+<br><br>
+<div>
+<dir>
+<li><a target="_self" onclick="admin()">admin</a></li>
+	<li style="display: none;" id="secure11"><a target="_self" onclick="secure()" >secure</a></li>
+<li><a target="_self" onclick="user()"">user</a></li>
+</dir>
+</div>
+</div>
+<div id="challenge12" class="challenge" style="display:none;">
+<b><u>Challenge 12</u></b>
+<br><br><br><br>
+<div><img alt="" src="\images\sqlinjection.png"></div>
+<div>Enter Condition :<input type="text" width="20" id="sqlcondition"/></div>
+<div><button onclick="validatechallenge12()">Submit</button></div>
 </div>
 <script type="text/javascript">
 var score=0;
@@ -817,8 +832,20 @@ $(document).ready(function(){
 	$( document ).trigger( "domain");
 	});
 	
-	function myScore(){
-		$("#scoreboard").show();
+	function secure(){
+		alert("russia");
+	}
+	function admin(){
+	$("#secure11").show();
+	}
+	function validatechallenge11(){
+		var password=$("#challenge11password").val();
+		if(password=="russia"){
+			score+=1;
+			challenge(score);
+		}else{
+			alert("Enter valid password");
+		}
 	}
 </script>
  </body> 
