@@ -8,6 +8,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,9 +17,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.epam.hackme.common.HackMeConstants;
 import com.epam.hackme.common.HackMeHelper;
+import com.epam.hackme.dto.User;
+import com.epam.hackme.repository.HackMeDaoImpl;
 
 @Controller
 public class HackMeController {
+	
+	@Autowired
+	private HackMeDaoImpl dao;
 	
 	@RequestMapping(HackMeConstants.CHALLENGE_ZERO)
 	public String challangelogin(HttpServletRequest request,HttpServletResponse response) {
@@ -135,6 +141,15 @@ public class HackMeController {
 	@ResponseBody
 	public String validateChallenge10(@RequestBody String password) {
 		if(HackMeConstants.CHALLANGE_10_PASSWORD.equals(password)) {
+			return HackMeConstants.SUCCESS;
+		}
+		return HackMeConstants.NOT_SUCCESS;
+	}
+	@RequestMapping(HackMeConstants.VALIDATE_CHALLENGE_TWELVE)
+	@ResponseBody
+	public String validateChallenge12(@RequestBody User user) {
+		String userId=dao.getUserId(user.getUsername(),user.getPassword());
+		if(!userId.isEmpty()) {
 			return HackMeConstants.SUCCESS;
 		}
 		return HackMeConstants.NOT_SUCCESS;

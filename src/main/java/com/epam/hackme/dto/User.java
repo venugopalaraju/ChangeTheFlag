@@ -5,15 +5,9 @@ import java.io.Serializable;
 public class User implements Serializable{
 	private static final long serialVersionUID = 1604112332352856864L;
 	
-	private String sso;
 	private String username;
 	private String password;
-	public String getSso() {
-		return sso;
-	}
-	public void setSso(String sso) {
-		this.sso = sso;
-	}
+	
 	public String getUsername() {
 		return username;
 	}

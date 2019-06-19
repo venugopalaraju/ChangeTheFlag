@@ -35,6 +35,7 @@ String VALIDATE_CHALLENGE_NINE="/validatechallenge9";
 String CHALLENGE_TEN="/challenge10";
 String VALIDATE_CHALLENGE_TEN="/validatechallenge10";
 String CHALLANGE_10_PASSWORD="robot";
+String VALIDATE_CHALLENGE_TWELVE = "/validatechallenge12";
 String CHALLENGE_ZERO_VIEW="challengelogin";
 String CHALLENGE_ALL_VIEW="hackall";
 String USER_ROLE="user";

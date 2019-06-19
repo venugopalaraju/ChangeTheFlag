@@ -619,8 +619,15 @@ $(document).ready(function(){
 <b><u>Challenge 12</u></b>
 <br><br><br><br>
 <div><img alt="" src="\images\sqlinjection.png"></div>
-<div>Enter Condition :<input type="text" width="20" id="sqlcondition"/></div>
+<div>Enter Username :<input type="text" width="20" id="challenge12username"/></div>
+<div>Enter Password :<input type="text" width="20" id="challenge12password"/></div>
 <div><button onclick="validatechallenge12()">Submit</button></div>
+</div>
+<div id="challenge13" class="challenge" style="display:none;">
+<b><u>Challenge 13</u></b>
+<br><br><br><br>
+<div>Enter Password :<input type="password" width="20" id="challenge13password"/></div>
+<div><button onclick="validatechallenge13()">Submit</button></div>
 </div>
 <script type="text/javascript">
 var score=0;
@@ -630,7 +637,8 @@ $(function() {
 function challenge(id){
 	if(score>1){
 		var divid=score-1;
-		$("#cha"+divid+"div").css("background-color","blue");
+		$("#cha"+divid+"div").css("background-color","lightblue");
+		$("#cha"+divid+"div").append("&#10004;");
 	}
 	if(score==0){
 		score+=1;
@@ -846,6 +854,25 @@ $(document).ready(function(){
 		}else{
 			alert("Enter valid password");
 		}
+	}
+	function validatechallenge12(){
+		var username=$("#challenge12username").val();
+		var password=$("#challenge12password").val();
+		var user={"username" : username,"password" :password};
+		$.ajax(
+				{
+					url: "/validatechallenge12",
+					data: JSON.stringify(user),
+					type: 'post',
+				    contentType: 'application/json',
+					success:function(data){
+						if(data=="success"){
+							score+=1;
+							challenge(score);
+						}else{
+							alert("Enter valid password");
+						}
+					}});
 	}
 </script>
  </body> 

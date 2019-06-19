@@ -18,10 +18,10 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	compileOnly 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.19'
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat'
 	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
-	//compile group: 'com.oracle', name: 'ojdbc7', version: '12.1.0.2'
-	
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.1.5.RELEASE'
 	
 }
