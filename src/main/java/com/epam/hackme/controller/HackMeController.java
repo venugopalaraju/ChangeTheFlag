@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.epam.hackme.common.CacheService;
 import com.epam.hackme.common.HackMeConstants;
 import com.epam.hackme.common.HackMeHelper;
 import com.epam.hackme.dto.User;
@@ -28,7 +29,6 @@ public class HackMeController {
 	
 	@RequestMapping(HackMeConstants.CHALLENGE_ZERO)
 	public String challangelogin(HttpServletRequest request,HttpServletResponse response) {
-		Arrays.asList(request.getCookies()).stream().forEach(e->{e.setMaxAge(0);response.addCookie(e);});
 		return HackMeConstants.CHALLENGE_ZERO_VIEW;
 	}
 	@RequestMapping(HackMeConstants.VALIDATE_CHALLENGE_ZERO)
@@ -71,16 +71,18 @@ public class HackMeController {
 	}
 	
 	@RequestMapping(HackMeConstants.CHALLENGE_FOUR)
+	@ResponseBody
 	public String challenge4(HttpServletResponse response) {
 		String password=HackMeHelper.convertPlainToCipher(HackMeHelper.generateRandomString(10));
-		response.addCookie(new Cookie(HackMeConstants.ENCRYPTED_COOKIE_PASSWORD_KEY, password));
+		response.addCookie(new Cookie(HackMeConstants.ENCRYPTED_COOKIE_PASSWORD_KEY, Base64Utils.encodeToString(password.getBytes())));
+		CacheService.savePassword(HackMeConstants.ENCRYPTED_COOKIE_PASSWORD_KEY, password);
 		return HackMeConstants.SUCCESS;
 		
 	}
 	@RequestMapping(HackMeConstants.VALIDATE_CHALLENGE_FOUR)
 	@ResponseBody
 	public String validateChallenge4(@RequestBody String password) {
-		if(HackMeConstants.ENCRYPTED_COOKIE_PASSWORD_VALUE.equals(password)) {
+		if(CacheService.getPassword(HackMeConstants.ENCRYPTED_COOKIE_PASSWORD_KEY).equals(password)) {
 			return HackMeConstants.SUCCESS;
 		}
 		return HackMeConstants.NOT_SUCCESS;
@@ -145,9 +147,27 @@ public class HackMeController {
 		}
 		return HackMeConstants.NOT_SUCCESS;
 	}
+	@RequestMapping(HackMeConstants.CHALLENGE_ELEVEN)
+	public String challangelogin() {
+		return HackMeConstants.CHALLENGE_ELEVEN_VIEW;
+	}
+	@RequestMapping(HackMeConstants.CHALLENGE_ELEVEN_ADMIN)
+	@ResponseBody
+	public String challange11admin() {
+		return HackMeConstants.CHALLENGE_ELEVEN_PASSWORD;
+	}
+	@RequestMapping(HackMeConstants.VALIDATE_CHALLENGE_ELEVEN)
+	@ResponseBody
+	public String validateChallenge11(@RequestBody String password) {
+		if(HackMeConstants.CHALLENGE_ELEVEN_PASSWORD.equals(password)) {
+			return HackMeConstants.SUCCESS;
+		}
+		return HackMeConstants.NOT_SUCCESS;
+	}
 	@RequestMapping(HackMeConstants.VALIDATE_CHALLENGE_TWELVE)
 	@ResponseBody
-	public String validateChallenge12(@RequestBody User user) {
+	public String validateChallenge12(@RequestBody User user,HttpServletRequest request,HttpServletResponse response) {
+		Arrays.asList(request.getCookies()).stream().forEach(e->{e.setMaxAge(0);response.addCookie(e);});
 		String userId=dao.getUserId(user.getUsername(),user.getPassword());
 		if(!userId.isEmpty()) {
 			return HackMeConstants.SUCCESS;

@@ -485,8 +485,6 @@ $(document).ready(function(){
 <body>
 
 
-
-
 <div class='w3-card-2 topnav notranslate' id='topnav'>
   <div style="overflow:auto;">
     <div class="w3-bar w3-left" style="width:100%;overflow:hidden;height:44px">
@@ -603,17 +601,17 @@ $(document).ready(function(){
 <div id="challenge11" class="challenge" style="display:none;">
 <b><u>Challenge 11</u></b>
 <br><br><br><br>
-<div><img alt="" src="\images\directory-traversals.jpg"></div>
+<div><img alt="" src="\challenge11\directory-traversals.jpg"></div>
 <div>Enter Password :<input type="password" width="20" id="challenge11password"/></div>
 <div><button onclick="validatechallenge11()">Submit</button></div>
 <br><br>
-<div>
+<!-- <div>
 <dir>
 <li><a target="_self" onclick="admin()">admin</a></li>
 	<li style="display: none;" id="secure11"><a target="_self" onclick="secure()" >secure</a></li>
 <li><a target="_self" onclick="user()"">user</a></li>
 </dir>
-</div>
+</div> -->
 </div>
 <div id="challenge12" class="challenge" style="display:none;">
 <b><u>Challenge 12</u></b>
@@ -629,16 +627,21 @@ $(document).ready(function(){
 <div>Enter Password :<input type="password" width="20" id="challenge13password"/></div>
 <div><button onclick="validatechallenge13()">Submit</button></div>
 </div>
+<input type="hidden" id="ensrcpwd" name="user" value="texens" />
 <script type="text/javascript">
 var score=0;
 $(function() {
 	challenge(1);
+	$("#cha"+1+"div").append("<span class='hand'>&#9754;</span>");
 });
 function challenge(id){
 	if(score>1){
 		var divid=score-1;
 		$("#cha"+divid+"div").css("background-color","lightblue");
-		$("#cha"+divid+"div").append("&#10004;");
+		$("#cha"+divid+"div .hand").remove();
+		$("#cha"+divid+"div").append("<span class='tick'>&#10004;</span>");
+		$("#cha"+score+"div").append("<span class='hand'>&#9754;</span>");
+
 	}
 	if(score==0){
 		score+=1;
@@ -649,6 +652,9 @@ function challenge(id){
 		}
 		if(id==3){
 			challenge3();
+		}
+		if(id==4){
+			challenge4();
 		}
 		$("#main-content-div").children().remove();
 		$("#main-content-div").append($("#challenge"+id));
@@ -848,12 +854,20 @@ $(document).ready(function(){
 	}
 	function validatechallenge11(){
 		var password=$("#challenge11password").val();
-		if(password=="russia"){
-			score+=1;
-			challenge(score);
-		}else{
-			alert("Enter valid password");
-		}
+		$.ajax(
+				{
+					url: "/validatechallenge11",
+					data: password,
+					type: 'post',
+				    contentType: 'application/json',
+					success:function(data){
+						if(data=="success"){
+							score+=1;
+							challenge(score);
+						}else{
+							alert("Enter valid password");
+						}
+					}});
 	}
 	function validatechallenge12(){
 		var username=$("#challenge12username").val();
