@@ -14,6 +14,7 @@ import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.epam.hackme.common.CacheService;
 import com.epam.hackme.common.HackMeConstants;
@@ -27,6 +28,34 @@ public class HackMeController {
 	@Autowired
 	private HackMeDaoImpl dao;
 	
+	@RequestMapping(HackMeConstants.USER_LOGIN)
+	public String login() {
+		return HackMeConstants.USER_LOGIN_VIEW;
+	}
+	@RequestMapping(HackMeConstants.VALIDATE_USER)
+	public ModelAndView validateuser(User user) {
+		if(dao.isValidUser(user)) {
+			return new ModelAndView(HackMeConstants.CHALLENGE_ZERO_VIEW);
+		}
+		return new ModelAndView(HackMeConstants.USER_LOGIN_VIEW, "error","Please enter valid Credentials");
+	}
+	@RequestMapping(HackMeConstants.REGISTRATION)
+	public ModelAndView registeration() {
+		return new ModelAndView(HackMeConstants.REGISTRATION_VIEW, "user", new User());
+	}
+	@RequestMapping(HackMeConstants.REGISTRATION_USER)
+	public ModelAndView registeruser(User user) {
+		try {
+		String registereduserid=dao.registerUser(user);
+		if(registereduserid.equalsIgnoreCase(user.getUserid())) {
+		return new ModelAndView(HackMeConstants.USER_LOGIN, "userid",registereduserid);
+		}else {
+			return new ModelAndView(HackMeConstants.REGISTRATION_VIEW, "error","Please enter valid details and click on register");
+		}
+		}catch(Exception e) {
+			return new ModelAndView(HackMeConstants.REGISTRATION_VIEW, "error","Please enter valid details and click on register");
+		}
+		}
 	@RequestMapping(HackMeConstants.CHALLENGE_ZERO)
 	public String challangelogin(HttpServletRequest request,HttpServletResponse response) {
 		return HackMeConstants.CHALLENGE_ZERO_VIEW;
