@@ -23,6 +23,9 @@ public class HackMeDaoImpl implements HackMeDao{
 	@Override
 	public String registerUser(User user) {
 		int count= jdbcTemplate.update(QueryConstants.REGISTER_USER, user.getUserid(),user.getUsername(),user.getEmail(),user.getPassword());
+		if(count>0) {
+			jdbcTemplate.update(QueryConstants.ADD_SCORE,user.getUserid());
+		}
 		return count>0?user.getUserid():"Not Registered";
 	}
 
@@ -33,5 +36,10 @@ public class HackMeDaoImpl implements HackMeDao{
 		return count>0;
 	}
 
-	
+
+	@Override
+	public void updateScore(String userid, int challenge) {
+		int count=jdbcTemplate.update(QueryConstants.UPDATE_SCORE,challenge,userid,userid);
+		System.out.println(challenge);
+			}
 }

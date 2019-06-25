@@ -1,6 +1,7 @@
 package com.epam.hackme.common;
 
-public interface HackMeConstants {
+public interface CommonConstants {
+String USER_ID="user_id";
 String SUCCESS="success";
 String NOT_SUCCESS="nosuccess";
 String USERNAME="username";
@@ -53,4 +54,5 @@ String USER_ROLE="user";
 String ADMIN_ROLE="admin";
 String ROLE_TYPE="role_type";
 String INVALID_URL="Invalid URL";
+String UPDAT_SCORE="/updatescore";
 }

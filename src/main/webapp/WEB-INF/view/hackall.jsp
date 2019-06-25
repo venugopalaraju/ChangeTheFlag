@@ -777,6 +777,7 @@ function challenge6(){
 }
 function validatechallenge7(){
 	if($("#challenge7name").val().length>20){
+		updatescore(7);
 		score+=1;
 		challenge(score);
 	}
@@ -812,6 +813,7 @@ function challenge9(){
 				}});
 }
 function challenge10(){
+	updatescore(9);
 	score+=1;
 	challenge(score);
 }
@@ -886,6 +888,18 @@ $(document).ready(function(){
 						}else{
 							alert("Enter valid password");
 						}
+					}});
+	}
+	function updatescore(challengeno){
+		var challenge=challengeno;
+		$.ajax(
+				{
+					url: "/updatescore",
+					data: JSON.stringify(challenge),
+					type: 'post',
+				    contentType: 'application/json',
+					success:function(data){
+						//To Do
 					}});
 	}
 </script>
