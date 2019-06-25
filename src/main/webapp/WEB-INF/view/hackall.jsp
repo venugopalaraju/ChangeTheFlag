@@ -361,16 +361,6 @@ hr[id^="ez-insert-after-placeholder"] {margin-top: 0;}
 .topnav-right {
   float: right;
 }
-.footer {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   height: 50px;
-   background-color: #5f5f5f;
-   color: #f1f1f1;
-   text-align: center;
-}
 </style>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -487,7 +477,6 @@ function w3_getStyleValue(elmnt,style) {
 }
 </script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script>
@@ -506,8 +495,8 @@ $(document).ready(function(){
     <div class="w3-bar w3-left" style="width:100%;overflow:hidden;height:50px">
            <span>Hi, Mr.Venugopalaraju..!!</span>
       <div class="topnav-right">
-     <a class="w3-bar-item w3-button" data-toggle="modal" data-target="#myModal" title='leader Board'>leader Board</a>
-      <a class="w3-bar-item w3-button" data-toggle="modal" data-target="#myModal" title='My Score'>My Score</a>
+     <a class="w3-bar-item w3-button" data-toggle="modal" data-target="#myModal" title='leader Board' style="cursor: pointer;">leader Board</a>
+      <a class="w3-bar-item w3-button" data-toggle="modal" data-target="#myModal" title='My Score' style="cursor: pointer;">My Score</a>
   </div>
  </div>
   </div>
@@ -928,13 +917,38 @@ $(document).ready(function(){
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Modal Heading</h4>
+          <h4 class="modal-title">Leadr Board</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
         <!-- Modal body -->
         <div class="modal-body">
-          Modal body..
+         <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>User Id</th>
+        <th>Username</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
         </div>
         
         <!-- Modal footer -->
@@ -945,7 +959,6 @@ $(document).ready(function(){
       </div>
     </div>
   </div>
-  <div class="footer">
-</div>
+  
  </body> 
 </html>
