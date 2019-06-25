@@ -90,7 +90,6 @@ width:204px;
 #leftmenuinner {
 position:fixed;
 top:0;
-padding-top:112px;
 padding-bottom:0;    
 height:100%;
 width:220px;
@@ -359,6 +358,19 @@ a.btnsmall:active,a.btnsmall:hover {color:#4CAF50;background-color:#ffffff}
 hr[id^="ez-insert-after-placeholder"] {margin-top: 0;}
 .phonebr {display:none;}
 @media screen and (max-width: 475px) {.phonebr {display:initial;}}
+.topnav-right {
+  float: right;
+}
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   height: 50px;
+   background-color: #5f5f5f;
+   color: #f1f1f1;
+   text-align: center;
+}
 </style>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -474,6 +486,10 @@ function w3_getStyleValue(elmnt,style) {
   }
 }
 </script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script>
 $(document).ready(function(){
   $("#btn1").click(function(){
@@ -487,9 +503,12 @@ $(document).ready(function(){
 
 <div class='w3-card-2 topnav notranslate' id='topnav'>
   <div style="overflow:auto;">
-    <div class="w3-bar w3-left" style="width:100%;overflow:hidden;height:44px">
-            <a class="w3-bar-item w3-button" onclick='leaderBoard()' title='leader Board'>leader Board</a>
+    <div class="w3-bar w3-left" style="width:100%;overflow:hidden;height:50px">
+           <span>Hi, Mr.Venugopalaraju..!!</span>
+      <div class="topnav-right">
+     <a class="w3-bar-item w3-button" data-toggle="modal" data-target="#myModal" title='leader Board'>leader Board</a>
       <a class="w3-bar-item w3-button" data-toggle="modal" data-target="#myModal" title='My Score'>My Score</a>
+  </div>
  </div>
   </div>
 </div>
@@ -903,5 +922,30 @@ $(document).ready(function(){
 					}});
 	}
 </script>
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="height: 800px;width: 600px;">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Modal body..
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+</div>
  </body> 
 </html>
