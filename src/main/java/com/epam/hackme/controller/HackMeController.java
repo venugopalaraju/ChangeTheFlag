@@ -112,17 +112,18 @@ public class HackMeController {
 	
 	@RequestMapping(CommonConstants.CHALLENGE_FOUR)
 	@ResponseBody
-	public String challenge4(HttpServletResponse response) {
+	public String challenge4(HttpServletRequest request,HttpServletResponse response) {
 		String password=HackMeHelper.convertPlainToCipher(HackMeHelper.generateRandomString(10));
+		String userId=HackMeHelper.getCookieValue(request, CommonConstants.USER_ID);
 		response.addCookie(new Cookie(CommonConstants.ENCRYPTED_COOKIE_PASSWORD_KEY, Base64Utils.encodeToString(password.getBytes())));
-		CacheService.savePassword(CommonConstants.ENCRYPTED_COOKIE_PASSWORD_KEY, password);
+		CacheService.savePassword(CommonConstants.ENCRYPTED_COOKIE_PASSWORD_KEY, password,userId);
 		return CommonConstants.SUCCESS;
 		
 	}
 	@RequestMapping(CommonConstants.VALIDATE_CHALLENGE_FOUR)
 	@ResponseBody
 	public String validateChallenge4(@RequestBody String password,HttpServletRequest request) {
-		if(CacheService.getPassword(CommonConstants.ENCRYPTED_COOKIE_PASSWORD_KEY).equals(password)) {
+		if(CacheService.getPassword(CommonConstants.ENCRYPTED_COOKIE_PASSWORD_KEY,HackMeHelper.getCookieValue(request, CommonConstants.USER_ID)).equals(password)) {
 			dao.updateScore(HackMeHelper.getCookieValue(request, CommonConstants.USER_ID),4);
 			return CommonConstants.SUCCESS;
 		}
