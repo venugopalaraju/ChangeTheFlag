@@ -54,5 +54,7 @@ String USER_ROLE="user";
 String ADMIN_ROLE="admin";
 String ROLE_TYPE="role_type";
 String INVALID_URL="Invalid URL";
-String UPDAT_SCORE="/updatescore";
+String UPDATE_SCORE="/updatescore";
+String GET_SCORES="/getscores";
+String GET_MY_SCORE="/getmyscore";
 }

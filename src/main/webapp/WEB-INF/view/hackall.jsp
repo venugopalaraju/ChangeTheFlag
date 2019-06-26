@@ -495,8 +495,8 @@ $(document).ready(function(){
     <div class="w3-bar w3-left" style="width:100%;overflow:hidden;height:50px">
            <span>Hi, Mr.Venugopalaraju..!!</span>
       <div class="topnav-right">
-     <a class="w3-bar-item w3-button" data-toggle="modal" data-target="#myModal" title='leader Board' style="cursor: pointer;">leader Board</a>
-      <a class="w3-bar-item w3-button" data-toggle="modal" data-target="#myModal" title='My Score' style="cursor: pointer;">My Score</a>
+     <a class="w3-bar-item w3-button" onclick="openScore()" title='leader Board' style="cursor: pointer;">leader Board</a>
+      <a class="w3-bar-item w3-button" onclick="openMyScore()" title='My Score' style="cursor: pointer;">My Score</a>
   </div>
  </div>
   </div>
@@ -639,8 +639,18 @@ $(document).ready(function(){
 <script type="text/javascript">
 var score=0;
 $(function() {
-	challenge(1);
-	$("#cha"+1+"div").append("<span class='hand'>&#9754;</span>");
+	score=${challenge};
+	if(score>0){
+		for(i=1;i<score;i++){
+			$("#cha"+i+"div").css("background-color","lightblue");
+			$("#cha"+i+"div").append("<span class='tick'>&#10004;</span>");
+		}
+		score+=1;
+		challenge(score);
+	}else{
+		challenge(1);
+		$("#cha"+1+"div").append("<span class='hand'>&#9754;</span>");
+	}
 });
 function challenge(id){
 	if(score>1){
@@ -910,8 +920,30 @@ $(document).ready(function(){
 						//To Do
 					}});
 	}
+	function openScore(){
+		$("#model-tbody").find("tr").remove();
+		$.ajax(
+				{
+					url: "/getscores",
+					contentType: 'application/json',
+					success:function(data){
+						$("#model-tbody").append(data);
+						$("#leaderBoardModel").modal('toggle');
+					}});
+	}
+	function openMyScore(){
+		$("#myscore-table").find("tr").remove();
+		$.ajax(
+				{
+					url: "/getmyscore",
+					contentType: 'application/json',
+					success:function(data){
+						$("#myscore-table").append(data);
+						$("#MyScoreModel").modal('toggle');
+					}});
+	}
 </script>
-<div class="modal" id="myModal">
+<div class="modal" id="leaderBoardModel">
     <div class="modal-dialog">
       <div class="modal-content" style="height: 800px;width: 600px;">
       
@@ -931,22 +963,7 @@ $(document).ready(function(){
         <th>Score</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
+    <tbody id="model-tbody">
     </tbody>
   </table>
         </div>
@@ -959,6 +976,28 @@ $(document).ready(function(){
       </div>
     </div>
   </div>
-  
+  <div class="modal" id="MyScoreModel">
+    <div class="modal-dialog">
+      <div class="modal-content" style="height: 800px;width: 600px;">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">My Profile</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+         <table class="table table-striped" id="myscore-table"></table>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
  </body> 
 </html>
