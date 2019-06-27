@@ -7,7 +7,7 @@
 <title>Challenge Login</title>
 </head>
 <body>
-<form action="/hackall" id="challengeloginform" method="post">
+<form action="/validatechallengezero" id="challengeloginform" method="post">
 <div align="center" >
 <br><br><br><br>
 <div><img alt="" src="\images\icebreak.jpg" width="50%"></div><br>

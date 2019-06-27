@@ -488,15 +488,14 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-
-
+<div style="display: none;" id="encryptedsrcpassword" value="d2VsY29tZQ=="></div>
 <div class='w3-card-2 topnav notranslate' id='topnav'>
   <div style="overflow:auto;">
     <div class="w3-bar w3-left" style="width:100%;overflow:hidden;height:50px">
-           <span>Hi, Mr.Venugopalaraju..!!</span>
-      <div class="topnav-right">
-     <a class="w3-bar-item w3-button" onclick="openScore()" title='leader Board' style="cursor: pointer;">leader Board</a>
+           <a class="w3-bar-item w3-button" onclick="openScore()" title='leader Board' style="cursor: pointer;">leader Board</a>
       <a class="w3-bar-item w3-button" onclick="openMyScore()" title='My Score' style="cursor: pointer;">My Score</a>
+      <div class="topnav-right">
+      <a class="w3-bar-item w3-button" href="/login" target="_self">Logout</a>
   </div>
  </div>
   </div>
@@ -507,21 +506,18 @@ $(document).ready(function(){
     <div class='w3-light-grey' id='leftmenuinnerinner'>
 <!--  <a href='javascript:void(0)' onclick='close_menu()' class='w3-button w3-hide-large w3-large w3-display-topright' style='right:16px;padding:3px 12px;font-weight:bold;'>&times;</a>-->
 <h2 class="left"><span class="left_h2">Challenges</span></h2>
-<div onclick='challenge("1")' style="border-style: inset;" id="cha1div">Challenge 1</div>
-<div onclick='challenge("2")' style="border-style: inset;" id="cha2div">Challenge 2</div>
-<div onclick='challenge("3")' style="border-style: inset;" id="cha3div">Challenge 3</div>
-<div onclick='challenge("4")' style="border-style: inset;" id="cha4div">Challenge 4</div>
-<div onclick='challenge("5")' style="border-style: inset;" id="cha5div">Challenge 5</div>
-<div onclick='challenge("6")' style="border-style: inset;" id="cha6div">Challenge 6</div>
-<div onclick='challenge("7")' style="border-style: inset;" id="cha7div">Challenge 7</div>
-<div onclick='challenge("8")' style="border-style: inset;" id="cha8div">Challenge 8</div>
-<div onclick='challenge("9")' style="border-style: inset;" id="cha9div">Challenge 9</div>
-<div onclick='challenge("10")' style="border-style: inset;" id="cha10div">Challenge 10</div>
-<div onclick='challenge("11")' style="border-style: inset;" id="cha11div">Challenge 11</div>
-<div onclick='challenge("12")' style="border-style: inset;" id="cha12div">Challenge 12</div>
-<div onclick='challenge("13")' style="border-style: inset;" id="cha13div">Challenge 13</div>
-<div onclick='challenge("14")' style="border-style: inset;" id="cha14div">Challenge 14</div>
-<div onclick='challenge("15")' style="border-style: inset;" id="cha15div">Challenge 15</div>
+<div  style="border-style: inset;" id="cha1div">Challenge 1</div>
+<div  style="border-style: inset;" id="cha2div">Challenge 2</div>
+<div  style="border-style: inset;" id="cha3div">Challenge 3</div>
+<div  style="border-style: inset;" id="cha4div">Challenge 4</div>
+<div  style="border-style: inset;" id="cha5div">Challenge 5</div>
+<div  style="border-style: inset;" id="cha6div">Challenge 6</div>
+<div  style="border-style: inset;" id="cha7div">Challenge 7</div>
+<div  style="border-style: inset;" id="cha8div">Challenge 8</div>
+<div  style="border-style: inset;" id="cha9div">Challenge 9</div>
+<div  style="border-style: inset;" id="cha10div">Challenge 10</div>
+<div  style="border-style: inset;" id="cha11div">Challenge 11</div>
+<div  style="border-style: inset;" id="cha12div">Challenge 12</div>
     </div>
   </div>
 </div>
@@ -590,11 +586,12 @@ $(document).ready(function(){
 <b><u>Challenge 9</u></b>
 <br><br><br><br>
 <div><img alt="" src="\images\command.jpg"></div>
-<div>Enter Command :<input type="text" width="100" id="command"/></div>
+<div>Enter IP to ping :<input type="text" width="100" id="command"/></div>
 <div><button onclick="challenge9()">Submit</button></div>
 <div class="command-output" style="display:none;">
 <div id="cmd-output-body"></div>
-<div><button onclick="challenge10()">Ok</button></div>
+<div>Password :<input type="password" width="100" id="commandpwd"/></div>
+<div><button onclick="validatechallenge9pwd()">submit</button></div>
 </div>
 </div>
 <div id="challenge10" class="challenge" style="display:none;">
@@ -630,15 +627,17 @@ $(document).ready(function(){
 <div><button onclick="validatechallenge12()">Submit</button></div>
 </div>
 <div id="challenge13" class="challenge" style="display:none;">
-<b><u>Challenge 13</u></b>
+<!-- <b><u>Challenge 13</u></b>
 <br><br><br><br>
 <div>Enter Password :<input type="password" width="20" id="challenge13password"/></div>
-<div><button onclick="validatechallenge13()">Submit</button></div>
+<div><button onclick="validatechallenge13()">Submit</button></div> -->
+<div><p style="color: blue;">Congratulations..!! You have passed all the challenges</p> <a href="/login" style="color: green">Logout</a></div>
 </div>
 <input type="hidden" id="ensrcpwd" name="user" value="texens" />
 <script type="text/javascript">
 var score=0;
 $(function() {
+	window.history.pushState("object or string", "Title", "/hackall");
 	score=${challenge};
 	if(score>0){
 		for(i=1;i<score;i++){
@@ -682,6 +681,7 @@ function challenge(id){
 function validatechallenge1(){
 	var password=$("#challenge1password").val();
 	if(password=='candy'){
+		updatescore(1);
 		score+=1;
 		challenge(score);
 			}
@@ -702,6 +702,7 @@ function validatechallenge2(){
 	var val1=$.cookie("alex");
 	var val2=$("#challenge2password").val();
 	if(val1==val2){
+		updatescore(2);
 		score+=1;
 		challenge(score);
 	}else{
@@ -714,8 +715,7 @@ function challenge3(){
 				url: "/challenge3",
 				contentType: 'application/json',
 				success:function(data){
-					var password=data;
-					console.log(password);
+					
 				}});
 }
 function validatechallenge3(){
@@ -784,9 +784,9 @@ function challenge6(){
 				url: "/validatechallenge6",
 				contentType: 'application/json',
 				success:function(data){
-					if(data=='user'){
+					if(data!='success'){
 						alert("your role is User..!!");
-					}if(data=='admin'){
+					}if(data=='success'){
 						alert("your role is Admin..!!");
 						score+=1;
 						challenge(score);
@@ -830,11 +830,23 @@ function challenge9(){
 					$(".command-output").show();
 				}});
 }
-function challenge10(){
-	updatescore(9);
-	score+=1;
-	challenge(score);
-}
+function validatechallenge9pwd(){
+	var password=$("#commandpwd").val();
+	$.ajax(
+			{
+				url: "/validatechallenge9pwd",
+				data: password,
+				type: 'post',
+			    contentType: 'application/json',
+				success:function(data){
+					if(data=="success"){
+						score+=1;
+						challenge(score);
+					}else{
+						alert("Enter valid password");
+					}
+				}});
+	}
 function validatechallenge10(){
 	var password=$("#challenge10password").val();
 	$.ajax(
@@ -904,7 +916,7 @@ $(document).ready(function(){
 							score+=1;
 							challenge(score);
 						}else{
-							alert("Enter valid password");
+							alert("Enter valid crednetials");
 						}
 					}});
 	}
@@ -945,7 +957,7 @@ $(document).ready(function(){
 </script>
 <div class="modal" id="leaderBoardModel">
     <div class="modal-dialog">
-      <div class="modal-content" style="height: 800px;width: 600px;">
+      <div class="modal-content" style="height: 100%;width: 600px;">
       
         <!-- Modal Header -->
         <div class="modal-header">
@@ -978,7 +990,7 @@ $(document).ready(function(){
   </div>
   <div class="modal" id="MyScoreModel">
     <div class="modal-dialog">
-      <div class="modal-content" style="height: 800px;width: 600px;">
+      <div class="modal-content" style="height: 100%;width: 600px;">
       
         <!-- Modal Header -->
         <div class="modal-header">

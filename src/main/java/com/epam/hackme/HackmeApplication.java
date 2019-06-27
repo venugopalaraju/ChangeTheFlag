@@ -1,5 +1,8 @@
 package com.epam.hackme;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,7 +11,7 @@ public class HackmeApplication {
 	
 	
 
-	public static void main(String[] args)  {
+	public static void main(String[] args) throws IOException, InterruptedException  {
 		 SpringApplication.run(HackmeApplication.class, args);
 	}
 	
