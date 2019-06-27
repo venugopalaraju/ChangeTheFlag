@@ -31,7 +31,8 @@ public class HackMeController {
 	private HackMeDaoImpl dao;
 	
 	@RequestMapping(CommonConstants.USER_LOGIN)
-	public String login() {
+	public String login(HttpServletRequest request,HttpServletResponse response) {
+		HackMeHelper.clearCookies(request, response);
 		return CommonConstants.USER_LOGIN_VIEW;
 	}
 	@RequestMapping(CommonConstants.VALIDATE_USER)
@@ -214,7 +215,6 @@ public class HackMeController {
 	@RequestMapping(CommonConstants.VALIDATE_CHALLENGE_TWELVE)
 	@ResponseBody
 	public String validateChallenge12(@RequestBody User user,HttpServletRequest request,HttpServletResponse response) {
-		Arrays.asList(request.getCookies()).stream().forEach(e->{e.setMaxAge(0);response.addCookie(e);});
 		String userId=dao.getUserId(user.getUsername(),user.getPassword());
 		if(!userId.isEmpty()) {
 			dao.updateScore(HackMeHelper.getCookieValue(request, CommonConstants.USER_ID),12);

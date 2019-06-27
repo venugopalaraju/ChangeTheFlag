@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.util.Base64Utils;
@@ -58,5 +59,11 @@ public static String getMyScore(UserScore score) {
 		scoreBoard.append("</td></tr>");
 	return scoreBoard.toString();
 	
+}
+
+public static void clearCookies(HttpServletRequest request,HttpServletResponse response) {
+	if(request.getCookies()!=null) {
+		Arrays.asList(request.getCookies()).stream().forEach(e->{e.setMaxAge(0);response.addCookie(e);});
+	}
 }
 }
