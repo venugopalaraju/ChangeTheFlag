@@ -11,6 +11,7 @@
 <div align="center" >
 <br><br><br><br>
 <div><img alt="" src="\images\icebreak.jpg" width="50%"></div><br>
+<div><p>Application initiated with default credentials. Try the default credentials you know.</p></div>
 <div>Enter User Name :<input type="text" width="20" name="username"/></div>
 <div>Enter Password  :<input type="password" width="20" name="password"/></div>
 <div><button type="submit">Login</button></div>

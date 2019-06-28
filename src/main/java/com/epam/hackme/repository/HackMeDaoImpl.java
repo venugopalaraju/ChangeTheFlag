@@ -47,7 +47,10 @@ public class HackMeDaoImpl implements HackMeDao{
 
 	@Override
 	public void updateScore(String userid, int challenge) {
+		UserScore score=getMyScore(userid);
+		if(challenge>score.getChallenge()) {
 		int count=jdbcTemplate.update(QueryConstants.UPDATE_SCORE,challenge,userid,userid,userid);
+		}
 		System.out.println(challenge);
 			}
 

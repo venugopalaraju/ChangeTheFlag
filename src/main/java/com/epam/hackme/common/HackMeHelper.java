@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.util.Base64Utils;
@@ -27,16 +28,31 @@ public static String getCookieValue(HttpServletRequest request, String cookie) {
 	return Arrays.stream(request.getCookies()).filter(c -> cookie.equals(c.getName())).map(Cookie::getValue).findAny().get();
 }
 
-public static String getScoreBoard(List<UserScore> scores) {
+public static String getUserId(HttpServletRequest request) {
+	HttpSession session=request.getSession();
+	return (String) session.getAttribute(CommonConstants.USER_ID);
+}
+
+public static String getScoreBoard(List<UserScore> scores,String userId) {
 	StringBuilder scoreBoard=new StringBuilder();
 	scores.forEach(e->{
-		scoreBoard.append("<tr><td>");
-		scoreBoard.append(e.getUserid());
-		scoreBoard.append("</td><td>");
-		scoreBoard.append(e.getUserName());
-		scoreBoard.append("</td><td>");
-		scoreBoard.append(e.getScore());
-		scoreBoard.append("</td></tr>");
+		if(e.getUserid().equalsIgnoreCase(userId)) {
+			scoreBoard.append("<tr style='color:blue;'><td>");
+			scoreBoard.append(e.getUserid());
+			scoreBoard.append("</td><td>");
+			scoreBoard.append(e.getUserName());
+			scoreBoard.append("</td><td>");
+			scoreBoard.append(e.getScore());
+			scoreBoard.append("</td></tr>");
+		}else {
+			scoreBoard.append("<tr><td>");
+			scoreBoard.append(e.getUserid());
+			scoreBoard.append("</td><td>");
+			scoreBoard.append(e.getUserName());
+			scoreBoard.append("</td><td>");
+			scoreBoard.append(e.getScore());
+			scoreBoard.append("</td></tr>");
+		}
 	});
 	return scoreBoard.toString();
 	

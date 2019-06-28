@@ -521,53 +521,72 @@ $(document).ready(function(){
     </div>
   </div>
 </div>
+<div style="display: none;" id="srcpassword" value="candy"></div>
 <div class='w3-main w3-light-grey' id='belowtopnav' style='margin-left:220px;'>
-<br><br><br><br>
-<div id="main-content-div" align="center"><div></div></div>
+<br><br>
+<!-- Image loader -->
+<div id="wait" style="display:none;width:69px;height:89px;border:1px solid black;position:absolute;top:50%;left:50%;padding:2px;"><img src='\images\load.gif' width="300%" height="300%" /><br>Loading..</div>
+<!-- Image loader -->
+<div id="main-content-div" align="center">
+</div>
 </div>
 <div id="challenge1" class="challenge" style="display:none;">
 <b><u>Challenge 1</u></b>
-<br><br><br><br>
+<br><br>
+<div><p>Developer stored the password in source code.</p></div>
+<br><br>
 <div><img alt="" src="\images\sourcecode.jpg"></div>
 <div>Enter Password :<input type="password" width="20" id="challenge1password"/></div>
 <div><button onclick="validatechallenge1()">Submit</button></div>
 </div>
 <div id="challenge2" class="challenge" style="display:none;">
 <b><u>Challenge 2</u></b>
-<br><br><br><br>
+<br><br>
+<div><p>Password stored in accessible location for end users.</p></div>
+<br><br>
 <div><img alt="" src="\images\cookie1.jpg"></div>
 <div>Enter Password :<input type="password" width="20" id="challenge2password"/></div>
 <div><button onclick="validatechallenge2()">Submit</button></div>
 </div>
 <div id="challenge3" class="challenge" style="display:none;">
 <b><u>Challenge 3</u></b>
-<br><br><br><br>
+<br><br>
+<div><p>Developer stored the password in source code. But it is encoded this time. Find the pass and decode it.</p></div>
+<br><br>
 <div><img alt="" src="\images\password3.jpg"></div>
 <div>Enter Password :<input type="password" width="20" id="challenge3password"/></div>
 <div><button onclick="validatechallenge3()">Submit</button></div>
 </div>
 <div id="challenge4" class="challenge" style="display:none;">
 <b><u>Challenge 4</u></b>
-<br><br><br><br>
+<br><br>
+<div><p>Password stored in accessible location for end users. But it is encoded this time. Find the pass and decode it.</p></div>
+<br><br>
 <div><img alt="" src="\images\cookie2.jpg"></div>
 <div>Enter Password :<input type="password" width="20" id="challenge4password"/></div>
 <div><button onclick="validatechallenge4()">Submit</button></div>
 </div>
 <div id="challenge5" class="challenge" style="display:none;">
 <b><u>Challenge 5</u></b>
-<br><br><br><br>
+<br><br>
+<div><p>Developer shared the password in an image file. Name of the file is guessable. Can you find the image and get me the password?</p></div>
+<br><br>
 <div><img alt="" src="\images\image.jpg"></div>
 <div>Enter Password :<input type="password" width="20" id="challenge5password"/></div>
 <div><button onclick="validatechallenge5()">Submit</button></div>
 </div>
 <div id="challenge6" class="challenge" style="display:none;">
 <b><u>Challenge 6</u></b>
-<br><br><br><br>
+<br><br>
+<div><p>Currently logged in user is a normal user. Make yourself an admin user to proceed to next challenge.</p></div>
+<br><br>
 <div><a target="_top" onclick='challenge6()'><img alt="" src="\images\admin.jpg"></a></div>
 </div>
 <div id="challenge7" class="challenge" style="display:none;">
 <b><u>Challenge 7</u></b>
-<br><br><br><br>
+<br><br>
+<div><p>Developer restricted users to enter 20 characters only. Submit a value more than 20 characters to move forward.</p></div>
+<br><br>
 <div><img alt="" src="\images\html.png"></div>
 <div>Please enter a string which contains more than 20 characters</div>
 <div>Enter String :<input type="text" width="20" id="challenge7name" maxlength="20"/></div>
@@ -575,7 +594,9 @@ $(document).ready(function(){
 </div>
 <div id="challenge8" class="challenge" style="display:none;">
 <b><u>Challenge 8</u></b>
-<br><br><br><br>
+<br><br>
+<div><p>Developer stored the password in a text file under root folder. File name is guessable. Guess the file to obtain the password.</p></div>
+<br><br>
 <div><img alt="" src="\images\file.jpg"></div>
 <div>Enter Password :<input type="password" width="20" id="challenge8password"/></div>
 <div><button onclick="validatechallenge8()">Submit</button></div>
@@ -584,7 +605,9 @@ $(document).ready(function(){
 </div>
 <div id="challenge9" class="challenge" style="display:none;">
 <b><u>Challenge 9</u></b>
-<br><br><br><br>
+<br><br>
+<div><p>Developer stored the password in readme.txt file. Read the file content to get the password.</p></div>
+<br><br>
 <div><img alt="" src="\images\command.jpg"></div>
 <div>Enter IP to ping :<input type="text" width="100" id="command"/></div>
 <div><button onclick="challenge9()">Submit</button></div>
@@ -596,7 +619,9 @@ $(document).ready(function(){
 </div>
 <div id="challenge10" class="challenge" style="display:none;">
 <b><u>Challenge 10</u></b>
-<br><br><br><br>
+<br><br>
+<div><p>: Developer is retrieving the data from a get parameter. Try to get the value of password.</p></div>
+<br><br>
 <div><img alt="" src="\images\xssjs.jpg"></div>
 <div>Enter Password :<input type="password" width="20" id="challenge10password"/></div>
 <div><button onclick="validatechallenge10()">Submit</button></div>
@@ -605,8 +630,10 @@ $(document).ready(function(){
 </div>
 <div id="challenge11" class="challenge" style="display:none;">
 <b><u>Challenge 11</u></b>
-<br><br><br><br>
-<div><img alt="" src="\challenge11\directory-traversals.jpg"></div>
+<br><br>
+<div><p>Developer Stored the password in a file visible to all users.</p></div>
+<br><br>
+<div><img alt="" src="\challenge11\directory.png"></div>
 <div>Enter Password :<input type="password" width="20" id="challenge11password"/></div>
 <div><button onclick="validatechallenge11()">Submit</button></div>
 <br><br>
@@ -620,7 +647,9 @@ $(document).ready(function(){
 </div>
 <div id="challenge12" class="challenge" style="display:none;">
 <b><u>Challenge 12</u></b>
-<br><br><br><br>
+<br><br>
+<div><p>Bypass the login page using logic gates.</p></div>
+<br><br>
 <div><img alt="" src="\images\sqlinjection.png"></div>
 <div>Enter Username :<input type="text" width="20" id="challenge12username"/></div>
 <div>Enter Password :<input type="text" width="20" id="challenge12password"/></div>
@@ -667,10 +696,7 @@ function challenge(id){
 		if(id==2){
 			challenge2();
 		}
-		if(id==3){
-			challenge3();
-		}
-		if(id==4){
+				if(id==4){
 			challenge4();
 		}
 		$("#main-content-div").children().remove();
@@ -680,14 +706,20 @@ function challenge(id){
 }
 function validatechallenge1(){
 	var password=$("#challenge1password").val();
-	if(password=='candy'){
-		updatescore(1);
-		score+=1;
-		challenge(score);
-			}
-	else{
-		alert("enter correct password");
-	}
+	$.ajax(
+			{
+				url: "/validatechallenge1",
+				data: password,
+				type: 'post',
+			    contentType: 'application/json',
+				success:function(data){
+					if(data=="success"){
+						score+=1;
+						challenge(score);
+					}else{
+						alert("Enter valid password");
+					}
+				}});
 }
 function challenge2(){
 	$.ajax(
@@ -699,23 +731,20 @@ function challenge2(){
 				}});
 }
 function validatechallenge2(){
-	var val1=$.cookie("alex");
-	var val2=$("#challenge2password").val();
-	if(val1==val2){
-		updatescore(2);
-		score+=1;
-		challenge(score);
-	}else{
-		alert("Enter valid password");
-	}
-}
-function challenge3(){
+	var password=$("#challenge2password").val();
 	$.ajax(
 			{
-				url: "/challenge3",
-				contentType: 'application/json',
+				url: "/validatechallenge2",
+				data: password,
+				type: 'post',
+			    contentType: 'application/json',
 				success:function(data){
-					
+					if(data=="success"){
+						score+=1;
+						challenge(score);
+					}else{
+						alert("Enter valid password");
+					}
 				}});
 }
 function validatechallenge3(){
@@ -794,11 +823,21 @@ function challenge6(){
 				}});
 }
 function validatechallenge7(){
-	if($("#challenge7name").val().length>20){
-		updatescore(7);
-		score+=1;
-		challenge(score);
-	}
+	var value=$("#challenge7name").val();
+	$.ajax(
+			{
+				url: "/validatechallenge7",
+				data: value,
+				type: 'post',
+			    contentType: 'application/json',
+				success:function(data){
+					if(data=="success"){
+						score+=1;
+						challenge(score);
+					}else{
+						alert("Please enter a string which contains more than 20 characters");
+					}
+				}});
 }
 function validatechallenge8(){
 	var password=$("#challenge8password").val();
@@ -864,26 +903,14 @@ function validatechallenge10(){
 					}
 				}});
 }
-$("document").on( "domain", {
-}, function( event) {
-	alert("injected");
-	challenge(10);         
-});
-$(document).ready(function(){
-	$("document").on( "domain", {
-	}, function( event) {
-		alert("injected");
-		challenge(10);         
+$(document).ajaxStart(function(){
+	  // Show image container
+	 $("#wait").css("display", "block");
 	});
-	$( document ).trigger( "domain");
+	$(document).ajaxComplete(function(){
+	  // Hide image container
+		 $("#wait").css("display", "none");
 	});
-	
-	function secure(){
-		alert("russia");
-	}
-	function admin(){
-	$("#secure11").show();
-	}
 	function validatechallenge11(){
 		var password=$("#challenge11password").val();
 		$.ajax(

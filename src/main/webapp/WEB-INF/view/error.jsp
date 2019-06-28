@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Challenge5 Password</title>
+<title>Error</title>
 </head>
 <body>
-Password id password
+<div align="center">
+<div><img alt="" src="\images\error.png"></div>
+<div><p>You have lost Something...!!!Please login and try again.</p></div>
+<div><button style="color: green"><a href="/login" >Login</a></button></div>
+</div>
 </body>
 </html>
