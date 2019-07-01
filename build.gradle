@@ -4,12 +4,11 @@ plugins {
 }
 
 apply plugin: 'io.spring.dependency-management'
-apply plugin: 'war'
 apply plugin: 'application'
 mainClassName = "com.epam.hackme.HackmeApplication"
 
 group = 'com.hackme'
-version = '1.0'
+version = ''
 sourceCompatibility = '1.8'
 
 repositories {
@@ -23,5 +22,5 @@ dependencies {
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat'
 	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.1.5.RELEASE'
-	
+	compile files('lib/ojdbc7.jar')
 }
