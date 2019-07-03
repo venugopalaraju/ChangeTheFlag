@@ -31,11 +31,7 @@ public class HackMeController {
 	@Autowired
 	private HackMeDaoImpl dao;
 	
-	@RequestMapping({CommonConstants.USER_LOGIN,"/"})
-	public String login(HttpServletRequest request,HttpServletResponse response) {
-		HackMeHelper.clearCookies(request, response);
-		return CommonConstants.USER_LOGIN_VIEW;
-	}
+	
 	@RequestMapping(CommonConstants.HACK_ALL)
 	public String hackall(HttpServletRequest request,HttpServletResponse response) {
 		HttpSession session=request.getSession();
@@ -44,54 +40,7 @@ public class HackMeController {
 		session.setAttribute("challenge",score.getChallenge());
 		return CommonConstants.CHALLENGE_ALL_VIEW;
 	}
-	@RequestMapping(CommonConstants.VALIDATE_USER)
-	public ModelAndView validateuser(User user,HttpServletRequest request,HttpServletResponse response) {
-		if(dao.isValidUser(user)) {
-			//response.addCookie(new Cookie(CommonConstants.USER_ID, user.getUserid()));
-			UserScore score=dao.getMyScore(user.getUserid());
-			HttpSession session=request.getSession();
-			session.setAttribute(CommonConstants.USER_ID, user.getUserid());
-			if(score.getScore()>0) {
-				session.setAttribute("challenge",score.getChallenge());
-				return new ModelAndView("forward:"+CommonConstants.HACK_ALL);
-			}
-			return new ModelAndView(CommonConstants.CHALLENGE_ZERO_VIEW);
-		}
-		return new ModelAndView(CommonConstants.USER_LOGIN_VIEW, "error","Please enter valid Credentials");
-	}
-	@RequestMapping(CommonConstants.REGISTRATION)
-	public ModelAndView registeration() {
-		return new ModelAndView(CommonConstants.REGISTRATION_VIEW, "user", new User());
-	}
-	@RequestMapping(CommonConstants.REGISTRATION_USER)
-	public ModelAndView registeruser(User user) {
-		try {
-		String registereduserid=dao.registerUser(user);
-		if(registereduserid.equalsIgnoreCase(user.getUserid())) {
-		return new ModelAndView(CommonConstants.USER_LOGIN, "userid",registereduserid);
-		}else {
-			return new ModelAndView(CommonConstants.REGISTRATION_VIEW, "error","Please enter valid details and click on register");
-		}
-		}catch(Exception e) {
-			return new ModelAndView(CommonConstants.REGISTRATION_VIEW, "error","Please enter valid details and click on register");
-		}
-		}
-	@RequestMapping(CommonConstants.CHALLENGE_ZERO)
-	public String challangelogin(HttpServletRequest request,HttpServletResponse response) {
-		return CommonConstants.CHALLENGE_ZERO_VIEW;
-	}
-	@RequestMapping(CommonConstants.VALIDATE_CHALLENGE_ZERO)
-	public ModelAndView hackall(HttpServletRequest request) {
-		String username=request.getParameter(CommonConstants.USERNAME);
-		String password=request.getParameter(CommonConstants.PASSWORD);
-		if(username.equalsIgnoreCase(CommonConstants.ADMIN)&&password.equalsIgnoreCase(CommonConstants.ADMIN)) {
-			dao.updateScoreInFirstChallenge(HackMeHelper.getUserId(request));
-			return new ModelAndView(CommonConstants.CHALLENGE_ALL_VIEW, "challenge",0);
-		}
-		else {
-			return new ModelAndView(CommonConstants.CHALLENGE_ZERO_VIEW);
-		}
-	}
+	
 	@RequestMapping(CommonConstants.VALIDATE_CHALLENGE_ONE)
 	@ResponseBody
 	public String validateChallenge1(@RequestBody String password,HttpServletRequest request) {

@@ -56,8 +56,14 @@ public class HackMeDaoImpl implements HackMeDao{
 
 
 	@Override
-	public int updateScoreInFirstChallenge(String userId) {
-		return jdbcTemplate.update(QueryConstants.UPDATE_SCORE_IN_FIRST_CHALLENGE, userId);
+	public int updateScoreInFirstChallenge(String userId,int score) {
+		return jdbcTemplate.update(QueryConstants.UPDATE_SCORE_TRIVIAL, score,userId);
+	}
+
+
+	@Override
+	public int updateScoreTimestamp(String userId) {
+		return jdbcTemplate.update(QueryConstants.UPDATE_SCORE_IN_FIRST_CHALLENGE,userId);
 	}
 
 

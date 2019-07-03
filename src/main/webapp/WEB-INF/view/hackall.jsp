@@ -571,7 +571,7 @@ $(document).ready(function(){
 <br><br>
 <div><p>Developer shared the password in an image file. Name of the file is guessable. Can you find the image and get me the password?</p></div>
 <br><br>
-<div><img alt="" src="\images\image.jpg"></div>
+<div><img alt="" src="\images\tunnel.jpg"></div>
 <div>Enter Password :<input type="password" width="20" id="challenge5password"/></div>
 <div><button onclick="validatechallenge5()">Submit</button></div>
 </div>

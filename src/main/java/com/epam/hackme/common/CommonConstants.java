@@ -63,4 +63,8 @@ String UPDATE_SCORE="/updatescore";
 String GET_SCORES="/getscores";
 String GET_MY_SCORE="/getmyscore";
 String GET_CHALLENGE="/getchallenge";
+String TRIVIA="/trivia";
+String TRIVIA_VIEW="trivia";
+String TRIVIA_SUBMIT="/triviasubmit";
+String TRIVIA_SKIP="/triviaskip";
 }
