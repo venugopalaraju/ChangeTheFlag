@@ -8,4 +8,5 @@ public interface PasswordConstants {
 	String TRIVIA_ANSWER_FOUR="";
 	String TRIVIA_ANSWER_FIVE="";
 	String WRONG="Wrong";
+	String ANSWER="answer";
 }

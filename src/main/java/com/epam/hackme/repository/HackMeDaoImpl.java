@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.epam.hackme.common.QueryConstants;
+import com.epam.hackme.dto.Trivia;
 import com.epam.hackme.dto.User;
 import com.epam.hackme.dto.UserScore;
 
@@ -56,6 +57,14 @@ public class HackMeDaoImpl implements HackMeDao{
 
 
 	@Override
+	public void updateTriviaScore(String userid, int challenge) {
+		UserScore score=getMyScore(userid);
+		int count=jdbcTemplate.update(QueryConstants.UPDATE_SCORE,challenge,userid,userid,userid);
+		System.out.println(challenge);
+	}
+
+
+	@Override
 	public int updateScoreInFirstChallenge(String userId,int score) {
 		return jdbcTemplate.update(QueryConstants.UPDATE_SCORE_TRIVIAL, score,userId);
 	}
@@ -89,6 +98,50 @@ public class HackMeDaoImpl implements HackMeDao{
 			score.setChallenge(rs.getInt("CHALLENGE"));
 		return score;
 		}, userid).get(0);
+	}
+
+
+	@Override
+	public Trivia getTrivia(String userid) {
+		return jdbcTemplate.query(QueryConstants.GET_TRIVIA_CHALLENGES, (rs,rowNum)->{
+			Trivia t=new Trivia();
+			t.setChallengeone(rs.getString("CHALLENGE1"));
+			t.setChallengetwo(rs.getString("CHALLENGE2"));
+			t.setChallengethree(rs.getString("CHALLENGE3"));
+			t.setChallengefour(rs.getString("CHALLENGE4"));
+			t.setChallengefive(rs.getString("CHALLENGE5"));
+		return t;
+		}, userid).get(0);
+	}
+
+
+	@Override
+	public int updateTriviaChallenge1(String userid) {
+		return jdbcTemplate.update(QueryConstants.UPDATE_TRIVIA_ONE, userid);
+	}
+
+
+	@Override
+	public int updateTriviaChallenge2(String userid) {
+		return jdbcTemplate.update(QueryConstants.UPDATE_TRIVIA_TwO, userid);
+	}
+
+
+	@Override
+	public int updateTriviaChallenge3(String userid) {
+		return jdbcTemplate.update(QueryConstants.UPDATE_TRIVIA_THREE, userid);
+	}
+
+
+	@Override
+	public int updateTriviaChallenge4(String userid) {
+		return jdbcTemplate.update(QueryConstants.UPDATE_TRIVIA_FOUR, userid);
+	}
+
+
+	@Override
+	public int updateTriviaChallenge5(String userid) {
+		return jdbcTemplate.update(QueryConstants.UPDATE_TRIVIA_FIVE, userid);
 	}
 	
 	

@@ -492,10 +492,22 @@ $(document).ready(function(){
 <div class='w3-card-2 topnav notranslate' id='topnav'>
   <div style="overflow:auto;">
     <div class="w3-bar w3-left" style="width:100%;overflow:hidden;height:50px">
-           <a class="w3-bar-item w3-button" onclick="openScore()" title='leader Board' style="cursor: pointer;">leader Board</a>
-      <a class="w3-bar-item w3-button" onclick="openMyScore()" title='My Score' style="cursor: pointer;">My Score</a>
       <div class="topnav-right">
-      <a class="w3-bar-item w3-button" href="/login" target="_self">Logout</a>
+      <a class="w3-bar-item w3-button" onclick="openScore()" title='leader Board' style="cursor: pointer;">leader Board</a>
+      <a class="w3-bar-item w3-button" onclick="openMyScore()" title='My Score' style="cursor: pointer;">My Score</a>
+
+					<button class="btn btn-secondary dropdown-toggle" type="button"
+						id="dropdownMenuButton" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"> Trivia Challenges </button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item" href="/validatetriviachallengeone">Trivia Challenge 1</a> 
+						<a class="dropdown-item" href="/validatetriviachallengetwo">Trivia Challenge 2</a> 
+						<a class="dropdown-item" href="/validatetriviachallengethree">Trivia Challenge 3</a>
+						<a class="dropdown-item" href="/validatetriviachallengefour">Trivia Challenge 4</a> 
+						<a class="dropdown-item" href="/validatetriviachallengefive">Trivia Challenge 5</a>
+					</div>
+					<a class="w3-bar-item w3-button" href="/login"  style="cursor: pointer;color: inherit;">Logout</a>
+      <!-- <a class="w3-bar-item w3-button" href="/login" target="_self">Logout</a> -->
   </div>
  </div>
   </div>

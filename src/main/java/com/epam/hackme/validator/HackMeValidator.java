@@ -1,13 +1,16 @@
 package com.epam.hackme.validator;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.validation.BindingResult;
 
+import com.epam.hackme.common.CommonConstants;
 import com.epam.hackme.common.PasswordConstants;
 import com.epam.hackme.dto.Trivia;
 
 public class HackMeValidator {
 
-	public static BindingResult validTriviaChallenges(Trivia trivia,BindingResult result) {
+	/*public static BindingResult validTriviaChallenges(Trivia trivia,BindingResult result) {
 		if(!PasswordConstants.TRIVIA_ANSWER_ONE.equalsIgnoreCase(trivia.getTriviaAnswerOne())) {
 			result.rejectValue("triviaAnswerOne","",PasswordConstants.WRONG);
 		}
@@ -44,5 +47,15 @@ public class HackMeValidator {
 			score=score+1;
 		}
 		return score;
+	}
+	*/
+	public static boolean validateChallengeZero(HttpServletRequest request) {
+		String username=request.getParameter(CommonConstants.USERNAME);
+		String password=request.getParameter(CommonConstants.PASSWORD);
+		if(CommonConstants.ADMIN.equalsIgnoreCase(username)&&CommonConstants.ADMIN.equalsIgnoreCase(password)) {
+			return true;
+		}
+		return false;
+		
 	}
 }

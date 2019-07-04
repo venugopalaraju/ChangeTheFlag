@@ -39,7 +39,7 @@ public class LoginController {
 				return new ModelAndView("forward:"+CommonConstants.HACK_ALL);
 			}else {
 				dao.updateScoreTimestamp(user.getUserid());
-				return new ModelAndView(CommonConstants.TRIVIA_VIEW,"trivia",new Trivia());
+				return new ModelAndView(CommonConstants.TRIVIA_ONE_VIEW);
 			}
 		}
 		return new ModelAndView(CommonConstants.USER_LOGIN_VIEW, "error","Please enter valid Credentials");

@@ -3,41 +3,40 @@ package com.epam.hackme.dto;
 import java.io.Serializable;
 public class Trivia implements Serializable{
 private static final long serialVersionUID = -142825398680427754L;
-
-private String triviaAnswerOne;
-private String triviaAnswerTwo;
-private String triviaAnswerThree;
-private String triviaAnswerFour;
-private String triviaAnswerFive;
-public String getTriviaAnswerOne() {
-	return triviaAnswerOne;
+private String challengeone;
+private String challengetwo;
+private String challengethree;
+private String challengefour;
+private String challengefive;
+public String getChallengeone() {
+	return challengeone;
 }
-public void setTriviaAnswerOne(String triviaAnswerOne) {
-	this.triviaAnswerOne = triviaAnswerOne;
+public void setChallengeone(String challengeone) {
+	this.challengeone = challengeone;
 }
-public String getTriviaAnswerTwo() {
-	return triviaAnswerTwo;
+public String getChallengetwo() {
+	return challengetwo;
 }
-public void setTriviaAnswerTwo(String triviaAnswerTwo) {
-	this.triviaAnswerTwo = triviaAnswerTwo;
+public void setChallengetwo(String challengetwo) {
+	this.challengetwo = challengetwo;
 }
-public String getTriviaAnswerThree() {
-	return triviaAnswerThree;
+public String getChallengethree() {
+	return challengethree;
 }
-public void setTriviaAnswerThree(String triviaAnswerThree) {
-	this.triviaAnswerThree = triviaAnswerThree;
+public void setChallengethree(String challengethree) {
+	this.challengethree = challengethree;
 }
-public String getTriviaAnswerFour() {
-	return triviaAnswerFour;
+public String getChallengefour() {
+	return challengefour;
 }
-public void setTriviaAnswerFour(String triviaAnswerFour) {
-	this.triviaAnswerFour = triviaAnswerFour;
+public void setChallengefour(String challengefour) {
+	this.challengefour = challengefour;
 }
-public String getTriviaAnswerFive() {
-	return triviaAnswerFive;
+public String getChallengefive() {
+	return challengefive;
 }
-public void setTriviaAnswerFive(String triviaAnswerFive) {
-	this.triviaAnswerFive = triviaAnswerFive;
+public void setChallengefive(String challengefive) {
+	this.challengefive = challengefive;
 }
 
 }

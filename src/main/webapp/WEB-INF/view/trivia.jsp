@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
-$(document).on('click', 'input.submit', function () {
+$(document).on('click', 'button.submit', function () {
     var form = $('#triviaForm');
     var action = $(this).data('action');
     form.attr('action', action);
@@ -52,8 +52,9 @@ $(document).on('click', 'input.submit', function () {
 <span style="color: red;"><form:errors path="triviaAnswerFive"/></span></div>
 </div>
 <div>
-<button type="submit" class="btn btn-primary">Submit</button>
-<input type="button" class="submit" value="Skip" data-action="/triviaskip" />
+<button type="submit" class="btn btn-primary" style="">Submit</button>
+<button type="submit" class="submit btn btn-primary" data-action="/triviaskip">Skip</button>
+<!-- <input type="button" class="submit" value="Skip" data-action="/triviaskip" /> -->
 </div>
 </form:form>
 </div>
