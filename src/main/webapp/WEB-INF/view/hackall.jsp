@@ -528,7 +528,7 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <button onclick="validatechallenge7()" class="btn btn-success">Submit</button></div>
 </div>
 <div id="challenge8" class="challenge" style="display:none;">
-<h1>Challenge 8<</h1>
+<h1>Challenge 8</h1>
 <div class="form-group">
 <label>Developer stored the password in a text file under root folder. File name is guessable. Guess the file to obtain the password.</label></div>
 <div><img alt="" src="\images\file.jpg"></div>
