@@ -18,14 +18,15 @@ $(document).ready(function(){
 </head>
 <body>
 <div id="error" align="center"></div>
+<h1 align="center">Registration</h1>
 <form:form action="/registeruser" id="register" method="post" modelAttribute="user" >
 <div align="center">
 <br><br><br><br>
-<div>Enter User Id :<form:input type="text" width="20" name="userid" path="userid"/></div>
-<div>Enter User Name :<form:input type="text" width="20" name="username" path="username"/></div>
-<div>Enter Password  :<form:input type="password" width="20" name="password" path="password"/></div>
-<div>Enter Mail  :<form:input type="text" width="20" name="mail" path="email"/></div>
-<div><button type="submit">Register</button></div>
+<div class="form-group">Enter User Id :<form:input type="text" width="20" name="userid" path="userid"/></div>
+<div class="form-group">Enter User Name :<form:input type="text" width="20" name="username" path="username"/></div>
+<div class="form-group">Enter Password  :<form:input type="password" width="20" name="password" path="password"/></div>
+<div class="form-group">Enter Mail  :<form:input type="text" width="20" name="mail" path="email"/></div>
+<div class="form-group"><span></span><span><button type="submit">Register</button></span><span><a href="/login" >Login</a></span><span style="color: green">(If already Registered)</span></div>
 </div>
 </form:form>
 </body>

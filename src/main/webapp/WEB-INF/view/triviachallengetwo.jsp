@@ -17,13 +17,14 @@ $(document).on('click', 'button.submit', function () {
 </script>
 </head>
 <body>
+<div align="center">
+<h1 align="center">Trivia Challenge 2</h1>
+<form action="/validatetriviachallengetwo" id="triviaForm" method="post">
 <div>
-<form action="/validatetriviachallengetwo" id="triviaForm">
-<div>
-<label>Question 2:</label>
+<label>What type of animal was inside Sputnik 2 when launched into orbit in 1957 ?</label>
 </div>
 <div>
-<label>Enter Your Answer :</label><input type="text" name="answer"/><span>${error}</span>
+<label>Enter Your Answer :</label><input type="text" name="answer"/><span style="color: red;">${error}</span>
 </div>
 <div>
 <button type="submit" class="btn btn-primary" style="">Submit</button>

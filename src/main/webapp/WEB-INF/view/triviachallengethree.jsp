@@ -17,13 +17,19 @@ $(document).on('click', 'button.submit', function () {
 </script>
 </head>
 <body>
+<div align="center">
+<h1 align="center">Trivia Challenge 3</h1>
+<form action="/validatetriviachallengethree" id="triviaForm" method="post">
 <div>
-<form action="/validatetriviachallengethree" id="triviaForm">
-<div>
-<label>Question 3:</label>
+<label>What is the password to login in reboot ?</label>
 </div>
 <div>
-<label>Enter Your Answer :</label><input type="text" name="answer"/><span>${error}</span>
+<p>Hint: REBOOT..
+Hint: A security organization producing a short film "REBOOT" and released trailer in YouTube.
+Can you find the password?</p>
+</div>
+<div>
+<label>Enter Your Answer :</label><input type="text" name="answer"/><span style="color: red;">${error}</span>
 </div>
 <div>
 <button type="submit" class="btn btn-primary" style="">Submit</button>

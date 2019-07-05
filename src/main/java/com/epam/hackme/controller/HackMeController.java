@@ -21,9 +21,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.epam.hackme.common.CacheService;
 import com.epam.hackme.common.CommonConstants;
 import com.epam.hackme.common.HackMeHelper;
+import com.epam.hackme.dto.Trivia;
 import com.epam.hackme.dto.User;
 import com.epam.hackme.dto.UserScore;
 import com.epam.hackme.repository.HackMeDaoImpl;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class HackMeController {
@@ -33,12 +36,15 @@ public class HackMeController {
 	
 	
 	@RequestMapping(CommonConstants.HACK_ALL)
-	public String hackall(HttpServletRequest request,HttpServletResponse response) {
+	public ModelAndView hackall(HttpServletRequest request,HttpServletResponse response,ModelAndView mav) throws JsonProcessingException {
 		HttpSession session=request.getSession();
 		String userid=HackMeHelper.getUserId(request);
 		UserScore score=dao.getMyScore(userid);
-		session.setAttribute("challenge",score.getChallenge());
-		return CommonConstants.CHALLENGE_ALL_VIEW;
+		session.setAttribute(CommonConstants.CHALLENGE_FLAG,score.getChallenge());
+		Trivia t=dao.getTrivia(HackMeHelper.getUserId(request));
+		mav.addObject(CommonConstants.TRIVIA_FLAG, new ObjectMapper().writeValueAsString(t));
+		mav.setViewName(CommonConstants.CHALLENGE_ALL_VIEW);
+		return mav;
 	}
 	
 	@RequestMapping(CommonConstants.VALIDATE_CHALLENGE_ONE)

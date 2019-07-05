@@ -34,6 +34,7 @@ public class HackMeDaoImpl implements HackMeDao{
 		int count= jdbcTemplate.update(QueryConstants.REGISTER_USER, user.getUserid(),user.getUsername(),user.getEmail(),user.getPassword());
 		if(count>0) {
 			jdbcTemplate.update(QueryConstants.ADD_SCORE,user.getUserid(),user.getUsername());
+			jdbcTemplate.update(QueryConstants.ADD_TRIVIA,user.getUserid());
 		}
 		return count>0?user.getUserid():"Not Registered";
 	}
@@ -57,10 +58,9 @@ public class HackMeDaoImpl implements HackMeDao{
 
 
 	@Override
-	public void updateTriviaScore(String userid, int challenge) {
-		UserScore score=getMyScore(userid);
-		int count=jdbcTemplate.update(QueryConstants.UPDATE_SCORE,challenge,userid,userid,userid);
-		System.out.println(challenge);
+	public void updateTriviaScore(String userid) {
+		int count=jdbcTemplate.update(QueryConstants.UPDATE_SCORE_TRIVIAL,userid,userid);
+		System.out.println(count);
 	}
 
 
@@ -105,6 +105,7 @@ public class HackMeDaoImpl implements HackMeDao{
 	public Trivia getTrivia(String userid) {
 		return jdbcTemplate.query(QueryConstants.GET_TRIVIA_CHALLENGES, (rs,rowNum)->{
 			Trivia t=new Trivia();
+			t.setChallengezero(rs.getString("CHALLENGE0"));
 			t.setChallengeone(rs.getString("CHALLENGE1"));
 			t.setChallengetwo(rs.getString("CHALLENGE2"));
 			t.setChallengethree(rs.getString("CHALLENGE3"));
@@ -112,6 +113,12 @@ public class HackMeDaoImpl implements HackMeDao{
 			t.setChallengefive(rs.getString("CHALLENGE5"));
 		return t;
 		}, userid).get(0);
+	}
+
+
+	@Override
+	public int updateTriviaChallenge0(String userid) {
+		return jdbcTemplate.update(QueryConstants.UPDATE_CHALLENGE_ZERO, userid);
 	}
 
 

@@ -17,13 +17,14 @@ $(document).on('click', 'button.submit', function () {
 </script>
 </head>
 <body>
+<div align="center">
+<h1 align="center">Trivia Challenge 4</h1>
+<form action="/validatetriviachallengefour" id="triviaForm" method="post">
 <div>
-<form action="/validatetriviachallengefour" id="triviaForm">
-<div>
-<label>Question 4:</label>
+<label> A famous Hacker who hacked phones and he is author of multiple books. Can you tell me what is his middle name ?</label>
 </div>
 <div>
-<label>Enter Your Answer :</label><input type="text" name="answer"/><span>${error}</span>
+<label>Enter Your Answer :</label><input type="text" name="answer"/><span style="color: red;">${error}</span>
 </div>
 <div>
 <button type="submit" class="btn btn-primary" style="">Submit</button>

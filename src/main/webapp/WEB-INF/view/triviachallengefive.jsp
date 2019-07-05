@@ -17,13 +17,17 @@ $(document).on('click', 'button.submit', function () {
 </script>
 </head>
 <body>
+<div align="center">
+<h1 align="center">Trivia Challenge 5</h1>
+<form action="/validatetriviachallengefive" id="triviaForm" method="post">
 <div>
-<form action="/validatetriviachallengefive" id="triviaForm">
-<div>
-<label>Question 5:</label>
+<label>When did neo's passport expired?</label>
 </div>
 <div>
-<label>Enter Your Answer :</label><input type="text" name="answer"/><span>${error}</span>
+<p>Hint : Answer in month/day/year Format i.e american format</p>
+</div>
+<div>
+<label>Enter Your Answer :</label><input type="text" name="answer"/><span style="color: red;">${error}</span>
 </div>
 <div>
 <button type="submit" class="btn btn-primary" style="">Submit</button>

@@ -22,7 +22,7 @@ public class LoginController {
 	@Autowired
 	private HackMeDaoImpl dao;
 	
-	@RequestMapping({CommonConstants.USER_LOGIN,"/"})
+	@RequestMapping({CommonConstants.USER_LOGIN,CommonConstants.USER_LOGIN_DEFAULT})
 	public String login(HttpServletRequest request,HttpServletResponse response) {
 		HackMeHelper.clearCookies(request, response);
 		return CommonConstants.USER_LOGIN_VIEW;
@@ -35,8 +35,8 @@ public class LoginController {
 			HttpSession session=request.getSession();
 			session.setAttribute(CommonConstants.USER_ID, user.getUserid());
 			if(score.getScore()>0) {
-				session.setAttribute("challenge",score.getChallenge());
-				return new ModelAndView("forward:"+CommonConstants.HACK_ALL);
+				session.setAttribute(CommonConstants.CHALLENGE_FLAG,score.getChallenge());
+				return new ModelAndView(CommonConstants.FORWARD+CommonConstants.HACK_ALL);
 			}else {
 				dao.updateScoreTimestamp(user.getUserid());
 				return new ModelAndView(CommonConstants.TRIVIA_ONE_VIEW);

@@ -17,13 +17,14 @@ $(document).on('click', 'button.submit', function () {
 </script>
 </head>
 <body>
+<div align="center">
+<h1 align="center">Trivia Challenge 1</h1>
+<form action="/validatetriviachallengeone" id="triviaForm" method="post">
 <div>
-<form action="/validatetriviachallengeone" id="triviaForm">
-<div>
-<label>Question 1:</label>
+<label>Which fictional city is the home of Batman?</label>
 </div>
 <div>
-<label>Enter Your Answer :</label><input type="text" name="answer"/><span>${error}</span>
+<label>Enter Your Answer :</label><input type="text" name="answer"/><span style="color: red;">${error}</span>
 </div>
 <div>
 <button type="submit" class="btn btn-primary" style="">Submit</button>

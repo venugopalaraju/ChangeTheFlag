@@ -500,11 +500,11 @@ $(document).ready(function(){
 						id="dropdownMenuButton" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false"> Trivia Challenges </button>
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="/validatetriviachallengeone">Trivia Challenge 1</a> 
-						<a class="dropdown-item" href="/validatetriviachallengetwo">Trivia Challenge 2</a> 
-						<a class="dropdown-item" href="/validatetriviachallengethree">Trivia Challenge 3</a>
-						<a class="dropdown-item" href="/validatetriviachallengefour">Trivia Challenge 4</a> 
-						<a class="dropdown-item" href="/validatetriviachallengefive">Trivia Challenge 5</a>
+						<a class="dropdown-item" href="/triviachallengeone" id="tc1">Trivia Challenge 1</a> 
+						<a class="dropdown-item" href="/triviachallengetwo" id="tc2">Trivia Challenge 2</a> 
+						<a class="dropdown-item" href="/triviachallengethree" id="tc3">Trivia Challenge 3</a>
+						<a class="dropdown-item" href="/triviachallengefour" id="tc4">Trivia Challenge 4</a> 
+						<a class="dropdown-item" href="/triviachallengefive" id="tc5">Trivia Challenge 5</a>
 					</div>
 					<a class="w3-bar-item w3-button" href="/login"  style="cursor: pointer;color: inherit;">Logout</a>
       <!-- <a class="w3-bar-item w3-button" href="/login" target="_self">Logout</a> -->
@@ -678,6 +678,7 @@ $(document).ready(function(){
 <script type="text/javascript">
 var score=0;
 $(function() {
+	loadTC();
 	window.history.pushState("object or string", "Title", "/hackall");
 	score=${challenge};
 	if(score>0){
@@ -992,6 +993,34 @@ $(document).ajaxStart(function(){
 						$("#myscore-table").append(data);
 						$("#MyScoreModel").modal('toggle');
 					}});
+	}
+	function loadTC(){
+		var tc=${trivia};
+		if(tc.challengeone=='Y'){
+			$("#tc1"). removeAttr("href");
+			$("#tc1").css("background-color","lightblue");
+			$("#tc1").append("<span class='tick'>&#10004;</span>");
+		}
+		if(tc.challengetwo=='Y'){
+			$("#tc2"). removeAttr("href");
+			$("#tc2").css("background-color","lightblue");
+			$("#tc2").append("<span class='tick'>&#10004;</span>");
+		}
+		if(tc.challengethree=='Y'){
+			$("#tc3"). removeAttr("href");
+			$("#tc3").css("background-color","lightblue");
+			$("#tc3").append("<span class='tick'>&#10004;</span>");
+		}
+		if(tc.challengefour=='Y'){
+			$("#tc4"). removeAttr("href");
+			$("#tc4").css("background-color","lightblue");
+			$("#tc4").append("<span class='tick'>&#10004;</span>");
+		}
+		if(tc.challengefive=='Y'){
+			$("#tc5"). removeAttr("href");
+			$("#tc5").css("background-color","lightblue");
+			$("#tc5").append("<span class='tick'>&#10004;</span>");
+		}
 	}
 </script>
 <div class="modal" id="leaderBoardModel">

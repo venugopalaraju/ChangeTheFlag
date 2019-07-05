@@ -17,7 +17,7 @@ public class RegistrationController {
 	
 	@RequestMapping(CommonConstants.REGISTRATION)
 	public ModelAndView registeration() {
-		return new ModelAndView(CommonConstants.REGISTRATION_VIEW, "user", new User());
+		return new ModelAndView(CommonConstants.REGISTRATION_VIEW, CommonConstants.USER, new User());
 	}
 	
 	@RequestMapping(CommonConstants.REGISTRATION_USER)
@@ -27,10 +27,10 @@ public class RegistrationController {
 		if(registereduserid.equalsIgnoreCase(user.getUserid())) {
 		return new ModelAndView(CommonConstants.USER_LOGIN, "userid",registereduserid);
 		}else {
-			return new ModelAndView(CommonConstants.REGISTRATION_VIEW, "error","Please enter valid details and click on register");
+			return new ModelAndView(CommonConstants.REGISTRATION_VIEW, CommonConstants.ERROR,"Please enter valid details and click on register");
 		}
 		}catch(Exception e) {
-			return new ModelAndView(CommonConstants.REGISTRATION_VIEW, "error","Please enter valid details and click on register");
+			return new ModelAndView(CommonConstants.REGISTRATION_VIEW, CommonConstants.ERROR,"Please enter valid details and click on register");
 		}
 		}
 }
