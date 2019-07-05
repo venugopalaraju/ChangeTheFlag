@@ -2,7 +2,6 @@ package com.epam.hackme.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -86,10 +85,10 @@ public class HackMeController {
 	
 	@RequestMapping(CommonConstants.CHALLENGE_FOUR)
 	@ResponseBody
-	public String challenge4(HttpServletRequest request,HttpServletResponse response) throws NoSuchAlgorithmException {
+	public String challenge4(HttpServletRequest request,HttpServletResponse response) {
 		String password=HackMeHelper.convertPlainToCipher(HackMeHelper.generateRandomString(10));
 		String userId=HackMeHelper.getUserId(request);
-		response.addCookie(new Cookie(CommonConstants.ENCRYPTED_COOKIE_PASSWORD_KEY, HackMeHelper.ConvertToMd5(password)));
+		response.addCookie(new Cookie(CommonConstants.ENCRYPTED_COOKIE_PASSWORD_KEY, Base64Utils.encodeToString(password.getBytes())));
 		CacheService.savePassword(CommonConstants.ENCRYPTED_COOKIE_PASSWORD_KEY, password,userId);
 		return CommonConstants.SUCCESS;
 		

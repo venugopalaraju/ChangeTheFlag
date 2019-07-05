@@ -362,130 +362,28 @@ hr[id^="ez-insert-after-placeholder"] {margin-top: 0;}
   float: right;
 }
 </style>
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-3855518-1', 'auto');
-ga('require', 'displayfeatures');
-ga('send', 'pageview');
-</script>
-
 <script src="//snigelweb-com.videoplayerhub.com/videoloader.js" async></script>
-
-<script type='text/javascript'>
-var k42 = false;
-var googletag = googletag || {}; googletag.cmd = googletag.cmd || [];
-
-k42 = true;
-(adsbygoogle=window.adsbygoogle||[]).pauseAdRequests=1;
-
-var snhb = snhb || {}; snhb.queue = snhb.queue || [];
-snhb.options = {
-               logOutputEnabled : false,
-               autoStartAuction: false,
-               gdpr: {
-                     mainGeo: "us",
-                     reconsiderationAppealIntervalSeconds: 0
-                     }
-               };
-
-</script>
 <script src="//static.h-bid.com/sncmp/sncmp_stub.min.js" type="text/javascript"></script>
-<script>
-			window.__cmp('setLogo', "//www.w3schools.com/images/w3schoolscom_gray.gif", function(result){
-	       		snhb.console.log("Logo set");
-	    	});
-			window.__cmp('setPrivacyPolicy', "//www.w3schools.com/about/about_privacy.asp", function(result){
-	       		snhb.console.log("Privacy policy URI set");
-	    	});
-			window.__cmp('enableBanner', null, function(result) {
-	       		snhb.console.log("Banner mode enabled");
-			});
-			__cmp('enablePopupDismissable', null, function(result) {});
-			window.__cmp('disableBannerPrivacyPolicyButton', null, function(result) {
-	       		snhb.console.log("Banner mode without privacy policy button enabled");
-			});
-      window.__cmp('setTranslationFiles', { path: '//www.w3schools.com/lib/', locales: ["en"] }, function(result) {});
-      __cmp('setCSS', '//www.w3schools.com/lib/cmp.css', function(result){} );
-</script>
 <script async type="text/javascript" src="//static.h-bid.com/w3schools.com/20190327/snhb-w3schools.com.min.js?20190327"></script>
-<script>
-  snhb.queue.push(function(){
-
-    snhb.startAuction(["main_leaderboard", "wide_skyscraper", "bottom_medium_rectangle", "right_bottom_medium_rectangle"]);
-
-  });
-</script>
-<script type='text/javascript'>
-var stickyadstatus = "";
-function fix_stickyad() {
-  document.getElementById("stickypos").style.position = "sticky";
-  var elem = document.getElementById("stickyadcontainer");
-  if (!elem) {return false;}
-  if (document.getElementById("skyscraper")) {
-    var skyWidth = Number(w3_getStyleValue(document.getElementById("skyscraper"), "width").replace("px", ""));  
-    }
-  else {
-    var skyWidth = Number(w3_getStyleValue(document.getElementById("right"), "width").replace("px", ""));  
-  }
-  elem.style.width = skyWidth + "px";
-  if (window.innerWidth <= 992) {
-    elem.style.position = "";
-    elem.style.top = stickypos + "px";
-    return false;
-  }
-  var stickypos = document.getElementById("stickypos").offsetTop;
-  var docTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-  var adHeight = Number(w3_getStyleValue(elem, "height").replace("px", ""));
-  if (stickyadstatus == "") {
-    if ((stickypos - docTop) < 60) {
-      elem.style.position = "fixed";
-      elem.style.top = "60px";
-      stickyadstatus = "sticky";
-      document.getElementById("stickypos").style.position = "sticky";
-
-    }
-  } else {
-    if ((docTop + 60) - stickypos < 0) {  
-      elem.style.position = "";
-      elem.style.top = stickypos + "px";
-      stickyadstatus = "";
-      document.getElementById("stickypos").style.position = "static";
-    }
-  }
-  if (stickyadstatus == "sticky") {
-    if ((docTop + adHeight + 60) > document.getElementById("footer").offsetTop) {
-      elem.style.position = "absolute";
-      elem.style.top = (document.getElementById("footer").offsetTop - adHeight) + "px";
-      document.getElementById("stickypos").style.position = "static";
-    } else {
-        elem.style.position = "fixed";
-        elem.style.top = "60px";
-        stickyadstatus = "sticky";
-        document.getElementById("stickypos").style.position = "sticky";
-    }
-  }
-}
-function w3_getStyleValue(elmnt,style) {
-  if (window.getComputedStyle) {
-    return window.getComputedStyle(elmnt,null).getPropertyValue(style);
-  } else {
-    return elmnt.currentStyle[style];
-  }
-}
-</script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script>
-$(document).ready(function(){
-  $("#btn1").click(function(){
-    $('#div1').load('demo_test.txt');
-  })
-})
-</script>
+<style type="text/css">
+.form-control-default {
+    display: block;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+</style>
 </head>
 <body>
 <div style="display: none;" id="encryptedsrcpassword" value="d2VsY29tZQ=="></div>
@@ -543,135 +441,160 @@ $(document).ready(function(){
 </div>
 </div>
 <div id="challenge1" class="challenge" style="display:none;">
-<b><u>Challenge 1</u></b>
-<br><br>
-<div><p>Developer stored the password in source code.</p></div>
-<br><br>
+<h1>Challenge 1</h1>
+<div class="form-group">
+<label>Developer stored the password in source code.</label>
+</div>
 <div><img alt="" src="\images\sourcecode.jpg"></div>
-<div>Enter Password :<input type="password" width="20" id="challenge1password"/></div>
-<div><button onclick="validatechallenge1()">Submit</button></div>
+<div class="form-group">
+Enter Password :<input type="password" id="challenge1password" class="form-control-default"/>
+</div>
+<div>
+<button onclick="validatechallenge1()" class="btn btn-success">Submit</button>
+</div>
 </div>
 <div id="challenge2" class="challenge" style="display:none;">
-<b><u>Challenge 2</u></b>
-<br><br>
-<div><p>Password stored in accessible location for end users.</p></div>
-<br><br>
+<h1>Challenge 2</h1>
+<div class="form-group">
+<label>Password stored in accessible location for end users.</label>
+</div>
 <div><img alt="" src="\images\cookie1.jpg"></div>
-<div>Enter Password :<input type="password" width="20" id="challenge2password"/></div>
-<div><button onclick="validatechallenge2()">Submit</button></div>
+<div class="form-group">
+<label>Enter Password :</label>
+<input type="password" width="20" id="challenge2password" class="form-control-default"/>
+</div>
+<div class="form-group">
+<button onclick="validatechallenge2()" class="btn btn-success">Submit</button>
+</div>
 </div>
 <div id="challenge3" class="challenge" style="display:none;">
-<b><u>Challenge 3</u></b>
-<br><br>
-<div><p>Developer stored the password in source code. But it is encoded this time. Find the pass and decode it.</p></div>
-<br><br>
+<h1>Challenge 3</h1>
+<div class="form-group">
+<label>Developer stored the password in source code. But it is encoded this time. Find the pass and decode it.</label>
+</div>
 <div><img alt="" src="\images\password3.jpg"></div>
-<div>Enter Password :<input type="password" width="20" id="challenge3password"/></div>
-<div><button onclick="validatechallenge3()">Submit</button></div>
+<div class="form-group">
+<label>Enter Password :</label>
+<input type="password" width="20" id="challenge3password" class="form-control-default"/>
+</div>
+<div class="form-group">
+<button onclick="validatechallenge3()" class="btn btn-success">Submit</button>
+</div>
 </div>
 <div id="challenge4" class="challenge" style="display:none;">
-<b><u>Challenge 4</u></b>
-<br><br>
-<div><p>Password stored in accessible location for end users. But it is encoded this time. Find the pass and decode it.</p></div>
-<br><br>
+<h1>Challenge 4</h1>
+<div class="form-group">
+<label>Password stored in accessible location for end users. But it is encoded this time. Find the pass and decode it.</label>
+</div>
 <div><img alt="" src="\images\cookie2.jpg"></div>
-<div>Enter Password :<input type="password" width="20" id="challenge4password"/></div>
-<div><button onclick="validatechallenge4()">Submit</button></div>
+<div class="form-group">
+<label>Enter Password :</label>
+<input type="password" width="20" id="challenge4password" class="form-control-default"/>
+</div>
+<div class="form-group">
+<button onclick="validatechallenge4()" class="btn btn-success">Submit</button>
+</div>
 </div>
 <div id="challenge5" class="challenge" style="display:none;">
-<b><u>Challenge 5</u></b>
-<br><br>
-<div><p>Developer shared the password in an image file. Name of the file is guessable. Can you find the image and get me the password?</p></div>
-<br><br>
+<h1>Challenge 5</h1>
+<div class="form-group">
+<label>Developer shared the password in an image file. Name of the file is guessable. Can you find the image and get me the password?</label>
+</div>
 <div><img alt="" src="\images\tunnel.jpg"></div>
-<div>Enter Password :<input type="password" width="20" id="challenge5password"/></div>
-<div><button onclick="validatechallenge5()">Submit</button></div>
+<div class="form-group">
+<label>Enter Password :</label>
+<input type="password" width="20" id="challenge5password" class="form-control-default"/>
+</div>
+<div class="form-group"><button onclick="validatechallenge5()" class="btn btn-success">Submit</button></div>
 </div>
 <div id="challenge6" class="challenge" style="display:none;">
-<b><u>Challenge 6</u></b>
-<br><br>
-<div><p>Currently logged in user is a normal user. Make yourself an admin user to proceed to next challenge.</p></div>
-<br><br>
+<h1>Challenge 6</h1>
+<div class="form-group">
+<label>Currently logged in user is a normal user. Make yourself an admin user to proceed to next challenge.</label>
+</div>
 <div><a target="_top" onclick='challenge6()'><img alt="" src="\images\admin.jpg"></a></div>
 </div>
 <div id="challenge7" class="challenge" style="display:none;">
-<b><u>Challenge 7</u></b>
-<br><br>
-<div><p>Developer restricted users to enter 20 characters only. Submit a value more than 20 characters to move forward.</p></div>
-<br><br>
+<label>Challenge 7</label>
+<div class="form-group">
+<label>Developer restricted users to enter 20 characters only. Submit a value more than 20 characters to move forward.</label></div>
 <div><img alt="" src="\images\html.png"></div>
-<div>Please enter a string which contains more than 20 characters</div>
-<div>Enter String :<input type="text" width="20" id="challenge7name" maxlength="20"/></div>
-<div><button onclick="validatechallenge7()">Submit</button></div>
+<div class="form-group">
+<label>Please enter a string which contains more than 20 characters</label>
+<label>Enter String :</label>
+<input type="text" width="20" id="challenge7name" maxlength="20" class="form-control-default"/>
+</div>
+<div class="form-group">
+<button onclick="validatechallenge7()" class="btn btn-success">Submit</button></div>
 </div>
 <div id="challenge8" class="challenge" style="display:none;">
-<b><u>Challenge 8</u></b>
-<br><br>
-<div><p>Developer stored the password in a text file under root folder. File name is guessable. Guess the file to obtain the password.</p></div>
-<br><br>
+<h1>Challenge 8<</h1>
+<div class="form-group">
+<label>Developer stored the password in a text file under root folder. File name is guessable. Guess the file to obtain the password.</label></div>
 <div><img alt="" src="\images\file.jpg"></div>
-<div>Enter Password :<input type="password" width="20" id="challenge8password"/></div>
-<div><button onclick="validatechallenge8()">Submit</button></div>
-<br><br><br><br>
+<div class="form-group">
+<label>Enter Password :</label>
+<input type="password" width="20" id="challenge8password" class="form-control-default"/>
+</div>
+<div class="form-group"><button onclick="validatechallenge8()" class="btn btn-success">Submit</button></div>
 <div><a target="_blank" href="\images\password2.jpg"><font color="green"><b>Click here</b></font></a> to check your password</div>
 </div>
 <div id="challenge9" class="challenge" style="display:none;">
-<b><u>Challenge 9</u></b>
-<br><br>
-<div><p>Developer stored the password in readme.txt file. Read the file content to get the password.</p></div>
-<br><br>
+<h1>Challenge 9</h1>
+<div class="form-group">
+<label>Developer stored the password in readme.txt file. Read the file content to get the password.</label></div>
 <div><img alt="" src="\images\command.jpg"></div>
-<div>Enter IP to ping :<input type="text" width="100" id="command"/></div>
-<div><button onclick="challenge9()">Submit</button></div>
+<div class="form-group">
+<label>Enter IP to ping :</label>
+<input type="text" width="100" id="command" class="form-control-default"/>
+</div>
+<div class="form-group"><button onclick="challenge9()" class="btn btn-success">Submit</button></div>
 <div class="command-output" style="display:none;">
 <div id="cmd-output-body"></div>
-<div>Password :<input type="password" width="100" id="commandpwd"/></div>
-<div><button onclick="validatechallenge9pwd()">submit</button></div>
+<div class="form-group">
+<label>Password :</label>
+<input type="password" width="100" id="commandpwd" class="form-control-default"/>
+</div>
+<div class="form-group"><button onclick="validatechallenge9pwd()" class="btn btn-success">submit</button></div>
 </div>
 </div>
 <div id="challenge10" class="challenge" style="display:none;">
-<b><u>Challenge 10</u></b>
-<br><br>
-<div><p>: Developer is retrieving the data from a get parameter. Try to get the value of password.</p></div>
-<br><br>
+<h1>Challenge 10</h1>
+<div class="form-group">
+<label>Developer is retrieving the data from a get parameter. Try to get the value of password.</label></div>
 <div><img alt="" src="\images\xssjs.jpg"></div>
-<div>Enter Password :<input type="password" width="20" id="challenge10password"/></div>
-<div><button onclick="validatechallenge10()">Submit</button></div>
-<br><br>
+<div class="form-group">
+<label>Enter Password :</label>
+<input type="password" width="20" id="challenge10password" class="form-control-default"/>
+</div>
+<div class="form-group"><button onclick="validatechallenge10()" class="btn btn-success">Submit</button></div>
 <div><a href="/challenge10?getvalue=username" target="_blank"><font color="green"><b>Click here</b></font></a> to check your password</div>
 </div>
 <div id="challenge11" class="challenge" style="display:none;">
-<b><u>Challenge 11</u></b>
-<br><br>
-<div><p>Developer Stored the password in a file visible to all users.</p></div>
-<br><br>
+<h1>Challenge 11</h1>
+<div class="form-group"><label>Developer Stored the password in a file visible to all users.</label></div>
 <div><img alt="" src="\challenge11\directory.png"></div>
-<div>Enter Password :<input type="password" width="20" id="challenge11password"/></div>
-<div><button onclick="validatechallenge11()">Submit</button></div>
-<br><br>
-<!-- <div>
-<dir>
-<li><a target="_self" onclick="admin()">admin</a></li>
-	<li style="display: none;" id="secure11"><a target="_self" onclick="secure()" >secure</a></li>
-<li><a target="_self" onclick="user()"">user</a></li>
-</dir>
-</div> -->
+<div class="form-group">
+<label>Enter Password :</label>
+<input type="password" width="20" id="challenge11password" class="form-control-default"/>
+</div>
+<div class="form-group"><button onclick="validatechallenge11()" class="btn btn-success">Submit</button></div>
 </div>
 <div id="challenge12" class="challenge" style="display:none;">
-<b><u>Challenge 12</u></b>
-<br><br>
-<div><p>Bypass the login page using logic gates.</p></div>
-<br><br>
+<h1>Challenge 12</h1>
+<div class="form-group"><label>Bypass the login page using logic gates.</label></div>
 <div><img alt="" src="\images\sqlinjection.png"></div>
-<div>Enter Username :<input type="text" width="20" id="challenge12username"/></div>
-<div>Enter Password :<input type="text" width="20" id="challenge12password"/></div>
-<div><button onclick="validatechallenge12()">Submit</button></div>
+<div class="form-group">
+<label>Enter Username :</label>
+<input type="text" width="20" id="challenge12username" class="form-control-default"/>
+</div>
+<div class="form-group">
+<label>Enter Password :</label>
+<input type="text" width="20" id="challenge12password" class="form-control-default"/>
+</div>
+<div class="form-group"><button onclick="validatechallenge12()" class="btn btn-success">Submit</button></div>
 </div>
 <div id="challenge13" class="challenge" style="display:none;">
-<!-- <b><u>Challenge 13</u></b>
-<br><br><br><br>
-<div>Enter Password :<input type="password" width="20" id="challenge13password"/></div>
-<div><button onclick="validatechallenge13()">Submit</button></div> -->
 <div><p style="color: blue;">Congratulations..!! You have passed all the challenges</p> <a href="/login" style="color: green">Logout</a></div>
 </div>
 <input type="hidden" id="ensrcpwd" name="user" value="texens" />
