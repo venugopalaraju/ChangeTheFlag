@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.epam.hackme.common.QueryConstants;
 import com.epam.hackme.dto.Trivia;
@@ -28,15 +29,12 @@ public class HackMeDaoImpl implements HackMeDao{
 		return jdbcTemplate.queryForObject(QueryConstants.GET_USER_ID+username+" AND PASSWORD="+password, String.class);
 	}
 
-
+	@Transactional(rollbackFor=Exception.class)
 	@Override
-	public String registerUser(User user) {
-		int count= jdbcTemplate.update(QueryConstants.REGISTER_USER, user.getUserid(),user.getUsername(),user.getEmail(),user.getPassword());
-		if(count>0) {
+	public void registerUser(User user) {
+			jdbcTemplate.update(QueryConstants.REGISTER_USER, user.getUserid(),user.getUsername(),user.getEmail(),user.getPassword());
 			jdbcTemplate.update(QueryConstants.ADD_SCORE,user.getUserid(),user.getUsername());
 			jdbcTemplate.update(QueryConstants.ADD_TRIVIA,user.getUserid());
-		}
-		return count>0?user.getUserid():"Not Registered";
 	}
 
 
