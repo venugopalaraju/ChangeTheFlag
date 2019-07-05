@@ -1,5 +1,7 @@
 package com.epam.hackme.common;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -81,5 +83,16 @@ public static void clearCookies(HttpServletRequest request,HttpServletResponse r
 	if(request.getCookies()!=null) {
 		Arrays.asList(request.getCookies()).stream().forEach(e->{e.setMaxAge(0);response.addCookie(e);});
 	}
+}
+
+public static String ConvertToMd5(String value) throws NoSuchAlgorithmException {
+	MessageDigest md = MessageDigest.getInstance("MD5");
+	md.update(value.getBytes());
+	byte[] digest = md.digest();
+	StringBuffer sb = new StringBuffer();
+	for (byte b : digest) {
+		sb.append(String.format("%02x", b & 0xff));
+	}
+	return sb.toString();
 }
 }

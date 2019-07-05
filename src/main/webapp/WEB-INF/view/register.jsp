@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Registration</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -15,19 +16,38 @@ $(document).ready(function(){
 	}
 });
 </script>
+<style type="text/css">
+.form-control-default {
+    display: block;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+</style>
 </head>
-<body>
-<div id="error" align="center"></div>
-<h1 align="center">Registration</h1>
-<form:form action="/registeruser" id="register" method="post" modelAttribute="user" >
+<body style="padding-top: 10%;">
 <div align="center">
-<br><br><br><br>
-<div class="form-group">Enter User Id :<form:input type="text" width="20" name="userid" path="userid"/></div>
-<div class="form-group">Enter User Name :<form:input type="text" width="20" name="username" path="username"/></div>
-<div class="form-group">Enter Password  :<form:input type="password" width="20" name="password" path="password"/></div>
-<div class="form-group">Enter Mail  :<form:input type="text" width="20" name="mail" path="email"/></div>
-<div class="form-group"><span></span><span><button type="submit">Register</button></span><span><a href="/login" >Login</a></span><span style="color: green">(If already Registered)</span></div>
+<h1 align="center">Registration</h1>
+<div id="error" align="center"></div>
+<form:form action="/registeruser" id="register" method="post" modelAttribute="user" >
+<div class="form-group"><label>Enter User Id :</label><form:input type="text" name="userid" class="form-control-default"  path="userid"/></div>
+<div class="form-group"><label>Enter User Name :</label><form:input type="text" name="username" class="form-control-default"  path="username"/></div>
+<div class="form-group"><label>Enter Password  :</label><form:input type="password" name="password" class="form-control-default"  path="password"/></div>
+<div class="form-group"><label>Enter Mail  :</label><form:input type="text" name="mail" class="form-control-default"  path="email"/></div>
+<div class="form-group">
+<button type="submit" class="btn btn-success">Register</button>
+<a href="/login" class="btn btn-info">Login</a>
 </div>
+<!-- <div class="form-group"><span></span><span><button type="submit">Register</button></span><span><a href="/login" >Login</a></span><span style="color: green"></span></div> -->
 </form:form>
+</div>
 </body>
 </html>

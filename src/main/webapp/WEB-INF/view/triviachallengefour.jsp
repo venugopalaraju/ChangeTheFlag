@@ -15,20 +15,34 @@ $(document).on('click', 'button.submit', function () {
     form.submit();
 });
 </script>
+<style type="text/css">
+.form-control-default {
+    display: block;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+</style>
 </head>
-<body>
+<body style="padding-top: 10%;">
 <div align="center">
 <h1 align="center">Trivia Challenge 4</h1>
 <form action="/validatetriviachallengefour" id="triviaForm" method="post">
-<div>
-<label> A famous Hacker who hacked phones and he is author of multiple books. Can you tell me what is his middle name ?</label>
+<div class="form-group">
+<label>Question : A famous Hacker who hacked phones and he is author of multiple books. Can you tell me what is his middle name ?</label>
+<label>Enter Your Answer :</label><input type="text" class="form-control-default" name="answer"/><span style="color: red;">${error}</span>
 </div>
 <div>
-<label>Enter Your Answer :</label><input type="text" name="answer"/><span style="color: red;">${error}</span>
-</div>
-<div>
-<button type="submit" class="btn btn-primary" style="">Submit</button>
-<button type="submit" class="submit btn btn-primary" data-action="/skipvalidatetriviachallengefour">Skip</button>
+<button type="submit" class="btn btn-success" style="">Submit</button>
+<button type="submit" class="submit btn btn-info" data-action="/skipvalidatetriviachallengefour">Skip</button>
 </div>
 </form>
 </div>
