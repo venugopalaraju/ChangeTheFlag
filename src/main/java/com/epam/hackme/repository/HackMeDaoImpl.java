@@ -1,14 +1,9 @@
 package com.epam.hackme.repository;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -49,28 +44,26 @@ public class HackMeDaoImpl implements HackMeDao{
 	public void updateScore(String userid, int challenge) {
 		UserScore score=getMyScore(userid);
 		if(challenge>score.getChallenge()) {
-		int count=jdbcTemplate.update(QueryConstants.UPDATE_SCORE,challenge,userid,userid,userid);
+		jdbcTemplate.update(QueryConstants.UPDATE_SCORE,challenge,userid,userid,userid);
 		}
-		System.out.println(challenge);
 			}
 
 
 	@Override
 	public void updateTriviaScore(String userid) {
-		int count=jdbcTemplate.update(QueryConstants.UPDATE_SCORE_TRIVIAL,userid,userid);
-		System.out.println(count);
+		jdbcTemplate.update(QueryConstants.UPDATE_SCORE_TRIVIAL,userid,userid);
 	}
 
 
 	@Override
-	public int updateScoreInFirstChallenge(String userId,int score) {
-		return jdbcTemplate.update(QueryConstants.UPDATE_SCORE_TRIVIAL, score,userId);
+	public void updateScoreInFirstChallenge(String userId,int score) {
+		jdbcTemplate.update(QueryConstants.UPDATE_SCORE_TRIVIAL, score,userId);
 	}
 
 
 	@Override
-	public int updateScoreTimestamp(String userId) {
-		return jdbcTemplate.update(QueryConstants.UPDATE_SCORE_IN_FIRST_CHALLENGE,userId);
+	public void updateScoreTimestamp(String userId) {
+		jdbcTemplate.update(QueryConstants.UPDATE_SCORE_IN_FIRST_CHALLENGE,userId);
 	}
 
 
@@ -115,38 +108,38 @@ public class HackMeDaoImpl implements HackMeDao{
 
 
 	@Override
-	public int updateTriviaChallenge0(String userid) {
-		return jdbcTemplate.update(QueryConstants.UPDATE_CHALLENGE_ZERO, userid);
+	public void updateTriviaChallenge0(String userid) {
+		jdbcTemplate.update(QueryConstants.UPDATE_CHALLENGE_ZERO, userid);
 	}
 
 
 	@Override
-	public int updateTriviaChallenge1(String userid) {
-		return jdbcTemplate.update(QueryConstants.UPDATE_TRIVIA_ONE, userid);
+	public void updateTriviaChallenge1(String userid) {
+		jdbcTemplate.update(QueryConstants.UPDATE_TRIVIA_ONE, userid);
 	}
 
 
 	@Override
-	public int updateTriviaChallenge2(String userid) {
-		return jdbcTemplate.update(QueryConstants.UPDATE_TRIVIA_TwO, userid);
+	public void updateTriviaChallenge2(String userid) {
+		jdbcTemplate.update(QueryConstants.UPDATE_TRIVIA_TwO, userid);
 	}
 
 
 	@Override
-	public int updateTriviaChallenge3(String userid) {
-		return jdbcTemplate.update(QueryConstants.UPDATE_TRIVIA_THREE, userid);
+	public void updateTriviaChallenge3(String userid) {
+		jdbcTemplate.update(QueryConstants.UPDATE_TRIVIA_THREE, userid);
 	}
 
 
 	@Override
-	public int updateTriviaChallenge4(String userid) {
-		return jdbcTemplate.update(QueryConstants.UPDATE_TRIVIA_FOUR, userid);
+	public void updateTriviaChallenge4(String userid) {
+		jdbcTemplate.update(QueryConstants.UPDATE_TRIVIA_FOUR, userid);
 	}
 
 
 	@Override
-	public int updateTriviaChallenge5(String userid) {
-		return jdbcTemplate.update(QueryConstants.UPDATE_TRIVIA_FIVE, userid);
+	public void updateTriviaChallenge5(String userid) {
+		jdbcTemplate.update(QueryConstants.UPDATE_TRIVIA_FIVE, userid);
 	}
 	
 	

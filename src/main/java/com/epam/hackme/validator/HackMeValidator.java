@@ -2,59 +2,34 @@ package com.epam.hackme.validator;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.validation.BindingResult;
-
 import com.epam.hackme.common.CommonConstants;
 import com.epam.hackme.common.PasswordConstants;
-import com.epam.hackme.dto.Trivia;
 
 public class HackMeValidator {
 
-	/*public static BindingResult validTriviaChallenges(Trivia trivia,BindingResult result) {
-		if(!PasswordConstants.TRIVIA_ANSWER_ONE.equalsIgnoreCase(trivia.getTriviaAnswerOne())) {
-			result.rejectValue("triviaAnswerOne","",PasswordConstants.WRONG);
-		}
-		if(!PasswordConstants.TRIVIA_ANSWER_TWO.equalsIgnoreCase(trivia.getTriviaAnswerTwo())) {
-			result.rejectValue("triviaAnswerTwo","",PasswordConstants.WRONG);
-		}
-		if(!PasswordConstants.TRIVIA_ANSWER_THREE.equalsIgnoreCase(trivia.getTriviaAnswerThree())) {
-			result.rejectValue("triviaAnswerThree","",PasswordConstants.WRONG);
-		}
-		if(!PasswordConstants.TRIVIA_ANSWER_FOUR.equalsIgnoreCase(trivia.getTriviaAnswerFour())) {
-			result.rejectValue("triviaAnswerFour","",PasswordConstants.WRONG);
-		}
-		if(!PasswordConstants.TRIVIA_ANSWER_FIVE.equalsIgnoreCase(trivia.getTriviaAnswerFive())) {
-			result.rejectValue("triviaAnswerFive","",PasswordConstants.WRONG);
-		}
-		return result;
-	}
-	
-	public static int validTriviaChallenges(Trivia trivia) {
-		int score=0;
-		if(PasswordConstants.TRIVIA_ANSWER_ONE.equalsIgnoreCase(trivia.getTriviaAnswerOne())) {
-			score=score+1;
-		}
-		if(PasswordConstants.TRIVIA_ANSWER_TWO.equalsIgnoreCase(trivia.getTriviaAnswerTwo())) {
-			score=score+1;
-		}
-		if(PasswordConstants.TRIVIA_ANSWER_THREE.equalsIgnoreCase(trivia.getTriviaAnswerThree())) {
-			score=score+1;
-		}
-		if(PasswordConstants.TRIVIA_ANSWER_FOUR.equalsIgnoreCase(trivia.getTriviaAnswerFour())) {
-			score=score+1;
-		}
-		if(PasswordConstants.TRIVIA_ANSWER_FIVE.equalsIgnoreCase(trivia.getTriviaAnswerFive())) {
-			score=score+1;
-		}
-		return score;
-	}
-	*/
 	public static boolean validateChallengeZero(HttpServletRequest request) {
 		String username=request.getParameter(CommonConstants.USERNAME);
 		String password=request.getParameter(CommonConstants.PASSWORD);
 		if(CommonConstants.ADMIN.equalsIgnoreCase(username)&&CommonConstants.ADMIN.equalsIgnoreCase(password)) {
 			return true;
 		}
+		return false;
+		
+	}
+	
+	public static boolean isCorrectAnswer(String answer,int challenge) {
+		switch(challenge) {
+		case 1:
+			return PasswordConstants.TRIVIA_ANSWER_ONE.equalsIgnoreCase(answer)||PasswordConstants.TRIVIA_ANSWER_ONE_1.equalsIgnoreCase(answer);
+		case 2:
+			return PasswordConstants.TRIVIA_ANSWER_TWO.equalsIgnoreCase(answer);
+		case 3:
+			return PasswordConstants.TRIVIA_ANSWER_THREE.equalsIgnoreCase(answer);
+		case 4:
+			return PasswordConstants.TRIVIA_ANSWER_FOUR.equalsIgnoreCase(answer);
+		case 5:
+			return PasswordConstants.TRIVIA_ANSWER_FIVE.equalsIgnoreCase(answer);
+			}
 		return false;
 		
 	}

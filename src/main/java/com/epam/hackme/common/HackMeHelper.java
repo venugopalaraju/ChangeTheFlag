@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.util.Base64Utils;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.epam.hackme.dto.UserScore;
 
@@ -85,14 +86,44 @@ public static void clearCookies(HttpServletRequest request,HttpServletResponse r
 	}
 }
 
-public static String ConvertToMd5(String value) throws NoSuchAlgorithmException {
-	MessageDigest md = MessageDigest.getInstance("MD5");
-	md.update(value.getBytes());
-	byte[] digest = md.digest();
-	StringBuffer sb = new StringBuffer();
-	for (byte b : digest) {
-		sb.append(String.format("%02x", b & 0xff));
-	}
-	return sb.toString();
+public static void prepareNextViewName(int challenge,ModelAndView mav) {
+	switch(challenge) {
+	case 1:
+		mav.setViewName(CommonConstants.TRIVIA_TWO_VIEW);
+		break;
+	case 2:
+		mav.setViewName(CommonConstants.TRIVIA_THREE_VIEW);
+		break;
+	case 3:
+		mav.setViewName(CommonConstants.TRIVIA_FOUR_VIEW);
+		break;
+	case 4:
+		mav.setViewName(CommonConstants.TRIVIA_FIVE_VIEW);
+		break;
+	case 5:
+		mav.setViewName(CommonConstants.CHALLENGE_ZERO_VIEW);
+		break;
+		}
 }
+
+public static void prepareSameViewName(int challenge,ModelAndView mav) {
+	switch(challenge) {
+	case 1:
+		mav.setViewName(CommonConstants.TRIVIA_ONE_VIEW);
+		break;
+	case 2:
+		mav.setViewName(CommonConstants.TRIVIA_TWO_VIEW);
+		break;
+	case 3:
+		mav.setViewName(CommonConstants.TRIVIA_THREE_VIEW);
+		break;
+	case 4:
+		mav.setViewName(CommonConstants.TRIVIA_FOUR_VIEW);
+		break;
+	case 5:
+		mav.setViewName(CommonConstants.TRIVIA_FIVE_VIEW);
+		break;
+		}
+}
+
 }

@@ -11,210 +11,75 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.epam.hackme.common.CommonConstants;
-import com.epam.hackme.common.HackMeHelper;
-import com.epam.hackme.common.PasswordConstants;
-import com.epam.hackme.dto.Trivia;
-import com.epam.hackme.repository.HackMeDaoImpl;
-import com.epam.hackme.validator.HackMeValidator;
+import com.epam.hackme.service.HackMeService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 @Controller
 public class PreChallengeController {
-
+	
 	@Autowired
-	private HackMeDaoImpl dao;
+	private HackMeService service;
 	
 	@RequestMapping(CommonConstants.TRIVIA_ONE)
-	public String triviachallengeone(HttpServletRequest request) {
-		Trivia trivia=dao.getTrivia(HackMeHelper.getUserId(request));
-		if(CommonConstants.FLAG_N.equalsIgnoreCase(trivia.getChallengeone())) {
-			return CommonConstants.TRIVIA_ONE_VIEW;
-		}
-		return CommonConstants.ERROR;
+	public ModelAndView triviachallengeone(HttpServletRequest request, ModelAndView mav) {
+		return service.trivia(request, 1, mav);
 	}
 	@RequestMapping(CommonConstants.TRIVIA_TWO)
-	public String triviachallengetwo(HttpServletRequest request) {
-		Trivia trivia=dao.getTrivia(HackMeHelper.getUserId(request));
-		if(CommonConstants.FLAG_N.equalsIgnoreCase(trivia.getChallengetwo())) {
-			return CommonConstants.TRIVIA_TWO_VIEW;
-		}
-		return CommonConstants.ERROR;
+	public ModelAndView triviachallengetwo(HttpServletRequest request, ModelAndView mav) {
+		return service.trivia(request, 2, mav);
 	}
 	@RequestMapping(CommonConstants.TRIVIA_THREE)
-	public String triviachallengethree(HttpServletRequest request) {
-		Trivia trivia=dao.getTrivia(HackMeHelper.getUserId(request));
-		if(CommonConstants.FLAG_N.equalsIgnoreCase(trivia.getChallengethree())) {
-			return CommonConstants.TRIVIA_THREE_VIEW;
-		}
-		return CommonConstants.ERROR;
+	public ModelAndView triviachallengethree(HttpServletRequest request, ModelAndView mav) {
+		return service.trivia(request, 3, mav);
 	}
 	@RequestMapping(CommonConstants.TRIVIA_FOUR)
-	public String triviachallengefour(HttpServletRequest request) {
-		Trivia trivia=dao.getTrivia(HackMeHelper.getUserId(request));
-		if(CommonConstants.FLAG_N.equalsIgnoreCase(trivia.getChallengefour())) {
-			return CommonConstants.TRIVIA_FOUR_VIEW;
-		}
-		return CommonConstants.ERROR;
+	public ModelAndView triviachallengefour(HttpServletRequest request, ModelAndView mav) {
+		return service.trivia(request, 4, mav);
 	}
 	@RequestMapping(CommonConstants.TRIVIA_FIVE)
-	public String triviachallengefive(HttpServletRequest request) {
-		Trivia trivia=dao.getTrivia(HackMeHelper.getUserId(request));
-		if(CommonConstants.FLAG_N.equalsIgnoreCase(trivia.getChallengefive())) {
-			return CommonConstants.TRIVIA_FIVE_VIEW;
-		}
-		return CommonConstants.ERROR;
+	public ModelAndView triviachallengefive(HttpServletRequest request, ModelAndView mav) {
+		return service.trivia(request,5, mav);
 	}
 	
 	@RequestMapping(CommonConstants.TRIVIA_ONE_VALIDATE)
 	public ModelAndView validatetriviachallengeone(HttpServletRequest request,ModelAndView mav) {
-		Trivia trivia=dao.getTrivia(HackMeHelper.getUserId(request));
-		if(CommonConstants.FLAG_N.equalsIgnoreCase(trivia.getChallengeone())) {
-			String answer=request.getParameter(PasswordConstants.ANSWER);
-			if(PasswordConstants.TRIVIA_ANSWER_ONE.equalsIgnoreCase(answer)||PasswordConstants.TRIVIA_ANSWER_ONE_1.equalsIgnoreCase(answer)) {
-				String userid=HackMeHelper.getUserId(request);
-				dao.updateTriviaChallenge1(userid);
-				dao.updateTriviaScore(userid);
-				if(CommonConstants.FLAG_Y.equalsIgnoreCase(trivia.getChallengezero())) {
-					return new ModelAndView(CommonConstants.FORWARD+CommonConstants.HACK_ALL);
-				}
-				mav.setViewName(CommonConstants.TRIVIA_TWO_VIEW);
-				return mav;
-			}
-			mav.setViewName(CommonConstants.TRIVIA_ONE_VIEW);
-			mav.addObject(CommonConstants.ERROR, PasswordConstants.WRONG);
-			return mav;
-		}else {
-			return new ModelAndView(CommonConstants.ERROR);
-		}	
+		return service.validateTriviaChallenge(request, mav, 1);
 	}
 	@RequestMapping(CommonConstants.TRIVIA_TWO_VALIDATE)
 	public ModelAndView validatetriviachallengetwo(HttpServletRequest request,ModelAndView mav) {
-		Trivia trivia=dao.getTrivia(HackMeHelper.getUserId(request));
-		if(CommonConstants.FLAG_N.equalsIgnoreCase(trivia.getChallengetwo())) {
-		String answer=request.getParameter(PasswordConstants.ANSWER);
-		if(PasswordConstants.TRIVIA_ANSWER_TWO.equalsIgnoreCase(answer)) {
-			String userid=HackMeHelper.getUserId(request);
-			dao.updateTriviaChallenge2(userid);
-			dao.updateTriviaScore(userid);
-			if(CommonConstants.FLAG_Y.equalsIgnoreCase(trivia.getChallengezero())) {
-				return new ModelAndView(CommonConstants.FORWARD+CommonConstants.HACK_ALL);
-			}
-			mav.setViewName(CommonConstants.TRIVIA_THREE_VIEW);
-			return mav;
-		}
-		mav.setViewName(CommonConstants.TRIVIA_TWO_VIEW);
-		mav.addObject(CommonConstants.ERROR, PasswordConstants.WRONG);
-		return mav;
-		}else {
-			return new ModelAndView(CommonConstants.ERROR);
-		}
+		return service.validateTriviaChallenge(request, mav, 2);
 	}
 	@RequestMapping(CommonConstants.TRIVIA_THREE_VALIDATE)
 	public ModelAndView validatetriviachallengethree(HttpServletRequest request,ModelAndView mav) {
-		Trivia trivia=dao.getTrivia(HackMeHelper.getUserId(request));
-		if(CommonConstants.FLAG_N.equalsIgnoreCase(trivia.getChallengethree())) {
-		String answer=request.getParameter(PasswordConstants.ANSWER);
-		if(PasswordConstants.TRIVIA_ANSWER_THREE.equalsIgnoreCase(answer)) {
-			String userid=HackMeHelper.getUserId(request);
-			dao.updateTriviaChallenge3(userid);
-			dao.updateTriviaScore(userid);
-			if(CommonConstants.FLAG_Y.equalsIgnoreCase(trivia.getChallengezero())) {
-				return new ModelAndView(CommonConstants.FORWARD+CommonConstants.HACK_ALL);
-			}
-			mav.setViewName(CommonConstants.TRIVIA_FOUR_VIEW);
-			return mav;
-		}
-		mav.setViewName(CommonConstants.TRIVIA_THREE_VIEW);
-		mav.addObject(CommonConstants.ERROR, PasswordConstants.WRONG);
-		return mav;
-		}else {
-			return new ModelAndView(CommonConstants.ERROR);
-		}
+		return service.validateTriviaChallenge(request, mav, 3);
 	}
 	@RequestMapping(CommonConstants.TRIVIA_FOUR_VALIDATE)
 	public ModelAndView validatetriviachallengefour(HttpServletRequest request,ModelAndView mav) {
-		Trivia trivia=dao.getTrivia(HackMeHelper.getUserId(request));
-		if(CommonConstants.FLAG_N.equalsIgnoreCase(trivia.getChallengefour())) {
-		String answer=request.getParameter(PasswordConstants.ANSWER);
-		if(PasswordConstants.TRIVIA_ANSWER_FOUR.equalsIgnoreCase(answer)) {
-			String userid=HackMeHelper.getUserId(request);
-			dao.updateTriviaChallenge4(userid);
-			dao.updateTriviaScore(userid);
-			if(CommonConstants.FLAG_Y.equalsIgnoreCase(trivia.getChallengezero())) {
-				return new ModelAndView(CommonConstants.FORWARD+CommonConstants.HACK_ALL);
-			}
-			mav.setViewName(CommonConstants.TRIVIA_FIVE_VIEW);
-			return mav;
-		}
-		mav.setViewName(CommonConstants.TRIVIA_FOUR_VIEW);
-		mav.addObject(CommonConstants.ERROR, PasswordConstants.WRONG);
-		return mav;
-		}else {
-			return new ModelAndView(CommonConstants.ERROR);
-		}
+		return service.validateTriviaChallenge(request, mav, 4);
 	}
 	@RequestMapping(CommonConstants.TRIVIA_FIVE_VALIDATE)
 	public ModelAndView validatetriviachallengefive(HttpServletRequest request,ModelAndView mav) {
-		Trivia trivia=dao.getTrivia(HackMeHelper.getUserId(request));
-		if(CommonConstants.FLAG_N.equalsIgnoreCase(trivia.getChallengefive())) {
-		String answer=request.getParameter(PasswordConstants.ANSWER);
-		if(PasswordConstants.TRIVIA_ANSWER_FIVE.equalsIgnoreCase(answer)) {
-			String userid=HackMeHelper.getUserId(request);
-			dao.updateTriviaChallenge5(userid);
-			dao.updateTriviaScore(userid);
-			if(CommonConstants.FLAG_Y.equalsIgnoreCase(trivia.getChallengezero())) {
-				return new ModelAndView(CommonConstants.FORWARD+CommonConstants.HACK_ALL);
-			}
-			mav.setViewName(CommonConstants.CHALLENGE_ZERO_VIEW);
-			return mav;
-		}
-		mav.setViewName(CommonConstants.TRIVIA_FIVE_VIEW);
-		mav.addObject(CommonConstants.ERROR, PasswordConstants.WRONG);
-		return mav;
-		}else {
-			return new ModelAndView(CommonConstants.ERROR);
-		}
+		return service.validateTriviaChallenge(request, mav, 5);
 	}
 	
 	@RequestMapping(CommonConstants.TRIVIA_ONE_SKIP_VALIDATE)
-	public String skipvalidatetriviachallengeone(HttpServletRequest request) {
-		Trivia trivia=dao.getTrivia(HackMeHelper.getUserId(request));
-		if(CommonConstants.FLAG_Y.equalsIgnoreCase(trivia.getChallengezero())) {
-			return CommonConstants.FORWARD+CommonConstants.HACK_ALL;
-		}
-		return CommonConstants.TRIVIA_TWO_VIEW;
+	public ModelAndView skipvalidatetriviachallengeone(HttpServletRequest request,ModelAndView mav) {
+		return service.validateTriviaSkip(request, 1, mav);
 	}
 	@RequestMapping(CommonConstants.TRIVIA_TWO_SKIP_VALIDATE)
-	public String skipvalidatetriviachallengetwo(HttpServletRequest request) {
-		Trivia trivia=dao.getTrivia(HackMeHelper.getUserId(request));
-		if(CommonConstants.FLAG_Y.equalsIgnoreCase(trivia.getChallengezero())) {
-			return CommonConstants.FORWARD+CommonConstants.HACK_ALL;
-		}
-		return CommonConstants.TRIVIA_THREE_VIEW;
+	public ModelAndView skipvalidatetriviachallengetwo(HttpServletRequest request,ModelAndView mav) {
+		return service.validateTriviaSkip(request, 2, mav);
 	}
 	@RequestMapping(CommonConstants.TRIVIA_THREE_SKIP_VALIDATE)
-	public String skipvalidatetriviachallengethree(HttpServletRequest request) {
-		Trivia trivia=dao.getTrivia(HackMeHelper.getUserId(request));
-		if(CommonConstants.FLAG_Y.equalsIgnoreCase(trivia.getChallengezero())) {
-			return CommonConstants.FORWARD+CommonConstants.HACK_ALL;
-		}
-		return CommonConstants.TRIVIA_FOUR_VIEW;
+	public ModelAndView skipvalidatetriviachallengethree(HttpServletRequest request,ModelAndView mav) {
+		return service.validateTriviaSkip(request, 3, mav);
 	}
 	@RequestMapping(CommonConstants.TRIVIA_FOUR_SKIP_VALIDATE)
-	public String skipvalidatetriviachallengefour(HttpServletRequest request) {
-		Trivia trivia=dao.getTrivia(HackMeHelper.getUserId(request));
-		if(CommonConstants.FLAG_Y.equalsIgnoreCase(trivia.getChallengezero())) {
-			return CommonConstants.FORWARD+CommonConstants.HACK_ALL;
-		}
-		return CommonConstants.TRIVIA_FIVE_VIEW;
+	public ModelAndView skipvalidatetriviachallengefour(HttpServletRequest request,ModelAndView mav) {
+		return service.validateTriviaSkip(request, 4, mav);
 	}
 	@RequestMapping(CommonConstants.TRIVIA_FIVE_SKIP_VALIDATE)
-	public String skipvalidatetriviachallengefive(HttpServletRequest request) {
-		Trivia trivia=dao.getTrivia(HackMeHelper.getUserId(request));
-		if(CommonConstants.FLAG_Y.equalsIgnoreCase(trivia.getChallengezero())) {
-			return CommonConstants.FORWARD+CommonConstants.HACK_ALL;
-		}
-		return CommonConstants.CHALLENGE_ZERO_VIEW;
+	public ModelAndView skipvalidatetriviachallengefive(HttpServletRequest request,ModelAndView mav) {
+		return service.validateTriviaSkip(request, 5, mav);
 	}
 	
 	@RequestMapping(CommonConstants.CHALLENGE_ZERO)
@@ -224,17 +89,6 @@ public class PreChallengeController {
 	
 	@RequestMapping(CommonConstants.VALIDATE_CHALLENGE_ZERO)
 	public ModelAndView hackall(HttpServletRequest request,ModelAndView mav) throws JsonProcessingException {
-		if(HackMeValidator.validateChallengeZero(request)) {
-			String userid=HackMeHelper.getUserId(request);
-			dao.updateTriviaChallenge0(userid);
-			Trivia trivia=dao.getTrivia(userid);
-			mav.addObject(CommonConstants.TRIVIA_FLAG, new ObjectMapper().writeValueAsString(trivia));
-			mav.addObject(CommonConstants.CHALLENGE_FLAG,0);
-			mav.setViewName(CommonConstants.CHALLENGE_ALL_VIEW);
-			return mav;
-		}
-		else {
-			return new ModelAndView(CommonConstants.CHALLENGE_ZERO_VIEW);
-		}
+		return service.validateChallengeZero(request, mav);
 	}
 }
