@@ -80,4 +80,8 @@ String FLAG_Y="Y";
 String FLAG_N="N";
 String CHALLENGE_FLAG="challenge";
 String TRIVIA_FLAG="trivia";
+String MYSCORE_TR_1="<tr><td>User Id </td><td>";
+String MYSCORE_TR_2="</td></tr><tr><td>Username </td><td>";
+String MYSCORE_TR_3="</td></tr><tr><td>Score </td><td>";
+String MYSCORE_TR_4="</td></tr>";
 }

@@ -38,21 +38,14 @@ public static String getUserId(HttpServletRequest request) {
 
 public static String getMyScore(UserScore score) {
 	StringBuilder scoreBoard=new StringBuilder();
-		scoreBoard.append("<tr><td>");
-		scoreBoard.append("User Id ");
-		scoreBoard.append("</td><td>");
+		scoreBoard.append(CommonConstants.MYSCORE_TR_1);
 		scoreBoard.append(score.getUserid());
-		scoreBoard.append("</td></tr><tr><td>");
-		scoreBoard.append("Username ");
-		scoreBoard.append("</td><td>");
+		scoreBoard.append(CommonConstants.MYSCORE_TR_2);
 		scoreBoard.append(score.getUserName());
-		scoreBoard.append("</td></tr><tr><td>");
-		scoreBoard.append("Score ");
-		scoreBoard.append("</td><td>");
+		scoreBoard.append(CommonConstants.MYSCORE_TR_3);
 		scoreBoard.append(score.getScore());
-		scoreBoard.append("</td></tr>");
-	return scoreBoard.toString();
-	
+		scoreBoard.append(CommonConstants.MYSCORE_TR_4);
+		return scoreBoard.toString();
 }
 
 public static void clearCookies(HttpServletRequest request,HttpServletResponse response) {
