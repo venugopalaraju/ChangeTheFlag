@@ -901,7 +901,16 @@ $(document).ajaxStart(function(){
 				{
 					url: "/getscores",
 					contentType: 'application/json',
-					success:function(data){
+					success:function(list){
+						var data='';
+						var userid='${user_id}';
+						$.each(list, function( index, value ) {
+							if(userid==value.userid){
+								data=data+"<tr style='color:blue;'><td>"+(index+1)+"</td><td>"+value.userid+"</td><td>"+value.userName+"</td><td>"+value.score+"</td></tr>";
+							}else{
+								data=data+"<tr><td>"+(index+1)+"</td><td>"+value.userid+"</td><td>"+value.userName+"</td><td>"+value.score+"</td></tr>";
+							}
+													});
 						$("#model-tbody").append(data);
 						$("#leaderBoardModel").modal('toggle');
 					}});
@@ -961,6 +970,7 @@ $(document).ajaxStart(function(){
          <table class="table table-striped">
     <thead>
       <tr>
+      	<th>Rank</th>
         <th>User Id</th>
         <th>Username</th>
         <th>Score</th>

@@ -36,31 +36,6 @@ public static String getUserId(HttpServletRequest request) {
 	return (String) session.getAttribute(CommonConstants.USER_ID);
 }
 
-public static String getScoreBoard(List<UserScore> scores,String userId) {
-	StringBuilder scoreBoard=new StringBuilder();
-	scores.forEach(e->{
-		if(e.getUserid().equalsIgnoreCase(userId)) {
-			scoreBoard.append("<tr style='color:blue;'><td>");
-			scoreBoard.append(e.getUserid());
-			scoreBoard.append("</td><td>");
-			scoreBoard.append(e.getUserName());
-			scoreBoard.append("</td><td>");
-			scoreBoard.append(e.getScore());
-			scoreBoard.append("</td></tr>");
-		}else {
-			scoreBoard.append("<tr><td>");
-			scoreBoard.append(e.getUserid());
-			scoreBoard.append("</td><td>");
-			scoreBoard.append(e.getUserName());
-			scoreBoard.append("</td><td>");
-			scoreBoard.append(e.getScore());
-			scoreBoard.append("</td></tr>");
-		}
-	});
-	return scoreBoard.toString();
-	
-}
-
 public static String getMyScore(UserScore score) {
 	StringBuilder scoreBoard=new StringBuilder();
 		scoreBoard.append("<tr><td>");

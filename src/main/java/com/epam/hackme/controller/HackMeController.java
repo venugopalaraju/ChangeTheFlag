@@ -226,9 +226,9 @@ public class HackMeController {
 	}
 	@RequestMapping(CommonConstants.GET_SCORES)
 	@ResponseBody
-	public String getscores(HttpServletRequest request) {
+	public List<UserScore> getscores(HttpServletRequest request) throws JsonProcessingException {
 		List<UserScore> scores=dao.getSores();
-		return HackMeHelper.getScoreBoard(scores,HackMeHelper.getUserId(request));
+		return scores;
 	}
 	@RequestMapping(CommonConstants.GET_MY_SCORE)
 	@ResponseBody
