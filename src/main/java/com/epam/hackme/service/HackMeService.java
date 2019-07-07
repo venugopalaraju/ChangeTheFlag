@@ -15,4 +15,6 @@ public ModelAndView trivia(HttpServletRequest request,int challenge,ModelAndView
 public ModelAndView validateTriviaChallenge(HttpServletRequest request,ModelAndView mav,int challenge);
 public ModelAndView validateTriviaSkip(HttpServletRequest request,int challenge,ModelAndView mav);
 public ModelAndView validateChallengeZero(HttpServletRequest request,ModelAndView mav) throws JsonProcessingException;
+public ModelAndView hackall(HttpServletRequest request,ModelAndView mav) throws JsonProcessingException;
+public String validateChallenge(boolean isValid,HttpServletRequest request,int challenge);
 }
