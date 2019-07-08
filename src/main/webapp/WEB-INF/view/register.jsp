@@ -33,7 +33,7 @@ $(document).ready(function(){
 }
 </style>
 </head>
-<body style="padding-top: 10%;">
+<body style="padding-top: 10%;background: #D3D3D6">
 <div align="center">
 <h1 align="center">Registration</h1>
 <div id="error" align="center"></div>

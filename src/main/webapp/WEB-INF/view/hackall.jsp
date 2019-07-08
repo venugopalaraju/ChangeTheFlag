@@ -41,7 +41,7 @@ top:17px;
 }
 .w3schools-logo .dotcom {color:#4CAF50}
 .topnav {
-position:relative;
+position:fixed;
 z-index:2;
 font-size:17px;
 background-color:#5f5f5f;
@@ -89,18 +89,19 @@ width:204px;
 #sidenav a.activesub:hover,#sidenav a.activesub:active {background-color:#ccc;color:#000;}
 #leftmenuinner {
 position:fixed;
-top:0;
 padding-bottom:0;    
 height:100%;
 width:220px;
-background-color:transparent;
+top:50px;
+z-index: 5000;
+background: #f1f1f1;
 }
 #leftmenuinnerinner {
 height:100%;
 width:100%;
-overflow-y:scroll;
+overflow-y:auto;
 overflow-x:hidden;
-padding-top:20px;
+background-color: #D3D3B6;
 }
 #main {padding:16px}
 #mainLeaderboard {height:90px}
@@ -162,7 +163,11 @@ input.gsc-input, .gsc-input-box, .gsc-input-box-hover, .gsc-input-box-focus, .gs
 box-sizing:content-box; line-height:normal;}
 .gsc-tabsArea div {overflow:visible;}
 /*"nullstille" w3css:*/
-.w3-main{transition:margin-left 0s;}
+.w3-main{transition:margin-left 0s;
+    background: #D3D2CD;
+    height: 100%;
+    position: absolute;
+    width: 100%;}
 /*"nullstilling" slutt*/
 @media (min-width:1675px) {
 #main {width:79%}
@@ -383,6 +388,15 @@ hr[id^="ez-insert-after-placeholder"] {margin-top: 0;}
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+.left-menu-item{
+     padding: 10px;
+    /* text-align: center; */
+    vertical-align: middle;
+    border-bottom: 1px solid grey;
+    font-weight: 600;
+    font-size: 14px;
+    color: black;
+}
 </style>
 </head>
 <body>
@@ -415,19 +429,18 @@ hr[id^="ez-insert-after-placeholder"] {margin-top: 0;}
   <div id='leftmenuinner'>
     <div class='w3-light-grey' id='leftmenuinnerinner'>
 <!--  <a href='javascript:void(0)' onclick='close_menu()' class='w3-button w3-hide-large w3-large w3-display-topright' style='right:16px;padding:3px 12px;font-weight:bold;'>&times;</a>-->
-<h2 class="left"><span class="left_h2">Challenges</span></h2>
-<div  style="border-style: inset;" id="cha1div">Challenge 1</div>
-<div  style="border-style: inset;" id="cha2div">Challenge 2</div>
-<div  style="border-style: inset;" id="cha3div">Challenge 3</div>
-<div  style="border-style: inset;" id="cha4div">Challenge 4</div>
-<div  style="border-style: inset;" id="cha5div">Challenge 5</div>
-<div  style="border-style: inset;" id="cha6div">Challenge 6</div>
-<div  style="border-style: inset;" id="cha7div">Challenge 7</div>
-<div  style="border-style: inset;" id="cha8div">Challenge 8</div>
-<div  style="border-style: inset;" id="cha9div">Challenge 9</div>
-<div  style="border-style: inset;" id="cha10div">Challenge 10</div>
-<div  style="border-style: inset;" id="cha11div">Challenge 11</div>
-<div  style="border-style: inset;" id="cha12div">Challenge 12</div>
+<div class="left-menu-item"  id="cha1div" >Challenge 1</div>
+<div class="left-menu-item"  id="cha2div">Challenge 2</div>
+<div class="left-menu-item"  id="cha3div">Challenge 3</div>
+<div class="left-menu-item"  id="cha4div">Challenge 4</div>
+<div class="left-menu-item"  id="cha5div">Challenge 5</div>
+<div class="left-menu-item"  id="cha6div">Challenge 6</div>
+<div class="left-menu-item"  id="cha7div">Challenge 7</div>
+<div class="left-menu-item"  id="cha8div">Challenge 8</div>
+<div class="left-menu-item"  id="cha9div">Challenge 9</div>
+<div class="left-menu-item"  id="cha10div">Challenge 10</div>
+<div class="left-menu-item"  id="cha11div">Challenge 11</div>
+<div class="left-menu-item"  id="cha12div">Challenge 12</div>
     </div>
   </div>
 </div>

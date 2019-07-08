@@ -32,7 +32,7 @@ $(document).on('click', 'button.submit', function () {
 }
 </style>
 </head>
-<body style="padding-top: 10%;">
+<body style="padding-top: 10%;background: #D3D3D6">
 <div align="center">
 <h1 align="center">Trivia Challenge 5</h1>
 <form action="/validatetriviachallengefive" id="triviaForm" method="post">
