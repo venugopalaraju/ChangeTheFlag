@@ -164,13 +164,17 @@ public class HackMeServiceImpl implements HackMeService {
 
 	@Override
 	public ModelAndView hackall(HttpServletRequest request, ModelAndView mav) throws JsonProcessingException {
-		HttpSession session = request.getSession();
-		String userid = HackMeHelper.getUserId(request);
-		UserScore score = dao.getMyScore(userid);
-		session.setAttribute(CommonConstants.CHALLENGE_FLAG, score.getChallenge());
-		Trivia t = dao.getTrivia(HackMeHelper.getUserId(request));
-		mav.addObject(CommonConstants.TRIVIA_FLAG, new ObjectMapper().writeValueAsString(t));
-		mav.setViewName(CommonConstants.CHALLENGE_ALL_VIEW);
+		if(isTriviaChallengeNotComepleted(request, 0)) {
+			mav.setViewName(CommonConstants.CHALLENGE_ZERO_VIEW); 
+		}else {
+			HttpSession session = request.getSession();
+			String userid = HackMeHelper.getUserId(request);
+			UserScore score = dao.getMyScore(userid);
+			session.setAttribute(CommonConstants.CHALLENGE_FLAG, score.getChallenge());
+			Trivia t = dao.getTrivia(HackMeHelper.getUserId(request));
+			mav.addObject(CommonConstants.TRIVIA_FLAG, new ObjectMapper().writeValueAsString(t));
+			mav.setViewName(CommonConstants.CHALLENGE_ALL_VIEW);
+		}
 		return mav;
 	}
 

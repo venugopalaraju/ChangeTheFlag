@@ -36,6 +36,7 @@
 </div>
 <div>
 <button type="submit" class="btn btn-success">Login</button>
+<a href="/login" class="btn btn-info">Logout</a>
 </div>
 </form>
 </div>
