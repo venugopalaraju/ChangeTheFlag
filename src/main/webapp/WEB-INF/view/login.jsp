@@ -44,10 +44,10 @@ $(document).ready(function(){
 <form action="/validateuser" id="challengeloginform" method="post">
 <div class="form-group">
 <label>Enter User Id :</label>
-<input type="text" width="20" name="userid" class="form-control-default"/></div>
+<input type="text" width="20" name="userid" class="form-control-default" autocomplete="off" /></div>
 <div class="form-group">
 <label>Enter Password  :</label>
-<input type="password" width="20" name="password" class="form-control-default"/></div>
+<input type="password" width="20" name="password" class="form-control-default" autocomplete="off" /></div>
 <div class="form-group">
 <button type="submit" class="btn btn-success">Login</button>
 <a href="/register" class="btn btn-info">Register</a>

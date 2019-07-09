@@ -30,9 +30,9 @@
 <div><p>Application initiated with default credentials. Try the default credentials you know.</p></div>
 <div class="form-group">
 <label>Enter User Name :</label>
-<input type="text" width="20" name="username" class="form-control-default"/>
+<input type="text" width="20" name="username" class="form-control-default" autocomplete="off" />
 <label>Enter Password  :</label>
-<input type="password" width="20" name="password" class="form-control-default"/>
+<input type="password" width="20" name="password" class="form-control-default" autocomplete="off" />
 </div>
 <div>
 <button type="submit" class="btn btn-success">Login</button>

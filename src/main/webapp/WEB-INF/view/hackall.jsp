@@ -988,7 +988,7 @@ $(document).ajaxStart(function(){
 					contentType: 'application/json',
 					success:function(data){
 						var score="<span style='color: #b3d7ff;'>Score: "+data+"/100</span>";
-						$('.topnav-right span').html(score);
+						$('.topnav-right #scorecard').html(score);
 					}});
 	}
 </script>

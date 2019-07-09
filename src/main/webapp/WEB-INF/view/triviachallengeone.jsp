@@ -37,7 +37,7 @@ $(document).on('click', 'button.submit', function () {
 <h1 align="center">Trivia Challenge 1</h1>
 <form action="/validatetriviachallengeone" id="triviaForm" method="post">
 <div class="form-group">
-<label>Question : Which fictional city is the home of Batman?</label>
+<label>Question : Which fictional city is the home of Batman?</label><br>
 <label>Enter Your Answer :</label><input type="text" name="answer" class="form-control-default" autocomplete="off"/><span style="color: red;">${error}</span>
 </div>
 <div>

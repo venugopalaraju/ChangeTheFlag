@@ -37,7 +37,7 @@ $(document).on('click', 'button.submit', function () {
 <h1 align="center">Trivia Challenge 2</h1>
 <form action="/validatetriviachallengetwo" id="triviaForm" method="post">
 <div class="form-group">
-<label>Question : What type of animal was inside Sputnik 2 when launched into orbit in 1957 ?</label>
+<label>Question : What type of animal was inside Sputnik 2 when launched into orbit in 1957 ?</label><br>
 <label>Enter Your Answer :</label>
 <input type="text" name="answer" class="form-control-default" autocomplete="off"/><span style="color: red;">${error}</span>
 </div>
