@@ -40,7 +40,7 @@ $(document).on('click', 'button.submit', function () {
 <label>Question : When did neo's passport expired?</label>
 <p>Hint : Answer in month/day/year Format i.e american format</p>
 <label>Enter Your Answer :</label>
-<input type="text" name="answer" class="form-control-default"/><span style="color: red;">${error}</span>
+<input type="text" name="answer" class="form-control-default" autocomplete="off"/><span style="color: red;">${error}</span>
 </div>
 <div>
 <button type="submit" class="btn btn-success">Submit</button>

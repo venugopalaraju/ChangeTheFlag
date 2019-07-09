@@ -29,4 +29,5 @@ public String challange10username(String getvalue);
 public String validateChallenge12(@RequestBody User user,HttpServletRequest request);
 public List<UserScore> getscores();
 public String getMyScore(HttpServletRequest request);
+public String getMyScoreCard(HttpServletRequest request);
 }

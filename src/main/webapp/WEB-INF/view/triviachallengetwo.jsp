@@ -39,7 +39,7 @@ $(document).on('click', 'button.submit', function () {
 <div class="form-group">
 <label>Question : What type of animal was inside Sputnik 2 when launched into orbit in 1957 ?</label>
 <label>Enter Your Answer :</label>
-<input type="text" name="answer" class="form-control-default"/><span style="color: red;">${error}</span>
+<input type="text" name="answer" class="form-control-default" autocomplete="off"/><span style="color: red;">${error}</span>
 </div>
 <div>
 <button type="submit" class="btn btn-success" style="">Submit</button>

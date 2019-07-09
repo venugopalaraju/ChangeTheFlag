@@ -29,7 +29,19 @@ public class HackMeController {
 	@Autowired
 	private HackMeService service;
 
-	@RequestMapping(CommonConstants.HACK_ALL)
+	@RequestMapping({CommonConstants.CLICK_HERE})
+	public String clickhere(HttpServletRequest request, ModelAndView mav) throws JsonProcessingException {
+		try {
+			if(HackMeHelper.getUserId(request).isEmpty()) {
+				return CommonConstants.USER_LOGIN_VIEW;
+			}
+		}catch(Exception e) {
+			return CommonConstants.USER_LOGIN_VIEW;
+		}
+		
+		return CommonConstants.FORWARD+CommonConstants.HACK_ALL;
+	}
+	@RequestMapping({CommonConstants.HACK_ALL,CommonConstants.USER_LOGIN_DEFAULT})
 	public ModelAndView hackall(HttpServletRequest request, ModelAndView mav) throws JsonProcessingException {
 		return service.hackall(request, mav);
 	}
@@ -152,5 +164,11 @@ public class HackMeController {
 	@ResponseBody
 	public String getMyScore(HttpServletRequest request) {
 		return service.getMyScore(request);
+	}
+	
+	@RequestMapping(CommonConstants.GET_MY_SCORE_CARD)
+	@ResponseBody
+	public String getMyScoreCard(HttpServletRequest request) {
+		return service.getMyScoreCard(request);
 	}
 }

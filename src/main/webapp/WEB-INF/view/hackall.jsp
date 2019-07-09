@@ -406,7 +406,7 @@ hr[id^="ez-insert-after-placeholder"] {margin-top: 0;}
     <div class="w3-bar w3-left" style="width:100%;overflow:hidden;height:50px">
       <div class="topnav-right">
       <a class="w3-bar-item w3-button" onclick="openScore()" title='leader Board' style="cursor: pointer;">leader Board</a>
-      <a class="w3-bar-item w3-button" onclick="openMyScore()" title='My Score' style="cursor: pointer;">My Score</a>
+      <a class="w3-bar-item w3-button" onclick="openMyScore()" title='My Score' style="cursor: pointer;">My Profile</a>
 
 					<button class="btn btn-secondary dropdown-toggle" type="button"
 						id="dropdownMenuButton" data-toggle="dropdown"
@@ -419,6 +419,7 @@ hr[id^="ez-insert-after-placeholder"] {margin-top: 0;}
 						<a class="dropdown-item" href="/triviachallengefive" id="tc5">Trivia Challenge 5</a>
 					</div>
 					<a class="w3-bar-item w3-button" href="/login"  style="cursor: pointer;color: inherit;">Logout</a>
+					<span id="scorecard"></span>
       <!-- <a class="w3-bar-item w3-button" href="/login" target="_self">Logout</a> -->
   </div>
  </div>
@@ -628,6 +629,7 @@ $(function() {
 		challenge(1);
 		$("#cha"+1+"div").append("<span class='hand'>&#9754;</span>");
 	}
+	updateMyScore();
 });
 function challenge(id){
 	if(score>1){
@@ -665,6 +667,7 @@ function validatechallenge1(){
 					if(data=="success"){
 						score+=1;
 						challenge(score);
+						updateMyScore();
 					}else{
 						alert("Enter valid password");
 					}
@@ -691,6 +694,7 @@ function validatechallenge2(){
 					if(data=="success"){
 						score+=1;
 						challenge(score);
+						updateMyScore();
 					}else{
 						alert("Enter valid password");
 					}
@@ -708,6 +712,7 @@ function validatechallenge3(){
 					if(data=="success"){
 						score+=1;
 						challenge(score);
+						updateMyScore();
 					}else{
 						alert("Enter valid password");
 					}
@@ -734,6 +739,7 @@ function validatechallenge4(){
 					if(data=="success"){
 						score+=1;
 						challenge(score);
+						updateMyScore();
 					}else{
 						alert("Enter valid password");
 					}
@@ -751,6 +757,7 @@ function validatechallenge5(){
 					if(data=="success"){
 						score+=1;
 						challenge(score);
+						updateMyScore();
 					}else{
 						alert("Enter valid password");
 					}
@@ -768,6 +775,7 @@ function challenge6(){
 						alert("your role is Admin..!!");
 						score+=1;
 						challenge(score);
+						updateMyScore();
 					}
 				}});
 }
@@ -783,6 +791,7 @@ function validatechallenge7(){
 					if(data=="success"){
 						score+=1;
 						challenge(score);
+						updateMyScore();
 					}else{
 						alert("Please enter a string which contains more than 20 characters");
 					}
@@ -800,6 +809,7 @@ function validatechallenge8(){
 					if(data=="success"){
 						score+=1;
 						challenge(score);
+						updateMyScore();
 					}else{
 						alert("Enter valid password");
 					}
@@ -830,6 +840,7 @@ function validatechallenge9pwd(){
 					if(data=="success"){
 						score+=1;
 						challenge(score);
+						updateMyScore();
 					}else{
 						alert("Enter valid password");
 					}
@@ -847,6 +858,7 @@ function validatechallenge10(){
 					if(data=="success"){
 						score+=1;
 						challenge(score);
+						updateMyScore();
 					}else{
 						alert("Enter valid password");
 					}
@@ -891,6 +903,7 @@ $(document).ajaxStart(function(){
 						if(data=="success"){
 							score+=1;
 							challenge(score);
+							updateMyScore();
 						}else{
 							alert("Enter valid crednetials");
 						}
@@ -966,6 +979,17 @@ $(document).ajaxStart(function(){
 			$("#tc5").css("background-color","lightblue");
 			$("#tc5").append("<span class='tick'>&#10004;</span>");
 		}
+	}
+	function updateMyScore(){
+		$("#myscore-table").find("tr").remove();
+		$.ajax(
+				{
+					url: "/getmyscorecard",
+					contentType: 'application/json',
+					success:function(data){
+						var score="<span style='color: #b3d7ff;'>Score: "+data+"/100</span>";
+						$('.topnav-right span').html(score);
+					}});
 	}
 </script>
 <div class="modal" id="leaderBoardModel">

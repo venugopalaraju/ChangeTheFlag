@@ -19,7 +19,7 @@ public class LoginController {
 	@Autowired
 	private HackMeService service;
 	
-	@RequestMapping({CommonConstants.USER_LOGIN,CommonConstants.USER_LOGIN_DEFAULT})
+	@RequestMapping({CommonConstants.USER_LOGIN})
 	public String login(HttpServletRequest request,HttpServletResponse response) {
 		HackMeHelper.clearCookies(request, response);
 		return CommonConstants.USER_LOGIN_VIEW;

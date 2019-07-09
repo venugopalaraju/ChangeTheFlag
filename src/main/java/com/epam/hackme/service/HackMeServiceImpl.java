@@ -262,4 +262,9 @@ public class HackMeServiceImpl implements HackMeService {
 		return HackMeHelper.getMyScore(score);
 	}
 
+	@Override
+	public String getMyScoreCard(HttpServletRequest request){
+		return String.valueOf(dao.getMyScore(HackMeHelper.getUserId(request)).getScore());
+	}
+
 }

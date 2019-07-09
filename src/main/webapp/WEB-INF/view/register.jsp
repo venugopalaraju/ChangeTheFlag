@@ -38,10 +38,10 @@ $(document).ready(function(){
 <h1 align="center">Registration</h1>
 <div id="error" align="center"></div>
 <form:form action="/registeruser" id="register" method="post" modelAttribute="user" >
-<div class="form-group"><label>Enter User Id :</label><form:input type="text" name="userid" class="form-control-default"  path="userid"/></div>
-<div class="form-group"><label>Enter User Name :</label><form:input type="text" name="username" class="form-control-default"  path="username"/></div>
-<div class="form-group"><label>Enter Password  :</label><form:input type="password" name="password" class="form-control-default"  path="password"/></div>
-<div class="form-group"><label>Enter Mail  :</label><form:input type="text" name="mail" class="form-control-default"  path="email"/></div>
+<div class="form-group"><label>Enter User Id :</label><form:input type="text" name="userid" class="form-control-default"  path="userid" autocomplete="off" placeholder="Epam UserId"/>(Numeric values Only)</div>
+<div class="form-group"><label>Enter User Name :</label><form:input type="text" name="username" class="form-control-default"  path="username" autocomplete="off"/>(Alphanumeric Characters Only)</div>
+<div class="form-group"><label>Enter Password  :</label><form:input type="password" name="password" class="form-control-default"  path="password" autocomplete="off"/></div>
+<div class="form-group"><label>Enter Mail  :</label><form:input type="text" name="mail" class="form-control-default"  path="email" autocomplete="off"/></div>
 <div class="form-group">
 <button type="submit" class="btn btn-success">Register</button>
 <a href="/login" class="btn btn-info">Login</a>

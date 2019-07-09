@@ -43,7 +43,7 @@ $(document).on('click', 'button.submit', function () {
 Hint: A security organization producing a short film "REBOOT" and released trailer in YouTube.
 Can you find the password?</p>
 <label>Enter Your Answer :</label>
-<input type="text" name="answer" class="form-control-default"/><span style="color: red;">${error}</span>
+<input type="text" name="answer" class="form-control-default" autocomplete="off"/><span style="color: red;">${error}</span>
 </div>
 <div>
 <button type="submit" class="btn btn-success" style="">Submit</button>

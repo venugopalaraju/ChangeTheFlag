@@ -38,7 +38,7 @@ $(document).on('click', 'button.submit', function () {
 <form action="/validatetriviachallengefour" id="triviaForm" method="post">
 <div class="form-group">
 <label>Question : A famous Hacker who hacked phones and he is author of multiple books. Can you tell me what is his middle name ?</label>
-<label>Enter Your Answer :</label><input type="text" class="form-control-default" name="answer"/><span style="color: red;">${error}</span>
+<label>Enter Your Answer :</label><input type="text" class="form-control-default" name="answer" autocomplete="off"/><span style="color: red;">${error}</span>
 </div>
 <div>
 <button type="submit" class="btn btn-success" style="">Submit</button>
