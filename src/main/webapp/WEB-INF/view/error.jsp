@@ -11,8 +11,8 @@
 <body>
 <div align="center">
 <div><img alt="" src="\images\error.png"></div>
-<div><p>You have lost Something...!!!Try again.</p></div>
-<div><a href="/clickhere" class="btn btn-info">Click here</a></div>
+<div><p>You have lost Something...!!!</p></div>
+<div><a href="/clickhere" class="btn btn-info">Try again</a></div>
 </div>
 </body>
 </html>

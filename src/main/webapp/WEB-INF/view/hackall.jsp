@@ -50,6 +50,7 @@ width:100%;
 padding:0;
 letter-spacing:1px;
 font-family:"Segoe UI",Arial,sans-serif;
+padding-right: 33px;
 }
 .topnav a{
 padding:10px 15px 9px 15px !important;
@@ -609,7 +610,7 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <div class="form-group"><button onclick="validatechallenge12()" class="btn btn-success">Submit</button></div>
 </div>
 <div id="challenge13" class="challenge" style="display:none;">
-<div><p style="color: blue;">Congratulations..!! You have passed all the challenges</p> <a href="/login" style="color: green">Logout</a></div>
+<div style="padding-top: 10%;"><p style="color: blue;">You have passed all the challenges. Please check your score board to know your score.If you have not earned 100% please complete Trivia Challenges also. Thank you..!!!</p> <a href="/login" style="color: green">Logout</a></div>
 </div>
 <input type="hidden" id="ensrcpwd" name="user" value="texens" />
 <script type="text/javascript">
