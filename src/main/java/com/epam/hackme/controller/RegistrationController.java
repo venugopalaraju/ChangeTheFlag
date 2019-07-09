@@ -9,6 +9,7 @@ import com.epam.hackme.common.CommonConstants;
 import com.epam.hackme.dto.User;
 import com.epam.hackme.repository.HackMeDaoImpl;
 import com.epam.hackme.service.HackMeService;
+import com.epam.hackme.validator.HackMeValidator;
 
 @Controller
 public class RegistrationController {
@@ -23,6 +24,9 @@ public class RegistrationController {
 	
 	@RequestMapping(CommonConstants.REGISTRATION_USER)
 	public ModelAndView registeruser(User user) {
+		if(!HackMeValidator.validateUser(user)) {
+			return new ModelAndView(CommonConstants.REGISTRATION_VIEW, CommonConstants.ERROR,"Oh! Please No XSS attacks here!");
+		}
 		try {
 			service.registerUser(user);
 			return new ModelAndView(CommonConstants.USER_LOGIN, "userid", user.getUserid());

@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.epam.hackme.common.CommonConstants;
 import com.epam.hackme.common.PasswordConstants;
+import com.epam.hackme.dto.User;
 
 public class HackMeValidator {
 
@@ -30,6 +31,14 @@ public class HackMeValidator {
 		case 5:
 			return PasswordConstants.TRIVIA_ANSWER_FIVE.equalsIgnoreCase(answer);
 			}
+		return false;
+		
+	}
+	
+	public static boolean validateUser(User user) {
+		if(user.getUsername().matches("[a-zA-Z0-9]")) {
+			return true;
+		}
 		return false;
 		
 	}
