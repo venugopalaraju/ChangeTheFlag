@@ -23,9 +23,9 @@ public class RegistrationController {
 	}
 	
 	@RequestMapping(CommonConstants.REGISTRATION_USER)
-	public ModelAndView registeruser(User user) {
-		if(!HackMeValidator.validateUser(user)) {
-			return new ModelAndView(CommonConstants.REGISTRATION_VIEW, CommonConstants.ERROR,"Oh! Please No XSS attacks here!");
+	public ModelAndView registeruser(User user,ModelAndView mav) {
+		if(HackMeValidator.validateUser(user,mav)) {
+			return mav;
 		}
 		try {
 			service.registerUser(user);

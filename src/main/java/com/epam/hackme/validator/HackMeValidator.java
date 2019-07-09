@@ -2,6 +2,9 @@ package com.epam.hackme.validator;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.util.ObjectUtils;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.epam.hackme.common.CommonConstants;
 import com.epam.hackme.common.PasswordConstants;
 import com.epam.hackme.dto.User;
@@ -35,11 +38,26 @@ public class HackMeValidator {
 		
 	}
 	
-	public static boolean validateUser(User user) {
-		if(user.getUsername().matches("[a-zA-Z0-9]")) {
+	public static boolean validateUser(User user,ModelAndView mav) {
+		if(user.getUserid().isEmpty()||user.getUsername().isEmpty()||user.getPassword().isEmpty()||user.getEmail().isEmpty()) {
+			mav.setViewName(CommonConstants.REGISTRATION_VIEW);
+			mav.addObject(CommonConstants.ERROR,"Please enter valid details and click on register");
 			return true;
 		}
-		return false;
+		if(!user.getUsername().matches("^[a-zA-Z0-9]+$")) { 
+			mav.setViewName(CommonConstants.REGISTRATION_VIEW);
+			mav.addObject(CommonConstants.ERROR,"Oh! Please No XSS attacks here!");
+			return true;
+		}if(!user.getUserid().matches("\\d+")) {
+			mav.setViewName(CommonConstants.REGISTRATION_VIEW);
+			mav.addObject(CommonConstants.ERROR,"User Id should be a numeric value");
+			 return true;
+		}if(!user.getEmail().matches("^[A-Za-z0-9+_]+@+[A-Za-z0-9+_]+.+[A-Za-z0-9+_]$")) {
+			mav.setViewName(CommonConstants.REGISTRATION_VIEW);
+			mav.addObject(CommonConstants.ERROR,"Please Enter Valid Email Address Only!");
+			 return true;
+		}
+				return false;
 		
 	}
 }
