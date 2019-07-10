@@ -1,16 +1,26 @@
 package com.epam.hackme.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -170,5 +180,17 @@ public class HackMeController {
 	@ResponseBody
 	public String getMyScoreCard(HttpServletRequest request) {
 		return service.getMyScoreCard(request);
+	}
+	
+	@RequestMapping(path = CommonConstants.PASSWORD_TXT, method = RequestMethod.GET)
+	public ResponseEntity<ByteArrayResource> password(HttpServletRequest request) throws Exception {
+	    if(HackMeHelper.getUserId(request).isEmpty()) {
+	    	 throw new Exception();
+	    }
+	    ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(new File(ClassLoader.getSystemClassLoader().getResource(CommonConstants.PASSWORD_TXT_FILE_PATH).getFile()).toPath()));
+	    return ResponseEntity.ok()
+	    		.header(CommonConstants.CACHE_CONTROL,CommonConstants.NO_CACHE)
+	            .contentType(MediaType.parseMediaType(CommonConstants.TEXT_PLAIN))
+	            .body(resource);
 	}
 }

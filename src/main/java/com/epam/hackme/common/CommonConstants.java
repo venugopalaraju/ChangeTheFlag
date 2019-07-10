@@ -87,4 +87,9 @@ String MYSCORE_TR_1="<tr><td>User Id </td><td>";
 String MYSCORE_TR_2="</td></tr><tr><td>Username </td><td>";
 String MYSCORE_TR_3="</td></tr><tr><td>Score </td><td>";
 String MYSCORE_TR_4="</td></tr>";
+String PASSWORD_TXT="/password.txt";
+String PASSWORD_TXT_FILE_PATH="password";
+String CACHE_CONTROL="cache-control";
+String NO_CACHE="No-cache";
+String TEXT_PLAIN="text/plain";
 }
