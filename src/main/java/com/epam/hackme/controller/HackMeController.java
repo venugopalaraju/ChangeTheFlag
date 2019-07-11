@@ -119,7 +119,10 @@ public class HackMeController {
 
 	@RequestMapping(CommonConstants.VALIDATE_CHALLENGE_NINE)
 	@ResponseBody
-	public String validateChallenge9(@RequestBody String command) {
+	public String validateChallenge9(@RequestBody(required=false) String command) {
+		if(command==null||command.isEmpty()) {
+			return CommonConstants.NO_COMMAND_ERROR;
+		}
 		return service.validateChallenge9(command);
 	}
 
@@ -190,7 +193,7 @@ public class HackMeController {
 	    ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(new File(ClassLoader.getSystemClassLoader().getResource(CommonConstants.PASSWORD_TXT_FILE_PATH).getFile()).toPath()));
 	    return ResponseEntity.ok()
 	    		.header(CommonConstants.CACHE_CONTROL,CommonConstants.NO_CACHE)
-	            .contentType(MediaType.parseMediaType(CommonConstants.TEXT_PLAIN))
+	            .contentType(MediaType.parseMediaType("application/octet-stream"))
 	            .body(resource);
 	}
 }

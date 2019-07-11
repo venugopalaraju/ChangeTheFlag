@@ -92,4 +92,5 @@ String PASSWORD_TXT_FILE_PATH="password";
 String CACHE_CONTROL="cache-control";
 String NO_CACHE="No-cache";
 String TEXT_PLAIN="text/plain";
+String NO_COMMAND_ERROR="Please enter valid command";
 }

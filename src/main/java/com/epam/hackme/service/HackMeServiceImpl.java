@@ -132,6 +132,7 @@ public class HackMeServiceImpl implements HackMeService {
 			mav.addObject(CommonConstants.CHALLENGE_FLAG, 0);
 			mav.setViewName(CommonConstants.CHALLENGE_ALL_VIEW);
 		} else {
+			mav.addObject(CommonConstants.ERROR,"Try Again");
 			mav.setViewName(CommonConstants.CHALLENGE_ZERO_VIEW);
 		}
 		return mav;
@@ -225,9 +226,12 @@ public class HackMeServiceImpl implements HackMeService {
 			while ((c = in.read()) != -1) {
 				output = output + (char) c;
 			}
+			if(output.isEmpty()) {
+				return CommonConstants.NO_COMMAND_ERROR;
+			}
 			return output;
-		} catch (IOException | InterruptedException e) {
-			return "Please enter valid command";
+		} catch (Exception e) {
+			return CommonConstants.NO_COMMAND_ERROR;
 		}
 	}
 

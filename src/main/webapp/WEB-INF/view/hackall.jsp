@@ -559,9 +559,9 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <div class="form-group">
 <label>Developer stored the password in readme.txt file. Read the file content to get the password.</label></div>
 <div><img alt="" src="\images\command.jpg"></div>
-<div class="form-group">
-<label>Enter IP to ping :</label>
-<input type="text" width="100" id="command" class="form-control-default"/>
+<div class="form-group"><br>
+<label><b>Enter IP to ping :</b></label>
+<input type="text" width="100" id="command" class="form-control-default" value=""/>
 </div>
 <div class="form-group"><button onclick="challenge9()" class="btn btn-success">Submit</button></div>
 <div class="command-output" style="display:none;">
@@ -825,7 +825,7 @@ function challenge9(){
 				type: 'post',
 			    contentType: 'application/json',
 				success:function(data){
-					$("#cmd-output-body").text(data);
+					$("#cmd-output-body").html(data);
 					$(".command-output").show();
 				}});
 }

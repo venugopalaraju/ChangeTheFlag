@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Challenge Login</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <style type="text/css">
 .form-control-default {
     display: block;
@@ -22,17 +23,26 @@
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 </style>
+<script type="text/javascript">
+$(document).ready(function(){
+	var error='${error}';
+	if(error.length>0){
+		$("#error").append("<span style='color:red;'>"+error+"</span>");
+	}
+});
+</script>
 </head>
 <body style="padding-top: 10px;">
 <div align="center" >
 <form action="/validatechallengezero" id="challengeloginform" method="post">
 <div><img alt="" src="\images\icebreak.jpg" width="50%"></div><br>
-<div><p>Application initiated with default credentials. Try the default credentials you know.</p></div>
+<div><p>Application installed with default credentials. Try the default credentials you know.</p></div>
 <div class="form-group">
 <label>Enter User Name :</label>
 <input type="text" width="20" name="username" class="form-control-default" autocomplete="off" />
 <label>Enter Password  :</label>
 <input type="password" width="20" name="password" class="form-control-default" autocomplete="off" />
+<div id="error" align="center"></div>
 </div>
 <div>
 <button type="submit" class="btn btn-success">Login</button>

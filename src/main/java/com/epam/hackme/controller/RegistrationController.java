@@ -1,6 +1,7 @@
 package com.epam.hackme.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,8 +31,8 @@ public class RegistrationController {
 		try {
 			service.registerUser(user);
 			return new ModelAndView(CommonConstants.USER_LOGIN, "userid", user.getUserid());
-		} catch (Exception e) {
-			return new ModelAndView(CommonConstants.REGISTRATION_VIEW, CommonConstants.ERROR,"Please enter valid details and click on register");
+		} catch (DuplicateKeyException e) {
+			return new ModelAndView(CommonConstants.REGISTRATION_VIEW, CommonConstants.ERROR,"UserId already Exists");
 		}
 		}
 }
