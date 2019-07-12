@@ -32,7 +32,7 @@
     </div>
   </div> 
   <a  onclick="openMyScore()" title='My Score' style="color: white;cursor: pointer;">My Profile</a>
-  <a  onclick="openScore()" title='leader Board' style="color: white;cursor: pointer;">leader Board</a>
+  <a  onclick="openScore()" title='leader Board' style="color: white;cursor: pointer;">Leader Board</a>
 </div>
 
 <div class="sidenav">
@@ -219,7 +219,7 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <div class="form-group"><button onclick="validatechallenge12()" class="btn btn-success">Submit</button></div>
 </div>
 <div id="challenge13" class="challenge" style="display:none;">
-<div style="padding-top: 10%;padding-left: 221px;"><p style="color: blue;">You have passed all the challenges. Please check your score board to know your score.If you have not earned 100% please complete Trivia Challenges also. Thank you..!!!</p> <a href="/login" style="color: green">Logout</a></div>
+<div style="padding-right: 157px;padding-top: 224px;padding-left: 366px;"><p class="card bg-info text-white card-body">You have passed all the challenges. Please check your score board to know your score.If you have not earned 100% please complete Trivia Challenges also. Thank you..!!!</p> <a href="/login" style="color: green">Logout</a></div>
 </div>
 <input type="hidden" id="ensrcpwd" name="user" value="texens" />
 <script type="text/javascript">
