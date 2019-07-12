@@ -11,6 +11,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link href='https://fonts.googleapis.com/css?family=Source Code Pro' rel='stylesheet'>
  <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -94,19 +95,19 @@ body {
 
 .sidenav {
   height: 100%;
-  width: 190px;
+  width: 221px;
   position: absolute;
   z-index: 1;
   top: 20;
   left: 1;
-  background-color: #f1f1f1;
+  background-color: #D3D3B6;
   overflow-x: hidden;
 }
 
 
 
 .main {
-  margin-left: 190px; /* Same as the width of the sidenav */
+  margin-left: 221px; /* Same as the width of the sidenav */
   
   font-size: 28px; /* Increased text to enable scrolling */
   padding: 0px 10px;
@@ -187,7 +188,7 @@ body {
 </div>
 <div><img alt="" src="\images\sourcecode.jpg"></div>
 <div class="form-group">
-Enter Password :<input type="password" id="challenge1password" class="form-control-default"/>
+Enter Password :<input type="password" id="challenge1password" class="form-control-default" autocomplete="off"/>
 </div>
 <div>
 <button onclick="validatechallenge1()" class="btn btn-success">Submit</button>
@@ -201,7 +202,7 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <div><img alt="" src="\images\cookie1.jpg"></div>
 <div class="form-group">
 <label>Enter Password :</label>
-<input type="password" width="20" id="challenge2password" class="form-control-default"/>
+<input type="password" width="20" id="challenge2password" class="form-control-default" autocomplete="off"/>
 </div>
 <div class="form-group">
 <button onclick="validatechallenge2()" class="btn btn-success">Submit</button>
@@ -215,7 +216,7 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <div><img alt="" src="\images\password3.jpg"></div>
 <div class="form-group">
 <label>Enter Password :</label>
-<input type="password" width="20" id="challenge3password" class="form-control-default"/>
+<input type="password" width="20" id="challenge3password" class="form-control-default" autocomplete="off"/>
 </div>
 <div class="form-group">
 <button onclick="validatechallenge3()" class="btn btn-success">Submit</button>
@@ -229,7 +230,7 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <div><img alt="" src="\images\cookie2.jpg"></div>
 <div class="form-group">
 <label>Enter Password :</label>
-<input type="password" width="20" id="challenge4password" class="form-control-default"/>
+<input type="password" width="20" id="challenge4password" class="form-control-default" autocomplete="off"/>
 </div>
 <div class="form-group">
 <button onclick="validatechallenge4()" class="btn btn-success">Submit</button>
@@ -243,7 +244,7 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <div><img alt="" src="\images\tunnel.jpg"></div>
 <div class="form-group">
 <label>Enter Password :</label>
-<input type="password" width="20" id="challenge5password" class="form-control-default"/>
+<input type="password" width="20" id="challenge5password" class="form-control-default" autocomplete="off"/>
 </div>
 <div class="form-group"><button onclick="validatechallenge5()" class="btn btn-success">Submit</button></div>
 </div>
@@ -262,7 +263,7 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <div class="form-group">
 <label>Please enter a string which contains more than 20 characters</label>
 <label>Enter String :</label>
-<input type="text" width="20" id="challenge7name" maxlength="20" class="form-control-default"/>
+<input type="text" width="20" id="challenge7name" maxlength="20" class="form-control-default" autocomplete="off"/>
 </div>
 <div class="form-group">
 <button onclick="validatechallenge7()" class="btn btn-success">Submit</button></div>
@@ -274,7 +275,7 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <div><img alt="" src="\images\file.jpg"></div>
 <div class="form-group">
 <label>Enter Password :</label>
-<input type="password" width="20" id="challenge8password" class="form-control-default"/>
+<input type="password" width="20" id="challenge8password" class="form-control-default" autocomplete="off"/>
 </div>
 <div class="form-group"><button onclick="validatechallenge8()" class="btn btn-success">Submit</button></div>
 <div><a target="_blank" href="\images\password2.jpg"><font color="green"><b>Click here</b></font></a> to check your password</div>
@@ -286,14 +287,14 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <div><img alt="" src="\images\command.jpg"></div>
 <div class="form-group"><br>
 <label><b>Enter IP to ping :</b></label>
-<input type="text" width="100" id="command" class="form-control-default" value=""/>
+<input type="text" width="100" id="command" class="form-control-default" autocomplete="off" value=""/>
 </div>
 <div class="form-group"><button onclick="challenge9()" class="btn btn-success">Submit</button></div>
 <div class="command-output" style="display:none;">
 <div id="cmd-output-body"></div>
 <div class="form-group">
 <label>Password :</label>
-<input type="password" width="100" id="commandpwd" class="form-control-default"/>
+<input type="password" width="100" id="commandpwd" class="form-control-default" autocomplete="off"/>
 </div>
 <div class="form-group"><button onclick="validatechallenge9pwd()" class="btn btn-success">submit</button></div>
 </div>
@@ -305,7 +306,7 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <div><img alt="" src="\images\xssjs.jpg"></div>
 <div class="form-group">
 <label>Enter Password :</label>
-<input type="password" width="20" id="challenge10password" class="form-control-default"/>
+<input type="password" width="20" id="challenge10password" class="form-control-default" autocomplete="off"/>
 </div>
 <div class="form-group"><button onclick="validatechallenge10()" class="btn btn-success">Submit</button></div>
 <div><a href="/challenge10?getvalue=username" target="_blank"><font color="green"><b>Click here</b></font></a> to check your password</div>
@@ -316,7 +317,7 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <div><img alt="" src="\challenge11\directory.png"></div>
 <div class="form-group">
 <label>Enter Password :</label>
-<input type="password" width="20" id="challenge11password" class="form-control-default"/>
+<input type="password" width="20" id="challenge11password" class="form-control-default" autocomplete="off"/>
 </div>
 <div class="form-group"><button onclick="validatechallenge11()" class="btn btn-success">Submit</button></div>
 </div>
@@ -326,16 +327,16 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <div><img alt="" src="\images\sqlinjection.png"></div>
 <div class="form-group">
 <label>Enter Username :</label>
-<input type="text" width="20" id="challenge12username" class="form-control-default"/>
+<input type="text" width="20" id="challenge12username" class="form-control-default" autocomplete="off"/>
 </div>
 <div class="form-group">
 <label>Enter Password :</label>
-<input type="text" width="20" id="challenge12password" class="form-control-default"/>
+<input type="text" width="20" id="challenge12password" class="form-control-default" autocomplete="off"/>
 </div>
 <div class="form-group"><button onclick="validatechallenge12()" class="btn btn-success">Submit</button></div>
 </div>
 <div id="challenge13" class="challenge" style="display:none;">
-<div style="padding-top: 10%;padding-left: 190px;"><p style="color: blue;">You have passed all the challenges. Please check your score board to know your score.If you have not earned 100% please complete Trivia Challenges also. Thank you..!!!</p> <a href="/login" style="color: green">Logout</a></div>
+<div style="padding-top: 10%;padding-left: 221px;"><p style="color: blue;">You have passed all the challenges. Please check your score board to know your score.If you have not earned 100% please complete Trivia Challenges also. Thank you..!!!</p> <a href="/login" style="color: green">Logout</a></div>
 </div>
 <input type="hidden" id="ensrcpwd" name="user" value="texens" />
 <script type="text/javascript">
@@ -347,13 +348,13 @@ $(function() {
 	if(score>0){
 		for(i=1;i<score;i++){
 			$("#cha"+i+"div").css("background-color","lightblue");
-			$("#cha"+i+"div").append("<span class='tick'> &#10004;</span>");
+			$("#cha"+i+"div").append("<span class='tick'> <i style='font-size:24px;color:blue;' class='fa'>&#xf087;</i></span>");
 		}
 		score+=1;
 		challenge(score);
 	}else{
 		challenge(1);
-		$("#cha"+1+"div").append("<span class='hand'> &#9754;</span>");
+		$("#cha"+1+"div").append("<span class='hand'> <i style='font-size:24px;color:red;' class='fa'>&#xf0a5;</i></span>");
 	}
 	updateMyScore();
 });
@@ -362,8 +363,8 @@ function challenge(id){
 		var divid=score-1;
 		$("#cha"+divid+"div").css("background-color","lightblue");
 		$("#cha"+divid+"div .hand").remove();
-		$("#cha"+divid+"div").append("<span class='tick'> &#10004;</span>");
-		$("#cha"+score+"div").append("<span class='hand'> &#9754;</span>");
+		$("#cha"+divid+"div").append("<span class='tick'> <i style='font-size:24px;color:blue;' class='fa'>&#xf087;</i></span>");
+		$("#cha"+score+"div").append("<span class='hand'> <i style='font-size:24px;color:red;' class='fa'>&#xf0a5;</i></span>");
 
 	}
 	if(score==0){
