@@ -219,7 +219,7 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <div class="form-group"><button onclick="validatechallenge12()" class="btn btn-success">Submit</button></div>
 </div>
 <div id="challenge13" class="challenge" style="display:none;">
-<div style="padding-right: 157px;padding-top: 224px;padding-left: 366px;"><p class="card bg-info text-white card-body">You have passed all the challenges. Please check your score board to know your score.If you have not earned 100% please complete Trivia Challenges also. Thank you..!!!</p> <a href="/login" style="color: green">Logout</a></div>
+<div style="padding-right: 157px;padding-top: 224px;padding-left: 366px;"><p class="card bg-info text-white card-body">You have passed all the challenges. Please check your score board to know your score.If you have not earned 100% please complete Trivia Challenges also. Thank you..!!!</p> <a href="/login" class="btn btn-success">Logout</a></div>
 </div>
 <input type="hidden" id="ensrcpwd" name="user" value="texens" />
 <script type="text/javascript">
@@ -543,7 +543,7 @@ $(document).ajaxStart(function(){
 						var userid='${user_id}';
 						$.each(list, function( index, value ) {
 							if(userid==value.userid){
-								data=data+"<tr style='color:blue;'><td>"+(index+1)+"</td><td>"+value.userid+"</td><td>"+value.userName+"</td><td>"+value.score+"</td></tr>";
+								data=data+"<tr style='color:blue;background:mintcream;'><td>"+(index+1)+"</td><td>"+value.userid+"</td><td>"+value.userName+"</td><td>"+value.score+"   <i style='font-size:24px;color:blue;' class='fa'>&#xf0a5;</i></td></tr>";
 							}else{
 								data=data+"<tr><td>"+(index+1)+"</td><td>"+value.userid+"</td><td>"+value.userName+"</td><td>"+value.score+"</td></tr>";
 							}
@@ -631,7 +631,7 @@ $(document).ajaxStart(function(){
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" style="background: turquoise;">Close</button>
         </div>
         
       </div>
@@ -654,7 +654,7 @@ $(document).ajaxStart(function(){
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" style="background: turquoise;">Close</button>
         </div>
         
       </div>

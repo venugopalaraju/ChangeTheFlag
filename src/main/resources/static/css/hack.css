@@ -130,11 +130,11 @@ h1{
 	color:green;
 }
 tbody{
-	background: darkseagreen;
-	color: floralwhite;
+	background: slategray;
+	color: aliceblue;
 }
 thead {
-	background: lightblue;
+	background: black;
 	color: dodgerblue;
 }
 .modal-content {
@@ -154,7 +154,7 @@ thead {
     border: 1px solid rgba(0,0,0,.2);
     border-radius: .3rem;
     outline: 0;
-    background: darkseagreen;
+    background: slategray;
 }
 .modal-header {
     color: darkblue;
