@@ -129,3 +129,40 @@ body {
 h1{
 	color:green;
 }
+tbody{
+	background: darkseagreen;
+	color: floralwhite;
+}
+thead {
+	background: lightblue;
+	color: dodgerblue;
+}
+.modal-content {
+    background: darkseagreen;
+    height: 100%;
+    width: 600px;
+    color: white;
+    background: darkseagreen;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: .3rem;
+    outline: 0;
+    background: darkseagreen;
+}
+.modal-header {
+    color: darkblue;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: .3rem;
+    border-top-right-radius: .3rem;
+}

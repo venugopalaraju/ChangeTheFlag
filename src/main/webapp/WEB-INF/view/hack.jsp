@@ -609,7 +609,7 @@ $(document).ajaxStart(function(){
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Leadr Board</h4>
+          <h4 class="modal-title">Leader Board</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
