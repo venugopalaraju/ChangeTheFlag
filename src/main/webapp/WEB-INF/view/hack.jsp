@@ -62,6 +62,7 @@
 <div class="form-group">
 Enter Password :<input type="password" id="challenge1password" class="form-control-default" autocomplete="off"/>
 </div>
+<div id="error" align="center"></div>
 <div>
 <button onclick="validatechallenge1()" class="btn btn-success">Submit</button>
 </div>
@@ -76,6 +77,7 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <label>Enter Password :</label>
 <input type="password" width="20" id="challenge2password" class="form-control-default" autocomplete="off"/>
 </div>
+<div id="error" align="center"></div>
 <div class="form-group">
 <button onclick="validatechallenge2()" class="btn btn-success">Submit</button>
 </div>
@@ -90,6 +92,7 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <label>Enter Password :</label>
 <input type="password" width="20" id="challenge3password" class="form-control-default" autocomplete="off"/>
 </div>
+<div id="error" align="center"></div>
 <div class="form-group">
 <button onclick="validatechallenge3()" class="btn btn-success">Submit</button>
 </div>
@@ -104,6 +107,7 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <label>Enter Password :</label>
 <input type="password" width="20" id="challenge4password" class="form-control-default" autocomplete="off"/>
 </div>
+<div id="error" align="center"></div>
 <div class="form-group">
 <button onclick="validatechallenge4()" class="btn btn-success">Submit</button>
 </div>
@@ -118,6 +122,7 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <label>Enter Password :</label>
 <input type="password" width="20" id="challenge5password" class="form-control-default" autocomplete="off"/>
 </div>
+<div id="error" align="center"></div>
 <div class="form-group"><button onclick="validatechallenge5()" class="btn btn-success">Submit</button></div>
 </div>
 <div id="challenge6" class="challenge" style="display:none;">
@@ -137,6 +142,7 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <label>Enter String :</label>
 <input type="text" width="20" id="challenge7name" maxlength="20" class="form-control-default" autocomplete="off"/>
 </div>
+<div id="error" align="center"></div>
 <div class="form-group">
 <button onclick="validatechallenge7()" class="btn btn-success">Submit</button></div>
 </div>
@@ -149,6 +155,7 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <label>Enter Password :</label>
 <input type="password" width="20" id="challenge8password" class="form-control-default" autocomplete="off"/>
 </div>
+<div id="error" align="center"></div>
 <div class="form-group"><button onclick="validatechallenge8()" class="btn btn-success">Submit</button></div>
 <div><a target="_blank" href="\images\password2.jpg"><font color="green"><b>Click here</b></font></a> to check your password</div>
 </div>
@@ -168,6 +175,7 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <label>Password :</label>
 <input type="password" width="100" id="commandpwd" class="form-control-default" autocomplete="off"/>
 </div>
+<div id="error" align="center"></div>
 <div class="form-group"><button onclick="validatechallenge9pwd()" class="btn btn-success">submit</button></div>
 </div>
 </div>
@@ -180,6 +188,7 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <label>Enter Password :</label>
 <input type="password" width="20" id="challenge10password" class="form-control-default" autocomplete="off"/>
 </div>
+<div id="error" align="center"></div>
 <div class="form-group"><button onclick="validatechallenge10()" class="btn btn-success">Submit</button></div>
 <div><a href="/challenge10?getvalue=username" target="_blank"><font color="green"><b>Click here</b></font></a> to check your password</div>
 </div>
@@ -191,6 +200,7 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <label>Enter Password :</label>
 <input type="password" width="20" id="challenge11password" class="form-control-default" autocomplete="off"/>
 </div>
+<div id="error" align="center"></div>
 <div class="form-group"><button onclick="validatechallenge11()" class="btn btn-success">Submit</button></div>
 </div>
 <div id="challenge12" class="challenge" style="display:none;">
@@ -205,6 +215,7 @@ Enter Password :<input type="password" id="challenge1password" class="form-contr
 <label>Enter Password :</label>
 <input type="text" width="20" id="challenge12password" class="form-control-default" autocomplete="off"/>
 </div>
+<div id="error" align="center"></div>
 <div class="form-group"><button onclick="validatechallenge12()" class="btn btn-success">Submit</button></div>
 </div>
 <div id="challenge13" class="challenge" style="display:none;">
@@ -268,7 +279,7 @@ function validatechallenge1(){
 						challenge(score);
 						updateMyScore();
 					}else{
-						alert("Enter valid password");
+						$("#error").append("<span style='color:red;'>Enter valid password</span>");
 					}
 				}});
 }
@@ -295,7 +306,7 @@ function validatechallenge2(){
 						challenge(score);
 						updateMyScore();
 					}else{
-						alert("Enter valid password");
+						$("#error").append("<span style='color:red;'>Enter valid password</span>");
 					}
 				}});
 }
@@ -313,7 +324,7 @@ function validatechallenge3(){
 						challenge(score);
 						updateMyScore();
 					}else{
-						alert("Enter valid password");
+						$("#error").append("<span style='color:red;'>Enter valid password</span>");
 					}
 				}});
 }
@@ -340,7 +351,7 @@ function validatechallenge4(){
 						challenge(score);
 						updateMyScore();
 					}else{
-						alert("Enter valid password");
+						$("#error").append("<span style='color:red;'>Enter valid password</span>");
 					}
 				}});
 }
@@ -358,7 +369,7 @@ function validatechallenge5(){
 						challenge(score);
 						updateMyScore();
 					}else{
-						alert("Enter valid password");
+						$("#error").append("<span style='color:red;'>Enter valid password</span>");
 					}
 				}});
 }
@@ -392,7 +403,7 @@ function validatechallenge7(){
 						challenge(score);
 						updateMyScore();
 					}else{
-						alert("Please enter a string which contains more than 20 characters");
+						$("#error").append("<span style='color:red;'>Please enter a string which contains more than 20 characters</span>");
 					}
 				}});
 }
@@ -410,7 +421,7 @@ function validatechallenge8(){
 						challenge(score);
 						updateMyScore();
 					}else{
-						alert("Enter valid password");
+						$("#error").append("<span style='color:red;'>Enter valid password</span>");
 					}
 				}});
 }
@@ -441,7 +452,7 @@ function validatechallenge9pwd(){
 						challenge(score);
 						updateMyScore();
 					}else{
-						alert("Enter valid password");
+						$("#error").append("<span style='color:red;'>Enter valid password</span>");
 					}
 				}});
 	}
@@ -459,12 +470,13 @@ function validatechallenge10(){
 						challenge(score);
 						updateMyScore();
 					}else{
-						alert("Enter valid password");
+						$("#error").append("<span style='color:red;'>Enter valid password</span>");
 					}
 				}});
 }
 $(document).ajaxStart(function(){
 	  // Show image container
+	  $("#error").empty();
 	 $("#wait").css("display", "block");
 	});
 	$(document).ajaxComplete(function(){
@@ -484,7 +496,7 @@ $(document).ajaxStart(function(){
 							score+=1;
 							challenge(score);
 						}else{
-							alert("Enter valid password");
+							$("#error").append("<span style='color:red;'>Enter valid password</span>");
 						}
 					}});
 	}
@@ -504,7 +516,7 @@ $(document).ajaxStart(function(){
 							challenge(score);
 							updateMyScore();
 						}else{
-							alert("Enter valid crednetials");
+							$("#error").append("<span style='color:red;'>Enter valid crednetials</span>");
 						}
 					}});
 	}
