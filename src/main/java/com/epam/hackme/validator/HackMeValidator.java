@@ -56,6 +56,10 @@ public class HackMeValidator {
 			mav.setViewName(CommonConstants.REGISTRATION_VIEW);
 			mav.addObject(CommonConstants.ERROR,"Please Enter Valid Email Address Only!");
 			 return true;
+		}if(user.getPassword().length()>8) {
+			mav.setViewName(CommonConstants.REGISTRATION_VIEW);
+			mav.addObject(CommonConstants.ERROR,"Password Length Should Not Be More Than 8 Characters");
+			 return true;
 		}
 				return false;
 		

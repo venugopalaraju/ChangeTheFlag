@@ -1,0 +1,131 @@
+@charset "ISO-8859-1";
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
+  background: #D3D2CD;
+}
+
+.nav-bar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.nav-bar a {
+  float: right;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+#scorecard{
+float: right;
+  font-size: 16px;
+  color: lightblue;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.drop-down {
+  float: right;
+  overflow: hidden;
+}
+
+.drop-down .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.nav-bar a:hover, .drop-down:hover .dropbtn {
+  background-color: #96DE6D;
+}
+
+.drop-down-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.drop-down-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.drop-down-content a:hover {
+  background-color: #ddd;
+}
+
+.drop-down:hover .drop-down-content {
+  display: block;
+}
+</style>
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 221px;
+  position: absolute;
+  z-index: 1;
+  top: 20;
+  left: 1;
+  background-color: #D3D3B6;
+  overflow-x: hidden;
+}
+
+
+
+.main {
+  margin-left: 221px; /* Same as the width of the sidenav */
+  
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* @media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+} */
+.left-menu-item{
+     padding: 10px;
+    /* text-align: center; */
+    vertical-align: middle;
+    border-bottom: 1px solid grey;
+    font-weight: 600;
+    font-size: 14px;
+    color: black;
+}
+.form-control-default {
+    display: block;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+h1{
+	color:green;
+}
